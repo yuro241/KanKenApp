@@ -8,3 +8,5 @@ pyhton GUI.py ver04.txt ver05.txt で実行
 上記の流れでないと次の問題へいきません
 
 終了ボタンを押すと何問中何問正解したかパーセント表示
+
+　written by Yoshiki Honda
