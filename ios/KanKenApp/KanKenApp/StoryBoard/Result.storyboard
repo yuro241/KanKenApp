@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qrh-JD-JP1">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="HiraginoKakuGothic.ttc">
+            <string>HiraginoSans-W3</string>
+            <string>HiraginoSans-W6</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="Qbd-4Y-biy">
+            <objects>
+                <viewController id="qrh-JD-JP1" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7EG-VO-hjc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたの結果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNy-al-eaG">
+                                <rect key="frame" x="99" y="50" width="177" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="177" id="ALo-9h-WqY"/>
+                                    <constraint firstAttribute="height" constant="54" id="zMW-Wy-BR5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正答率は" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZf-jS-2VG">
+                                <rect key="frame" x="30" y="254" width="100" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="5eA-kt-0jY"/>
+                                    <constraint firstAttribute="height" constant="40" id="MBh-mW-H1K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TpP-V8-QFB">
+                                <rect key="frame" x="68" y="489" width="80" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="58F-i3-jT5"/>
+                                    <constraint firstAttribute="width" constant="80" id="HyS-O8-ZJ5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <state key="normal" title="もう一度">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Zww-xY-jfU" kind="show" animates="NO" id="uJC-Cz-AhU"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50問正解" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAk-t1-zKX">
+                                <rect key="frame" x="110" y="129" width="155" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="6fq-Jo-1Yz"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="155" id="R7z-kG-TsU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%です" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k1h-QB-Lbq">
+                                <rect key="frame" x="99" y="314" width="178" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="1aO-h9-wcs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FWQ-nE-g3d">
+                                <rect key="frame" x="193" y="489" width="120" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="FVf-Y5-hsS"/>
+                                    <constraint firstAttribute="height" constant="40" id="iVl-0G-cZ1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <state key="normal" title="タイトルへ戻る">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <segue destination="oTJ-VK-jqW" kind="presentation" id="kWz-2O-dGJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.92024739580000003" blue="0.10788302950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="WAk-t1-zKX" firstAttribute="centerX" secondItem="7EG-VO-hjc" secondAttribute="centerX" id="18c-15-S0z"/>
+                            <constraint firstItem="JZf-jS-2VG" firstAttribute="leading" secondItem="MTI-GD-htf" secondAttribute="leading" constant="30" id="1lI-nj-94B"/>
+                            <constraint firstItem="FWQ-nE-g3d" firstAttribute="baseline" secondItem="TpP-V8-QFB" secondAttribute="baseline" id="6R7-p6-f6K"/>
+                            <constraint firstItem="FWQ-nE-g3d" firstAttribute="leading" secondItem="TpP-V8-QFB" secondAttribute="trailing" constant="45" id="6hO-6W-cPN"/>
+                            <constraint firstItem="k1h-QB-Lbq" firstAttribute="centerX" secondItem="7EG-VO-hjc" secondAttribute="centerX" id="Die-5a-dTa"/>
+                            <constraint firstItem="k1h-QB-Lbq" firstAttribute="top" secondItem="JZf-jS-2VG" secondAttribute="bottom" constant="20" id="DrT-xr-AMS"/>
+                            <constraint firstItem="WAk-t1-zKX" firstAttribute="top" secondItem="ZNy-al-eaG" secondAttribute="bottom" constant="25" id="SfR-g6-93c"/>
+                            <constraint firstItem="ZNy-al-eaG" firstAttribute="centerX" secondItem="7EG-VO-hjc" secondAttribute="centerX" id="bUt-CY-hr9"/>
+                            <constraint firstItem="ZNy-al-eaG" firstAttribute="top" secondItem="MTI-GD-htf" secondAttribute="top" constant="30" id="kV9-Ud-Fr0"/>
+                            <constraint firstItem="TpP-V8-QFB" firstAttribute="top" secondItem="k1h-QB-Lbq" secondAttribute="bottom" constant="120" id="pLo-ar-p0f"/>
+                            <constraint firstItem="TpP-V8-QFB" firstAttribute="leading" secondItem="MTI-GD-htf" secondAttribute="leading" constant="68" id="r3R-JO-bZS"/>
+                            <constraint firstItem="JZf-jS-2VG" firstAttribute="top" secondItem="WAk-t1-zKX" secondAttribute="bottom" constant="70" id="yrN-gJ-cfW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MTI-GD-htf"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Aef-fS-RRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="116.49175412293854"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="wxf-7Q-xm5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Title" id="oTJ-VK-jqW" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dTB-Oq-xdL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="638" y="41"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="T0w-Yd-OAm">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="Zww-xY-jfU" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WO2-uw-InO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="262"/>
+        </scene>
+    </scenes>
+</document>
