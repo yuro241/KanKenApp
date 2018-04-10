@@ -56,6 +56,9 @@
                                 <state key="normal" title="答える">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="answerTap:" destination="qzv-5z-K0J" eventType="touchUpInside" id="hOy-jl-LWQ"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ここに解答を入力しよう" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="b31-RC-zDV">
                                 <rect key="frame" x="35" y="413" width="241" height="30"/>
@@ -77,6 +80,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yNs-ib-BzM"/>
                     </view>
+                    <connections>
+                        <outlet property="answerInputField" destination="b31-RC-zDV" id="oYQ-QS-StU"/>
+                        <outlet property="questionLabel" destination="N9A-FT-yGt" id="iVx-Wl-Hg3"/>
+                        <outlet property="questionNumberLabel" destination="4ob-gs-MBR" id="UWZ-tC-BLG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xki-kd-N1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
