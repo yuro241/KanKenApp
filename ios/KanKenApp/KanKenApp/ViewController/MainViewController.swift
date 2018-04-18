@@ -10,6 +10,9 @@ import UIKit
 
 class MainViewController: UIViewController {
 
+    @IBOutlet weak var questionLabel: UILabel!
+    @IBOutlet weak var questionNumberLabel: UILabel!
+    @IBOutlet weak var answerInputField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -19,7 +22,10 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    @IBAction func answerTap(_ sender: UIButton) {
+        
+    }
+    
+    
 }
 

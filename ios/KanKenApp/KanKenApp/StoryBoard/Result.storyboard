@@ -16,10 +16,10 @@
         </array>
     </customFonts>
     <scenes>
-        <!--View Controller-->
+        <!--Result View Controller-->
         <scene sceneID="Qbd-4Y-biy">
             <objects>
-                <viewController id="qrh-JD-JP1" sceneMemberID="viewController">
+                <viewController id="qrh-JD-JP1" customClass="ResultViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7EG-VO-hjc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="retry:" destination="qrh-JD-JP1" eventType="touchUpInside" id="2RS-xv-YK5"/>
                                     <segue destination="Zww-xY-jfU" kind="show" animates="NO" id="uJC-Cz-AhU"/>
                                 </connections>
                             </button>
@@ -90,6 +91,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
+                                    <action selector="titleBack:" destination="qrh-JD-JP1" eventType="touchUpInside" id="bPN-Tc-x1p"/>
                                     <segue destination="oTJ-VK-jqW" kind="presentation" id="kWz-2O-dGJ"/>
                                 </connections>
                             </button>
@@ -111,6 +113,10 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="MTI-GD-htf"/>
                     </view>
+                    <connections>
+                        <outlet property="persentageLabel" destination="k1h-QB-Lbq" id="DhI-gx-6CW"/>
+                        <outlet property="resultLabel" destination="WAk-t1-zKX" id="uBD-3o-4EW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aef-fS-RRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
