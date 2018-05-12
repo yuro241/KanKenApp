@@ -8,19 +8,31 @@
 //  iPhone7で実行しないと、ファイルのpath変わります
 
 import UIKit
-import RealmSwift
+//import RealmSwift
 
 class MainViewController: UIViewController {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var answerInputField: UITextField!
+    @IBOutlet weak var correctLabel: UILabel!
+    @IBOutlet weak var incorrectLabel: UILabel!
+    @IBOutlet weak var ansLabel: UILabel!
     
-    let realmData = realmDataSet()
+    var arrayKanji = [String]()
+    var arrayKana = [String]()
+    var count: Int = 1
+    var correctAnswers: Int = 0
+    var wrongAnswers: Int = 0
+    var questionNum: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        correctLabel.isHidden = true
+        incorrectLabel.isHidden = true
+        ansLabel.isHidden = true
         
         if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
             // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
@@ -28,6 +40,7 @@ class MainViewController: UIViewController {
             print("読み込むファイルのパス: \(targetTextFilePath)")
             readTextFile(fileURL: targetTextFilePath)
         }
+        self.changeQuestion()
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,11 +59,11 @@ class MainViewController: UIViewController {
             text.enumerateLines(invoking: {
                 line, stop in
                 print("\(lineNum): \(line)")
-                //realmへのデータ追加
-                //TODO: idをprimaryKeyとし、idごとにデータ(漢字と読み)を追加していく必要
-                self.realmData.id = lineNum
-                self.realmData.kanji = line
-                self.save()
+                if lineNum % 2 == 1 {
+                    self.arrayKanji.append(line)
+                } else {
+                    self.arrayKana.append(line)
+                }
                 lineNum += 1
             })
             
@@ -58,27 +71,59 @@ class MainViewController: UIViewController {
             print("failed to read: \(error)")
         }
         
+        UserDefaults.standard.set(arrayKanji, forKey: "kanji")
+        UserDefaults.standard.set(arrayKana, forKey: "kana")
     }
     
-    func save() {
-        do {
-            let realm = try Realm()  // Realmのインスタンスを作成します。
-            try realm.write {
-                realm.add(self.realmData)  // 作成した「realm」というインスタンスにrealmDataを書き込みます。
-            }
-        } catch {
+    //問題出題
+    func changeQuestion() {
+        if count > 10 {
+            self.finishQuiz()
+        }
+        questionNumberLabel.text = String(count) + "問目"
+        
+        var arrayQuestion:[String] = UserDefaults.standard.array(forKey: "kanji")! as! [String]
+        questionNum = Int(arc4random() % UInt32(arrayQuestion.count))
+        questionLabel.text = arrayQuestion[questionNum]
+        
+        arrayQuestion.remove(at: questionNum)
+    }
+    
+    func checkAns() {
+        print(arrayKana[questionNum])
+        print(answerInputField.text!)
+        if answerInputField.text! == arrayKana[questionNum] {
+            self.correctAnswers += 1
+            self.correctLabel.isHidden = false
+            self.incorrectLabel.isHidden = true
+            self.ansLabel.isHidden = true
+        } else {
+            self.wrongAnswers += 1
+            self.correctLabel.isHidden = true
+            self.incorrectLabel.isHidden = false
+            self.ansLabel.text = "答えは：" + arrayKana[questionNum]
+            self.ansLabel.isHidden = false
             
         }
+        self.answerInputField.text! = ""
+        count += 1
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            self.changeQuestion()
+        })
+        
     }
     
-    func out() {
-        let realm = try! Realm()
-        //TODO: primaryKeyを指定して、表示したい問題を取得する
-        let data = realm.objects(realmDataSet.self)
+    func finishQuiz() {
+        //TODO: ここの確率計算を正確に(現状全て0%)
+        let accuracy: Double = Double(self.correctAnswers / 10)
+        print(accuracy)
+        UserDefaults.standard.set(accuracy, forKey: "accuracy")
+        UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
+        self.performSegue(withIdentifier: "finish", sender: nil)
     }
     
     @IBAction func answerTap(_ sender: UIButton) {
-        self.out()
+        self.checkAns()
     }    
 }
 
