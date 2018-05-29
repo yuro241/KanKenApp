@@ -8,6 +8,7 @@
 //  iPhone7で実行しないと、ファイルのpath変わります
 
 import UIKit
+import SCLAlertView
 //import RealmSwift
 
 class MainViewController: UIViewController {
@@ -18,6 +19,10 @@ class MainViewController: UIViewController {
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
     @IBOutlet weak var ansLabel: UILabel!
+    @IBOutlet weak var stopButton: UIBarButtonItem!
+    
+    let alertView = SCLAlertView()
+    
     
     var arrayKanji = [String]()
     var arrayKana = [String]()
@@ -115,11 +120,16 @@ class MainViewController: UIViewController {
     
     func finishQuiz() {
         //TODO: ここの確率計算を正確に(現状全て0%)
+        print(self.correctAnswers)
         let accuracy: Double = Double(self.correctAnswers / 10)
         print(accuracy)
         UserDefaults.standard.set(accuracy, forKey: "accuracy")
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
         self.performSegue(withIdentifier: "finish", sender: nil)
+    }
+    @IBAction func tapStop(_ sender: UIBarButtonItem) {
+        print("pause")
+        
     }
     
     @IBAction func answerTap(_ sender: UIButton) {
