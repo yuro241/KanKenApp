@@ -8,7 +8,7 @@
 //  iPhone7で実行しないと、ファイルのpath変わります
 
 import UIKit
-//import RealmSwift
+import SCLAlertView
 
 class MainViewController: UIViewController {
     
@@ -18,6 +18,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var correctLabel: UILabel!
     @IBOutlet weak var incorrectLabel: UILabel!
     @IBOutlet weak var ansLabel: UILabel!
+    @IBOutlet weak var stopButton: UIBarButtonItem!
     
     var arrayKanji = [String]()
     var arrayKana = [String]()
@@ -34,13 +35,13 @@ class MainViewController: UIViewController {
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
         
-        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent("test2.txt")
-            print("読み込むファイルのパス: \(targetTextFilePath)")
-            readTextFile(fileURL: targetTextFilePath)
-        }
-        self.changeQuestion()
+//        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+//            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+//            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent("test2.txt")
+//            print("読み込むファイルのパス: \(targetTextFilePath)")
+//            readTextFile(fileURL: targetTextFilePath)
+//        }
+//        self.changeQuestion()
     }
     
     override func didReceiveMemoryWarning() {
@@ -115,11 +116,22 @@ class MainViewController: UIViewController {
     
     func finishQuiz() {
         //TODO: ここの確率計算を正確に(現状全て0%)
+        print(self.correctAnswers)
         let accuracy: Double = Double(self.correctAnswers / 10)
         print(accuracy)
         UserDefaults.standard.set(accuracy, forKey: "accuracy")
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
         self.performSegue(withIdentifier: "finish", sender: nil)
+    }
+    @IBAction func tapStop(_ sender: UIBarButtonItem) {
+        print("pause")
+        let alertView = SCLAlertView()
+        alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.firstButton))
+        alertView.showInfo("Pause", subTitle: "一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0x000088,colorTextButton: 0xFFFF00)
+    }
+    
+    @objc func firstButton() {
+        print("toTitle")
     }
     
     @IBAction func answerTap(_ sender: UIButton) {
