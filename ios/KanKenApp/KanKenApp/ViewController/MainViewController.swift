@@ -9,7 +9,6 @@
 
 import UIKit
 import SCLAlertView
-//import RealmSwift
 
 class MainViewController: UIViewController {
     
@@ -20,9 +19,6 @@ class MainViewController: UIViewController {
     @IBOutlet weak var incorrectLabel: UILabel!
     @IBOutlet weak var ansLabel: UILabel!
     @IBOutlet weak var stopButton: UIBarButtonItem!
-    
-//    let alertView = SCLAlertView()
-    
     
     var arrayKanji = [String]()
     var arrayKana = [String]()
@@ -39,13 +35,13 @@ class MainViewController: UIViewController {
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
         
-        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent("test2.txt")
-            print("読み込むファイルのパス: \(targetTextFilePath)")
-            readTextFile(fileURL: targetTextFilePath)
-        }
-        self.changeQuestion()
+//        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
+//            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
+//            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent("test2.txt")
+//            print("読み込むファイルのパス: \(targetTextFilePath)")
+//            readTextFile(fileURL: targetTextFilePath)
+//        }
+//        self.changeQuestion()
     }
     
     override func didReceiveMemoryWarning() {
@@ -129,7 +125,13 @@ class MainViewController: UIViewController {
     }
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         print("pause")
-        
+        let alertView = SCLAlertView()
+        alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.firstButton))
+        alertView.showInfo("Pause", subTitle: "一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0x000088,colorTextButton: 0xFFFF00)
+    }
+    
+    @objc func firstButton() {
+        print("toTitle")
     }
     
     @IBAction func answerTap(_ sender: UIButton) {
