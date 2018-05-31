@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     @IBOutlet weak var ansLabel: UILabel!
     @IBOutlet weak var stopButton: UIBarButtonItem!
     
-    let alertView = SCLAlertView()
+//    let alertView = SCLAlertView()
     
     
     var arrayKanji = [String]()
