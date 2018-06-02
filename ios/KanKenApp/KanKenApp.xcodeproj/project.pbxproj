@@ -18,6 +18,7 @@
 		5094ED92203F2BB0001AADBD /* KanKenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED91203F2BB0001AADBD /* KanKenAppTests.swift */; };
 		5094ED9D203F2BB0001AADBD /* KanKenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED9C203F2BB0001AADBD /* KanKenAppUITests.swift */; };
 		50AA299B20BFDB8200D853D7 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50220DB720BFDB4200984DFC /* SCLAlertView.framework */; };
+		50F7C16720C2218200826D58 /* questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50F7C16620C2218200826D58 /* questions.csv */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		5094ED9E203F2BB0001AADBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50DD882E20BD3D9900C2DB53 /* SCLAlertView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SCLAlertView.framework.dSYM; path = ../../Carthage/Build/iOS/SCLAlertView.framework.dSYM; sourceTree = "<group>"; };
 		50DD883020BD3DA100C2DB53 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = ../../Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
+		50F7C16620C2218200826D58 /* questions.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.csv; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +146,7 @@
 				5069CA322042AAA800457ECA /* ViewController */,
 				5094ED83203F2BB0001AADBD /* Assets.xcassets */,
 				5094ED88203F2BB0001AADBD /* Info.plist */,
+				50F7C16620C2218200826D58 /* questions.csv */,
 			);
 			path = KanKenApp;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				5069CA352042AAE900457ECA /* Main.storyboard in Resources */,
 				5094ED87203F2BB0001AADBD /* LaunchScreen.storyboard in Resources */,
 				5094ED84203F2BB0001AADBD /* Assets.xcassets in Resources */,
+				50F7C16720C2218200826D58 /* questions.csv in Resources */,
 				5094ED82203F2BB0001AADBD /* Title.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
