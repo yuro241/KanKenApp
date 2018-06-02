@@ -20,6 +20,8 @@ class MainViewController: UIViewController {
     @IBOutlet weak var ansLabel: UILabel!
     @IBOutlet weak var stopButton: UIBarButtonItem!
     
+    //データ配列
+    var dataList: [String] = []
     var arrayKanji = [String]()
     var arrayKana = [String]()
     var count: Int = 1
@@ -35,13 +37,8 @@ class MainViewController: UIViewController {
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
         
-//        if let documentDirectoryFileURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last {
-//            // ディレクトリのパスにファイル名をつなげてファイルのフルパスを作る
-//            let targetTextFilePath = documentDirectoryFileURL.appendingPathComponent("test2.txt")
-//            print("読み込むファイルのパス: \(targetTextFilePath)")
-//            readTextFile(fileURL: targetTextFilePath)
-//        }
-//        self.changeQuestion()
+        self.readCSV()
+        self.changeQuestion()
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,32 +46,55 @@ class MainViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //テキストファイル読み込み処理
-    func readTextFile(fileURL: URL) {
+    //CSVファイル読み込み処理
+    func readCSV() {
         do {
-            let text = try String(contentsOf: fileURL, encoding: String.Encoding.utf8)
-            
-            // 行番号
-            var lineNum = 1
-            
-            text.enumerateLines(invoking: {
-                line, stop in
-                print("\(lineNum): \(line)")
-                if lineNum % 2 == 1 {
-                    self.arrayKanji.append(line)
-                } else {
-                    self.arrayKana.append(line)
-                }
-                lineNum += 1
-            })
-            
-        } catch let error as NSError {
-            print("failed to read: \(error)")
+            //CSVファイルのPath取得
+            let csvPath = Bundle.main.path(forResource: "questions", ofType: "csv")
+            //CSVファイルのデータを取得
+            let csvData = try! String(contentsOfFile:csvPath!, encoding:String.Encoding.utf8)
+            //改行ごとにデータ格納
+            dataList = csvData.components(separatedBy: "\n")
+            //漢字とひらがなに分割
+            for i in 0..<dataList.count-1 {
+                let array: Array = dataList[i].components(separatedBy: ",")
+                print(array.count)
+                arrayKanji.append(array[0])
+                arrayKana.append(array[1])
+            }
+        } catch {
+            print("error")
         }
-        
         UserDefaults.standard.set(arrayKanji, forKey: "kanji")
         UserDefaults.standard.set(arrayKana, forKey: "kana")
     }
+    
+    //テキストファイル読み込み処理
+//    func readTextFile(fileURL: URL) {
+//        do {
+//            let text = try String(contentsOf: fileURL, encoding: String.Encoding.utf8)
+//
+//            // 行番号
+//            var lineNum = 1
+//
+//            text.enumerateLines(invoking: {
+//                line, stop in
+//                print("\(lineNum): \(line)")
+//                if lineNum % 2 == 1 {
+//                    self.arrayKanji.append(line)
+//                } else {
+//                    self.arrayKana.append(line)
+//                }
+//                lineNum += 1
+//            })
+//
+//        } catch let error as NSError {
+//            print("failed to read: \(error)")
+//        }
+//
+//        UserDefaults.standard.set(arrayKanji, forKey: "kanji")
+//        UserDefaults.standard.set(arrayKana, forKey: "kana")
+//    }
     
     //問題出題
     func changeQuestion() {
@@ -82,7 +102,6 @@ class MainViewController: UIViewController {
             self.finishQuiz()
         }
         questionNumberLabel.text = String(count) + "問目"
-        
         var arrayQuestion:[String] = UserDefaults.standard.array(forKey: "kanji")! as! [String]
         questionNum = Int(arc4random() % UInt32(arrayQuestion.count))
         questionLabel.text = arrayQuestion[questionNum]
@@ -90,6 +109,7 @@ class MainViewController: UIViewController {
         arrayQuestion.remove(at: questionNum)
     }
     
+    //答え合わせ処理
     func checkAns() {
         print(arrayKana[questionNum])
         print(answerInputField.text!)
@@ -109,11 +129,15 @@ class MainViewController: UIViewController {
         self.answerInputField.text! = ""
         count += 1
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+            self.ansLabel.isHidden = true
+            self.incorrectLabel.isHidden = true
+            self.correctLabel.isHidden = true
             self.changeQuestion()
         })
         
     }
     
+    //クイズ終了時の処理
     func finishQuiz() {
         //TODO: ここの確率計算を正確に(現状全て0%)
         print(self.correctAnswers)
@@ -123,6 +147,8 @@ class MainViewController: UIViewController {
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
         self.performSegue(withIdentifier: "finish", sender: nil)
     }
+    
+    //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         print("pause")
         let alertView = SCLAlertView()
@@ -134,6 +160,7 @@ class MainViewController: UIViewController {
         print("toTitle")
     }
     
+    //答えるボタン押下時実行
     @IBAction func answerTap(_ sender: UIButton) {
         self.checkAns()
     }    
