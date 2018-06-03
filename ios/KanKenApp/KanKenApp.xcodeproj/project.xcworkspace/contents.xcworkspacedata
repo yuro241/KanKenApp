@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:/Users/Yuichiro_Tsuji/workspace/KanKenApp/KanKenApp/ios/KanKenApp/questions.csv">
-   </FileRef>
-   <FileRef
-      location = "group:/Users/Yuichiro_Tsuji/workspace/KanKenApp/KanKenApp/ios/KanKenApp/KanKenApp/ver04.csv">
-   </FileRef>
-   <FileRef
       location = "self:KanKenApp.xcodeproj">
    </FileRef>
 </Workspace>

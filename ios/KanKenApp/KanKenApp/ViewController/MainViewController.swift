@@ -15,15 +15,21 @@ class MainViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionNumberLabel: UILabel!
     @IBOutlet weak var answerInputField: UITextField!
+    //正解！ラベル
     @IBOutlet weak var correctLabel: UILabel!
+    //不正解...ラベル
     @IBOutlet weak var incorrectLabel: UILabel!
     @IBOutlet weak var ansLabel: UILabel!
     @IBOutlet weak var stopButton: UIBarButtonItem!
+    @IBOutlet weak var answerButton: UIButton!
     
     //データ配列
     var dataList: [String] = []
+    //漢字データ
     var arrayKanji = [String]()
+    //読み仮名データ
     var arrayKana = [String]()
+    
     var count: Int = 1
     var correctAnswers: Int = 0
     var wrongAnswers: Int = 0
@@ -41,9 +47,11 @@ class MainViewController: UIViewController {
         self.changeQuestion()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
     }
     
     //CSVファイル読み込み処理
@@ -58,7 +66,6 @@ class MainViewController: UIViewController {
             //漢字とひらがなに分割
             for i in 0..<dataList.count-1 {
                 let array: Array = dataList[i].components(separatedBy: ",")
-                print(array.count)
                 arrayKanji.append(array[0])
                 arrayKana.append(array[1])
             }
@@ -68,33 +75,6 @@ class MainViewController: UIViewController {
         UserDefaults.standard.set(arrayKanji, forKey: "kanji")
         UserDefaults.standard.set(arrayKana, forKey: "kana")
     }
-    
-    //テキストファイル読み込み処理
-//    func readTextFile(fileURL: URL) {
-//        do {
-//            let text = try String(contentsOf: fileURL, encoding: String.Encoding.utf8)
-//
-//            // 行番号
-//            var lineNum = 1
-//
-//            text.enumerateLines(invoking: {
-//                line, stop in
-//                print("\(lineNum): \(line)")
-//                if lineNum % 2 == 1 {
-//                    self.arrayKanji.append(line)
-//                } else {
-//                    self.arrayKana.append(line)
-//                }
-//                lineNum += 1
-//            })
-//
-//        } catch let error as NSError {
-//            print("failed to read: \(error)")
-//        }
-//
-//        UserDefaults.standard.set(arrayKanji, forKey: "kanji")
-//        UserDefaults.standard.set(arrayKana, forKey: "kana")
-//    }
     
     //問題出題
     func changeQuestion() {
@@ -128,10 +108,14 @@ class MainViewController: UIViewController {
         }
         self.answerInputField.text! = ""
         count += 1
+        self.answerInputField.isEnabled = false
+        self.answerButton.isEnabled = false
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
             self.ansLabel.isHidden = true
             self.incorrectLabel.isHidden = true
             self.correctLabel.isHidden = true
+            self.answerInputField.isEnabled = true
+            self.answerButton.isEnabled = true
             self.changeQuestion()
         })
         
@@ -139,9 +123,8 @@ class MainViewController: UIViewController {
     
     //クイズ終了時の処理
     func finishQuiz() {
-        //TODO: ここの確率計算を正確に(現状全て0%)
-        print(self.correctAnswers)
-        let accuracy: Double = Double(self.correctAnswers / 10)
+        print(Double(self.correctAnswers))
+        let accuracy: Double = (Double(self.correctAnswers)/10)*100
         print(accuracy)
         UserDefaults.standard.set(accuracy, forKey: "accuracy")
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
@@ -152,12 +135,13 @@ class MainViewController: UIViewController {
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         print("pause")
         let alertView = SCLAlertView()
-        alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.firstButton))
+        alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.toTitle))
         alertView.showInfo("Pause", subTitle: "一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0x000088,colorTextButton: 0xFFFF00)
     }
     
-    @objc func firstButton() {
-        print("toTitle")
+    //タイトルへ戻る処理
+    @objc func toTitle() {
+        self.performSegue(withIdentifier: "totitle", sender: nil)
     }
     
     //答えるボタン押下時実行

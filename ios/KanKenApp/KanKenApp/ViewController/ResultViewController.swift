@@ -19,6 +19,14 @@ class ResultViewController: UIViewController {
         persentageLabel.text = String(UserDefaults.standard.double(forKey: "accuracy")) + "%です"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //navigationBarを非表示に
+        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
     @IBAction func retry(_ sender: UIButton) {
     }
     @IBAction func titleBack(_ sender: UIButton) {
