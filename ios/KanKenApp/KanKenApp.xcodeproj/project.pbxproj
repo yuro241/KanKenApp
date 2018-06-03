@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019793E20C3BC27005B7456 /* TitleViewController.swift */; };
 		5069CA352042AAE900457ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5069CA342042AAE900457ECA /* Main.storyboard */; };
 		5069CA372042AF6E00457ECA /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5069CA362042AF6E00457ECA /* Result.storyboard */; };
 		506F03CA207C6B15002B063F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F03C9207C6B15002B063F /* ResultViewController.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5019793E20C3BC27005B7456 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		50220DB720BFDB4200984DFC /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		5069CA342042AAE900457ECA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5069CA362042AF6E00457ECA /* Result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
@@ -103,6 +105,7 @@
 				5094ED7E203F2BB0001AADBD /* MainViewController.swift */,
 				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
 				506F03C9207C6B15002B063F /* ResultViewController.swift */,
+				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */,
+				5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */,
 				5094ED7D203F2BB0001AADBD /* AppDelegate.swift in Sources */,
 				506F03CA207C6B15002B063F /* ResultViewController.swift in Sources */,
 			);
@@ -504,7 +508,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.KanKenApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -523,7 +527,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.swift.KanKenApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

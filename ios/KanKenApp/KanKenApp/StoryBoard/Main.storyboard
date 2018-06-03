@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,23 +63,23 @@
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 正解！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7a-qa-gIF">
-                                <rect key="frame" x="98" y="291" width="179" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 正解！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n7a-qa-gIF">
+                                <rect key="frame" x="103" y="339" width="170" height="51"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="51"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" 不正解…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-RL-mjl">
-                                <rect key="frame" x="99" y="253" width="179" height="72"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 不正解…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPp-RL-mjl">
+                                <rect key="frame" x="99" y="294" width="178" height="41"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="41"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="答えは：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUQ-0q-uNU">
-                                <rect key="frame" x="38" y="333" width="299" height="42"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="答えは：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUQ-0q-uNU">
+                                <rect key="frame" x="38" y="360" width="299" height="42"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="42" id="tLf-Np-pUG"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,14 +92,22 @@
                             <constraint firstItem="ocC-sV-2uA" firstAttribute="top" secondItem="b31-RC-zDV" secondAttribute="top" id="CbO-Nf-6g1"/>
                             <constraint firstItem="4ob-gs-MBR" firstAttribute="top" secondItem="yNs-ib-BzM" secondAttribute="top" constant="15" id="EP8-0M-wFo"/>
                             <constraint firstItem="b31-RC-zDV" firstAttribute="leading" secondItem="4ob-gs-MBR" secondAttribute="leading" id="PAG-JJ-LQn"/>
+                            <constraint firstItem="JUQ-0q-uNU" firstAttribute="centerX" secondItem="FEa-ZM-TUw" secondAttribute="centerX" id="Pb7-wE-v4U"/>
+                            <constraint firstItem="UPp-RL-mjl" firstAttribute="centerX" secondItem="FEa-ZM-TUw" secondAttribute="centerX" id="Pg4-p8-OLJ"/>
+                            <constraint firstItem="JUQ-0q-uNU" firstAttribute="firstBaseline" secondItem="n7a-qa-gIF" secondAttribute="baseline" id="V68-hy-nP6"/>
+                            <constraint firstItem="UPp-RL-mjl" firstAttribute="top" secondItem="FEa-ZM-TUw" secondAttribute="topMargin" constant="230" id="VRt-Vf-qvH"/>
+                            <constraint firstItem="JUQ-0q-uNU" firstAttribute="top" secondItem="UPp-RL-mjl" secondAttribute="bottom" constant="25" id="YAW-gF-VoW"/>
                             <constraint firstItem="4ob-gs-MBR" firstAttribute="leading" secondItem="yNs-ib-BzM" secondAttribute="leading" constant="35" id="Zjd-ld-LEP"/>
+                            <constraint firstItem="JUQ-0q-uNU" firstAttribute="centerX" secondItem="FEa-ZM-TUw" secondAttribute="centerX" id="byB-ca-gp5"/>
+                            <constraint firstItem="n7a-qa-gIF" firstAttribute="centerX" secondItem="FEa-ZM-TUw" secondAttribute="centerX" id="hKw-4X-utM"/>
+                            <constraint firstItem="JUQ-0q-uNU" firstAttribute="leading" secondItem="yNs-ib-BzM" secondAttribute="leading" constant="38" id="lq6-8Q-vzS"/>
                             <constraint firstItem="b31-RC-zDV" firstAttribute="top" secondItem="N9A-FT-yGt" secondAttribute="bottom" constant="180" id="mxz-sj-9VB"/>
                             <constraint firstItem="N9A-FT-yGt" firstAttribute="top" secondItem="yNs-ib-BzM" secondAttribute="top" constant="133" id="ra4-fY-U6N"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yNs-ib-BzM"/>
                     </view>
                     <navigationItem key="navigationItem" title="クイズ画面" id="BkJ-5N-qsR">
-                        <barButtonItem key="leftBarButtonItem" title="戻る" id="8Tr-tQ-CBc"/>
+                        <barButtonItem key="backBarButtonItem" title="タイトルへ" id="ffr-HR-LbG"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="pause" id="i7y-hL-c9O">
                             <connections>
                                 <action selector="tapStop:" destination="qzv-5z-K0J" id="zGm-Wt-KZZ"/>
@@ -106,6 +116,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="ansLabel" destination="JUQ-0q-uNU" id="III-tl-nPJ"/>
+                        <outlet property="answerButton" destination="ocC-sV-2uA" id="Vr6-qI-zLB"/>
                         <outlet property="answerInputField" destination="b31-RC-zDV" id="oYQ-QS-StU"/>
                         <outlet property="correctLabel" destination="n7a-qa-gIF" id="IfV-Cw-Pgg"/>
                         <outlet property="incorrectLabel" destination="UPp-RL-mjl" id="bpQ-Qv-elV"/>
@@ -113,11 +124,22 @@
                         <outlet property="questionNumberLabel" destination="4ob-gs-MBR" id="UWZ-tC-BLG"/>
                         <outlet property="stopButton" destination="i7y-hL-c9O" id="iX8-jM-F8G"/>
                         <segue destination="z2s-IR-xd5" kind="show" identifier="finish" id="mG4-24-lWf"/>
+                        <segue destination="Pzd-sh-IhX" kind="presentation" identifier="totitle" id="7Yz-nM-g1Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xki-kd-N1F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1112.8" y="132.68365817091455"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="CXt-W6-ixZ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Title" id="Pzd-sh-IhX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="rRF-aP-is8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Uyc-KL-mAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1676" y="-20"/>
         </scene>
         <!--Result-->
         <scene sceneID="2ge-Y8-28m">
