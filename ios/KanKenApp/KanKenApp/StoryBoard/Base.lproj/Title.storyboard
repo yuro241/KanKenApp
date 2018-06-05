@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -19,24 +19,24 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="漢 検 対 策" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvB-e2-c2w">
-                                <rect key="frame" x="20" y="100" width="335" height="90"/>
+                                <rect key="frame" x="20" y="100" width="335" height="100"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="90" id="7dJ-a0-fYo"/>
+                                    <constraint firstAttribute="height" constant="100" id="7dJ-a0-fYo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="3" height="3"/>
+                                <size key="shadowOffset" width="5" height="5"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="熟語の読み当てクイズ" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5O-eB-fCs">
-                                <rect key="frame" x="200" y="190" width="155" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="熟語の読み当てクイズ　" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5O-eB-fCs">
+                                <rect key="frame" x="20" y="200" width="335" height="40"/>
                                 <color key="backgroundColor" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rBf-Y2-CFM"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,11 +58,11 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.94417317708333337" blue="0.34068467881944442" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.92089754343032837" blue="0.20350956916809082" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="T5O-eB-fCs" firstAttribute="top" secondItem="cvB-e2-c2w" secondAttribute="bottom" id="7FC-Wm-2tX"/>
                             <constraint firstItem="CkE-dS-t4G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fp4-Q9-V5L"/>
-                            <constraint firstItem="T5O-eB-fCs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="200" id="LWv-GK-BY9"/>
+                            <constraint firstItem="T5O-eB-fCs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LWv-GK-BY9"/>
                             <constraint firstItem="cvB-e2-c2w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PCk-5Y-feU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CkE-dS-t4G" secondAttribute="bottom" constant="125" id="Phh-fs-T7I"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T5O-eB-fCs" secondAttribute="trailing" constant="20" id="bC6-jO-0Kg"/>
@@ -73,6 +73,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="漢検対策アプリ" id="Et4-J0-4IR"/>
                     <connections>
+                        <outlet property="mainTitleLabel" destination="cvB-e2-c2w" id="nIE-dh-eGj"/>
+                        <outlet property="startButton" destination="CkE-dS-t4G" id="R18-EL-RPx"/>
+                        <outlet property="subTitleLabel" destination="T5O-eB-fCs" id="1VX-XT-qbM"/>
                         <segue destination="2NH-ca-xfq" kind="show" identifier="start" id="MWQ-fs-uZz"/>
                     </connections>
                 </viewController>

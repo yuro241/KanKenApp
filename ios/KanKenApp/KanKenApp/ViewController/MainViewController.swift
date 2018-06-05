@@ -42,6 +42,7 @@ class MainViewController: UIViewController {
         correctLabel.isHidden = true
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
+        self.setLayout()
         
         self.readCSV()
         self.changeQuestion()
@@ -56,6 +57,16 @@ class MainViewController: UIViewController {
         
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
+    }
+    
+    //画面レイアウトを設定
+    func setLayout() {
+        self.questionNumberLabel.layer.cornerRadius = 10
+        self.questionNumberLabel.clipsToBounds = true
+        self.questionLabel.layer.cornerRadius = 20
+        self.questionLabel.clipsToBounds = true
+        self.answerInputField.layer.cornerRadius = 10
+        self.answerButton.layer.cornerRadius = 5
     }
     
     //CSVファイル読み込み処理

@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qrh-JD-JP1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qrh-JD-JP1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="HiraginoKakuGothic.ttc">
-            <string>HiraginoSans-W3</string>
-            <string>HiraginoSans-W6</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Result View Controller-->
         <scene sceneID="Qbd-4Y-biy">
@@ -60,11 +54,11 @@
                                     <segue destination="Zww-xY-jfU" kind="show" animates="NO" id="uJC-Cz-AhU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50問正解" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAk-t1-zKX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50問正解" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WAk-t1-zKX">
                                 <rect key="frame" x="110" y="129" width="155" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="55" id="6fq-Jo-1Yz"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="155" id="R7z-kG-TsU"/>
+                                    <constraint firstAttribute="height" constant="55" id="6fq-Jo-1Yz"/>
+                                    <constraint firstAttribute="width" constant="155" id="R7z-kG-TsU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="35"/>
                                 <nil key="textColor"/>
@@ -115,7 +109,9 @@
                     </view>
                     <connections>
                         <outlet property="persentageLabel" destination="k1h-QB-Lbq" id="DhI-gx-6CW"/>
+                        <outlet property="restartButton" destination="TpP-V8-QFB" id="bJc-R9-LGC"/>
                         <outlet property="resultLabel" destination="WAk-t1-zKX" id="uBD-3o-4EW"/>
+                        <outlet property="toTitleButton" destination="FWQ-nE-g3d" id="KOc-iJ-c6A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aef-fS-RRB" userLabel="First Responder" sceneMemberID="firstResponder"/>
