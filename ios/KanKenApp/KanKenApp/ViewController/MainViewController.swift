@@ -5,7 +5,6 @@
 //  Created by Yuichiro Tsuji on 2018/02/23.
 //  Copyright © 2018年 Yuichiro Tsuji. All rights reserved.
 //
-//  iPhone7で実行しないと、ファイルのpath変わります
 
 import UIKit
 import SCLAlertView
@@ -26,9 +25,11 @@ class MainViewController: UIViewController {
     //データ配列
     var dataList: [String] = []
     //漢字データ
-    var arrayKanji = [String]()
+    var arrayKanji: [String] = []
     //読み仮名データ
-    var arrayKana = [String]()
+    var arrayKana: [String] = []
+    //問題データ
+    var arrayQuestion: [String] = []
     
     var count: Int = 1
     var correctAnswers: Int = 0
@@ -37,13 +38,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         correctLabel.isHidden = true
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
         self.setLayout()
-        
         self.readCSV()
         self.changeQuestion()
     }
@@ -55,6 +54,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.readCSV()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
     }
@@ -87,6 +87,7 @@ class MainViewController: UIViewController {
         } catch {
             print("error")
         }
+        self.arrayQuestion = self.arrayKanji
         UserDefaults.standard.set(arrayKanji, forKey: "kanji")
         UserDefaults.standard.set(arrayKana, forKey: "kana")
     }
@@ -97,11 +98,8 @@ class MainViewController: UIViewController {
             self.finishQuiz()
         }
         questionNumberLabel.text = String(count) + "問目"
-        var arrayQuestion:[String] = UserDefaults.standard.array(forKey: "kanji")! as! [String]
         questionNum = Int(arc4random() % UInt32(arrayQuestion.count))
-        questionLabel.text = arrayQuestion[questionNum]
-        
-        arrayQuestion.remove(at: questionNum)
+        questionLabel.text = self.arrayQuestion[questionNum]
     }
     
     //答え合わせ処理
@@ -110,27 +108,19 @@ class MainViewController: UIViewController {
         print(answerInputField.text!)
         if answerInputField.text! == arrayKana[questionNum] {
             self.correctAnswers += 1
-            self.correctLabel.isHidden = false
-            self.incorrectLabel.isHidden = true
-            self.ansLabel.isHidden = true
+            self.changeCorrectLabel()
         } else {
             self.wrongAnswers += 1
-            self.correctLabel.isHidden = true
-            self.incorrectLabel.isHidden = false
+            self.changeIncorrectLabel()
             self.ansLabel.text = "答えは：" + arrayKana[questionNum]
-            self.ansLabel.isHidden = false
-            
         }
         self.answerInputField.text! = ""
+        self.arrayQuestion.remove(at: questionNum)
+        self.arrayKana.remove(at: questionNum)
         count += 1
-        self.answerInputField.isEnabled = false
-        self.answerButton.isEnabled = false
+        self.setTextFieldAndAnswerButtonDisable()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-            self.ansLabel.isHidden = true
-            self.incorrectLabel.isHidden = true
-            self.correctLabel.isHidden = true
-            self.answerInputField.isEnabled = true
-            self.answerButton.isEnabled = true
+            self.changeInvisible(flag: true)
             self.changeQuestion()
         })
         
@@ -146,6 +136,40 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: "finish", sender: nil)
     }
     
+    //部品を隠す処理
+    func changeInvisible(flag: Bool) {
+        self.ansLabel.isHidden = flag
+        self.incorrectLabel.isHidden = flag
+        self.correctLabel.isHidden = flag
+        self.answerInputField.isEnabled = flag
+        self.answerButton.isEnabled = flag
+    }
+    
+    //正解した時のラベル表示
+    func changeCorrectLabel() {
+        self.correctLabel.isHidden = false
+        self.ansLabel.isHidden = true
+        self.incorrectLabel.isHidden = true
+    }
+    
+    //不正解の時のラベル表示
+    func changeIncorrectLabel() {
+        self.correctLabel.isHidden = true
+        self.ansLabel.isHidden = false
+        self.incorrectLabel.isHidden = false
+    }
+    
+    //テキスト入力とボタン押下の禁止処理
+    func setTextFieldAndAnswerButtonDisable() {
+        self.answerInputField.isEnabled = false
+        self.answerButton.isEnabled = false
+    }
+    
+    //タイトルへ戻る処理
+    @objc func toTitle() {
+        self.performSegue(withIdentifier: "totitle", sender: nil)
+    }
+    
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         print("pause")
@@ -154,14 +178,9 @@ class MainViewController: UIViewController {
         alertView.showInfo("Pause", subTitle: "一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0x000088,colorTextButton: 0xFFFF00)
     }
     
-    //タイトルへ戻る処理
-    @objc func toTitle() {
-        self.performSegue(withIdentifier: "totitle", sender: nil)
-    }
-    
     //答えるボタン押下時実行
     @IBAction func answerTap(_ sender: UIButton) {
         self.checkAns()
-    }    
+    }
 }
 
