@@ -11,12 +11,16 @@ import UIKit
 class ResultViewController: UIViewController {
     @IBOutlet weak var resultLabel: UILabel!
     @IBOutlet weak var persentageLabel: UILabel!
+    @IBOutlet weak var restartButton: UIButton!
+    @IBOutlet weak var toTitleButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         resultLabel.text = String(UserDefaults.standard.integer(forKey: "correctCount")) + "問正解"
         persentageLabel.text = String(UserDefaults.standard.double(forKey: "accuracy")) + "%です"
+        
+        self.setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -25,6 +29,11 @@ class ResultViewController: UIViewController {
         //navigationBarを非表示に
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
+    func setLayout() {
+        self.restartButton.layer.cornerRadius = 10
+        self.toTitleButton.layer.cornerRadius = 10
     }
     
     @IBAction func retry(_ sender: UIButton) {
