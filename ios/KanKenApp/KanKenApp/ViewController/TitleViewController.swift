@@ -19,6 +19,13 @@ class TitleViewController: UIViewController {
         self.setLayout()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+    }
+    
     func setLayout() {
         self.startButton.layer.cornerRadius = 10
         self.mainTitleLabel.layer.cornerRadius = 20
@@ -33,4 +40,8 @@ class TitleViewController: UIViewController {
         self.performSegue(withIdentifier: "start", sender: nil)
     }
     
+    //fordebug
+    @IBAction func toWQList(_ sender: Any) {
+        self.performSegue(withIdentifier: "toWrongQuestionList", sender: nil)
+    }
 }
