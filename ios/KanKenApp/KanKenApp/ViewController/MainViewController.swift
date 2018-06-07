@@ -144,6 +144,7 @@ class MainViewController: UIViewController {
     func setWrongAnswersToUserDefaults() {
         let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
         UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
+        UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
     }
     
     //クイズ終了時の処理

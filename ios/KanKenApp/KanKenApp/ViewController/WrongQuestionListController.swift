@@ -17,11 +17,18 @@ class WrongQuestionListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.baseTableView.backgroundColor = #colorLiteral(red: 1, green: 0.8666666667, blue: 0.631372549, alpha: 1)
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 1, green: 0.831372549, blue: 0, alpha: 1)
+        self.baseTableView.backgroundColor = #colorLiteral(red: 1, green: 0.8196078431, blue: 0.3176470588, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9058823529, green: 0.4666666667, blue: 0.1568627451, alpha: 1)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        cellCount = UserDefaults.standard.integer(forKey: "numOfWrongAnswer")
+        print(cellCount)
         return cellCount
     }
     
@@ -37,8 +44,8 @@ class WrongQuestionListController: UITableViewController {
         var wrongQuestionPair: [Question] = []
         if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
             let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
-            cellCount = fetchedWrongAnswers.count
-            print(fetchedWrongAnswers.count)
+//            cellCount = fetchedWrongAnswers.count
+//            print(fetchedWrongAnswers.count)
 //            for data in fetchedWrongAnswers {
 //                print(data.Kanji)
 //                print(data.Kana)
