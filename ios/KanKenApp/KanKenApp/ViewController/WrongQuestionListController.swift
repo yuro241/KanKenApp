@@ -28,7 +28,6 @@ class WrongQuestionListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         cellCount = UserDefaults.standard.integer(forKey: "numOfWrongAnswer")
-        print(cellCount)
         return cellCount
     }
     
@@ -36,7 +35,7 @@ class WrongQuestionListController: UITableViewController {
         let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath)
         var wrongQuestionPairArray = deCodeWrongQuestion()
         cell.textLabel?.text = wrongQuestionPairArray[indexPath.row].Kanji
-        
+        cell.backgroundColor = #colorLiteral(red: 1, green: 0.9333333333, blue: 0.8352941176, alpha: 1)
         return cell
     }
     
@@ -44,13 +43,7 @@ class WrongQuestionListController: UITableViewController {
         var wrongQuestionPair: [Question] = []
         if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
             let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
-//            cellCount = fetchedWrongAnswers.count
-//            print(fetchedWrongAnswers.count)
-//            for data in fetchedWrongAnswers {
-//                print(data.Kanji)
-//                print(data.Kana)
-//                //todo: 間違えた数も出力できればおｋ
-//            }
+
             wrongQuestionPair = fetchedWrongAnswers
         }
         return wrongQuestionPair
