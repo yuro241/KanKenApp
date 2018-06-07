@@ -112,8 +112,8 @@
 				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
 				506F03C9207C6B15002B063F /* ResultViewController.swift */,
 				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
-				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
 				506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */,
+				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";

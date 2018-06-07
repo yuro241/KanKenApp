@@ -28,9 +28,10 @@ class MainViewController: UIViewController {
     var arrayKanji: [String] = []
     //読み仮名データ
     var arrayKana: [String] = []
-
     //間違えた問題データ
     var arrayWrongAnswer: [Question] = []
+    //間違えた数データ
+    var arrayWrongTimeCount: [Int] = []
     
     var count: Int = 1
     var correctAnswers: Int = 0
@@ -46,6 +47,9 @@ class MainViewController: UIViewController {
         self.setLayout()
         self.readCSV()
         self.changeQuestion()
+        
+        //fordebug: 毎回起動時に間違えた問題データ削除
+        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -64,6 +68,10 @@ class MainViewController: UIViewController {
         if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
             let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
             self.arrayWrongAnswer = fetchedWrongAnswers
+        }
+        
+        if let wrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") {
+            self.arrayWrongTimeCount = wrongTimeCount as! [Int]
         }
     }
     
@@ -137,7 +145,12 @@ class MainViewController: UIViewController {
     //間違えた問題を配列へ追加
     func addWrongAnswer() {
         //todo: Question構造体に,一文毎の間違えた数を要素として追加. もしarrayWrongAnswerに追加する問題と同じものがあれば,間違えた数をインクリメント
-        arrayWrongAnswer.append(Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum]))
+        if arrayWrongAnswer.contains(Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])) {
+            arrayWrongTimeCount[arrayWrongAnswer.count] += 1
+        } else {
+            arrayWrongAnswer.append(Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum]))
+             arrayWrongTimeCount.append(1)
+        }
     }
     
     //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
@@ -147,9 +160,15 @@ class MainViewController: UIViewController {
         UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
     }
     
+    //間違えた回数データをUserDefaultsへ保存
+    func setWrongTimeCountToUserDefaults() {
+        UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
+    }
+    
     //クイズ終了時の処理
     func finishQuiz() {
         setWrongAnswersToUserDefaults()
+        setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/10)*100
         
         //fordebug UserDefaultsから間違えた問題を取得してデコード

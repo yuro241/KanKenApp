@@ -8,7 +8,13 @@
 
 import Foundation
 
-struct Question: Codable {
+struct Question: Codable, Equatable {
     var Kanji: String
     var Kana: String
+    
+    static func == (l: Question, r: Question) -> Bool {
+        return l.Kanji == r.Kanji && l.Kana == r.Kana
+    }
 }
+
+
