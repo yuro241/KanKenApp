@@ -48,6 +48,7 @@ class MainViewController: UIViewController {
         self.readCSV()
         self.changeQuestion()
         
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
 //        //fordebug: 毎回起動時に間違えた問題データ削除
 //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
     }
@@ -222,10 +223,12 @@ class MainViewController: UIViewController {
     
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
-        print("pause")
-        let alertView = SCLAlertView()
+        let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
+        let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.toTitle))
-        alertView.showInfo("Pause", subTitle: "一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0x000088,colorTextButton: 0xFFFF00)
+        alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
+        
+        
     }
     
     //答えるボタン押下時実行

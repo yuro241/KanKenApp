@@ -12,5 +12,4 @@ class CustomTableViewCell: UITableViewCell {
     @IBOutlet var KanjiLabel: UILabel!
     @IBOutlet var KanaLabel: UILabel!
     @IBOutlet var wrongTimeCountLabel: UILabel!
-    
 }

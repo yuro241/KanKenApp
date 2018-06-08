@@ -14,6 +14,8 @@ class TitleViewController: UIViewController {
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet var modeSelectButtons: [UIButton]!
     
+    var tagForIdentifier: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -42,9 +44,10 @@ class TitleViewController: UIViewController {
         self.subTitleLabel.clipsToBounds = true
     }
     
+    //開始ボタン押下時実行
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        //TODO: 選ばれたモードによってtagで画面遷移を変更
-        self.performSegue(withIdentifier: "start", sender: nil)
+        //選ばれたモードによってtagで画面遷移を変更
+        self.performSegue(withIdentifier: String(tagForIdentifier), sender: nil)
     }
     
     //ボタンの選択非選択変更
@@ -53,6 +56,7 @@ class TitleViewController: UIViewController {
             buttons.alpha = 0.3
         }
         modeSelectButtons[sender.tag].alpha = 1.0
+        tagForIdentifier = sender.tag
         startButton.isEnabled = true
     }
 }

@@ -21,11 +21,6 @@ class WrongQuestionListController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-    }
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return UserDefaults.standard.integer(forKey: "numOfWrongAnswer")
     }
@@ -57,12 +52,6 @@ class WrongQuestionListController: UITableViewController {
         cell.KanjiLabel.text = wrongQuestionPairArray[indexPath.section].Kanji
         cell.KanaLabel.text = wrongQuestionPairArray[indexPath.section].Kana
         cell.wrongTimeCountLabel.text = String(describing: wrongTimeCountArray![indexPath.section])
-//        cell.textLabel?.text = wrongQuestionPairArray[indexPath.section].Kanji
-//        cell.detailTextLabel?.text = wrongQuestionPairArray[indexPath.section].Kana
-        //TODO: wrongTimeCountArrayの数やKanaを正しくCellに表示(カスタムセル作る)
-        print(wrongTimeCountArray![indexPath.section])
-//        cell.detailTextLabel?.textColor = UIColor.black
-        
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.9333333333, blue: 0.8352941176, alpha: 1)
         cell.alpha = 0.7
         cell.layer.shadowOpacity = 0.4

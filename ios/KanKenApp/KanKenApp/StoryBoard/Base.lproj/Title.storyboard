@@ -151,8 +151,8 @@
                         <outletCollection property="modeSelectButtons" destination="m33-5Y-xce" collectionClass="NSMutableArray" id="g6e-B9-0XG"/>
                         <outletCollection property="modeSelectButtons" destination="d0G-b3-xTJ" collectionClass="NSMutableArray" id="eUh-ml-1cU"/>
                         <outletCollection property="modeSelectButtons" destination="WMv-9B-sCJ" collectionClass="NSMutableArray" id="Ieb-Ms-OmV"/>
-                        <segue destination="2NH-ca-xfq" kind="show" identifier="start" id="MWQ-fs-uZz"/>
-                        <segue destination="0Lb-UQ-bmN" kind="show" identifier="toWrongQuestionList" id="WNe-Hh-EVi"/>
+                        <segue destination="2NH-ca-xfq" kind="show" identifier="2" id="MWQ-fs-uZz"/>
+                        <segue destination="0Lb-UQ-bmN" kind="show" identifier="0" id="WNe-Hh-EVi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
