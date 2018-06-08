@@ -12,11 +12,17 @@ class TitleViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet var modeSelectButtons: [UIButton]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setLayout()
+        
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+        }
+        startButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,11 +43,16 @@ class TitleViewController: UIViewController {
     }
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
+        //TODO: 選ばれたモードによってtagで画面遷移を変更
         self.performSegue(withIdentifier: "start", sender: nil)
     }
     
-    //fordebug
-    @IBAction func toWQList(_ sender: Any) {
-        self.performSegue(withIdentifier: "toWrongQuestionList", sender: nil)
+    //ボタンの選択非選択変更
+    @IBAction func changeAlpha(_ sender: UIButton) {
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+        }
+        modeSelectButtons[sender.tag].alpha = 1.0
+        startButton.isEnabled = true
     }
 }

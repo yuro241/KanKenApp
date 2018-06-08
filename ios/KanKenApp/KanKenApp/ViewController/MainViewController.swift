@@ -48,8 +48,8 @@ class MainViewController: UIViewController {
         self.readCSV()
         self.changeQuestion()
         
-        //fordebug: 毎回起動時に間違えた問題データ削除
-        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+//        //fordebug: 毎回起動時に間違えた問題データ削除
+//        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -142,13 +142,13 @@ class MainViewController: UIViewController {
         
     }
     
-    //間違えた問題を配列へ追加
+    //間違えた問題を配列へ追加. 重複時は間違えた回数をインクリメント
     func addWrongAnswer() {
-        //todo: Question構造体に,一文毎の間違えた数を要素として追加. もしarrayWrongAnswerに追加する問題と同じものがあれば,間違えた数をインクリメント
-        if arrayWrongAnswer.contains(Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])) {
-            arrayWrongTimeCount[arrayWrongAnswer.count] += 1
+        let currentWrongAnswer = Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])
+        if arrayWrongAnswer.contains(currentWrongAnswer) {
+            arrayWrongTimeCount[arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
         } else {
-            arrayWrongAnswer.append(Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum]))
+            arrayWrongAnswer.append(currentWrongAnswer)
              arrayWrongTimeCount.append(1)
         }
     }
@@ -157,6 +157,7 @@ class MainViewController: UIViewController {
     func setWrongAnswersToUserDefaults() {
         let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
         UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
+        //各問題の間違えた数をUserDefaultsに保存
         UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
     }
     
@@ -178,7 +179,6 @@ class MainViewController: UIViewController {
             for data in fetchedWrongAnswers {
                 print(data.Kanji)
                 print(data.Kana)
-                //todo: 間違えた数も出力できればおｋ
             }
         }
         UserDefaults.standard.set(accuracy, forKey: "accuracy")

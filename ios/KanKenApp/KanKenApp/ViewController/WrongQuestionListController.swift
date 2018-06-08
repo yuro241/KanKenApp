@@ -49,16 +49,19 @@ class WrongQuestionListController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! CustomTableViewCell
         
         var wrongQuestionPairArray = deCodeWrongQuestion()
         let wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount")
         
-        cell.textLabel?.text = wrongQuestionPairArray[indexPath.section].Kanji
-        cell.detailTextLabel?.text = wrongQuestionPairArray[indexPath.section].Kana
+        cell.KanjiLabel.text = wrongQuestionPairArray[indexPath.section].Kanji
+        cell.KanaLabel.text = wrongQuestionPairArray[indexPath.section].Kana
+        cell.wrongTimeCountLabel.text = String(describing: wrongTimeCountArray![indexPath.section])
+//        cell.textLabel?.text = wrongQuestionPairArray[indexPath.section].Kanji
+//        cell.detailTextLabel?.text = wrongQuestionPairArray[indexPath.section].Kana
         //TODO: wrongTimeCountArrayの数やKanaを正しくCellに表示(カスタムセル作る)
         print(wrongTimeCountArray![indexPath.section])
-        cell.detailTextLabel?.textColor = UIColor.black
+//        cell.detailTextLabel?.textColor = UIColor.black
         
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.9333333333, blue: 0.8352941176, alpha: 1)
         cell.alpha = 0.7
