@@ -28,8 +28,10 @@ class MainViewController: UIViewController {
     var arrayKanji: [String] = []
     //読み仮名データ
     var arrayKana: [String] = []
-    //問題データ
-    var arrayQuestion: [String] = []
+    //間違えた問題データ
+    var arrayWrongAnswer: [Question] = []
+    //間違えた数データ
+    var arrayWrongTimeCount: [Int] = []
     
     var count: Int = 1
     var correctAnswers: Int = 0
@@ -45,6 +47,10 @@ class MainViewController: UIViewController {
         self.setLayout()
         self.readCSV()
         self.changeQuestion()
+        
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
+//        //fordebug: 毎回起動時に間違えた問題データ削除
+//        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -54,9 +60,20 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.readCSV()
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
+        
+        arrayKana = UserDefaults.standard.array(forKey: "kana") as! [String]
+        arrayKanji = UserDefaults.standard.array(forKey: "kanji") as! [String]
+        
+        if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
+            let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
+            self.arrayWrongAnswer = fetchedWrongAnswers
+        }
+        
+        if let wrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") {
+            self.arrayWrongTimeCount = wrongTimeCount as! [Int]
+        }
     }
     
     //画面レイアウトを設定
@@ -87,7 +104,6 @@ class MainViewController: UIViewController {
         } catch {
             print("error")
         }
-        self.arrayQuestion = self.arrayKanji
         UserDefaults.standard.set(arrayKanji, forKey: "kanji")
         UserDefaults.standard.set(arrayKana, forKey: "kana")
     }
@@ -98,8 +114,8 @@ class MainViewController: UIViewController {
             self.finishQuiz()
         }
         questionNumberLabel.text = String(count) + "問目"
-        questionNum = Int(arc4random() % UInt32(arrayQuestion.count))
-        questionLabel.text = self.arrayQuestion[questionNum]
+        questionNum = Int(arc4random() % UInt32(arrayKanji.count))
+        questionLabel.text = arrayKanji[questionNum]
     }
     
     //答え合わせ処理
@@ -112,10 +128,11 @@ class MainViewController: UIViewController {
         } else {
             self.wrongAnswers += 1
             self.changeIncorrectLabel()
+            self.addWrongAnswer()
             self.ansLabel.text = "答えは：" + arrayKana[questionNum]
         }
         self.answerInputField.text! = ""
-        self.arrayQuestion.remove(at: questionNum)
+        self.arrayKanji.remove(at: questionNum)
         self.arrayKana.remove(at: questionNum)
         count += 1
         self.setTextFieldAndAnswerButtonDisable()
@@ -126,11 +143,45 @@ class MainViewController: UIViewController {
         
     }
     
+    //間違えた問題を配列へ追加. 重複時は間違えた回数をインクリメント
+    func addWrongAnswer() {
+        let currentWrongAnswer = Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])
+        if arrayWrongAnswer.contains(currentWrongAnswer) {
+            arrayWrongTimeCount[arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
+        } else {
+            arrayWrongAnswer.append(currentWrongAnswer)
+             arrayWrongTimeCount.append(1)
+        }
+    }
+    
+    //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
+    func setWrongAnswersToUserDefaults() {
+        let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
+        UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
+        //各問題の間違えた数をUserDefaultsに保存
+        UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
+    }
+    
+    //間違えた回数データをUserDefaultsへ保存
+    func setWrongTimeCountToUserDefaults() {
+        UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
+    }
+    
     //クイズ終了時の処理
     func finishQuiz() {
-        print(Double(self.correctAnswers))
+        setWrongAnswersToUserDefaults()
+        setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/10)*100
-        print(accuracy)
+        
+        //fordebug UserDefaultsから間違えた問題を取得してデコード
+        if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
+            let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
+            print(fetchedWrongAnswers.count)
+            for data in fetchedWrongAnswers {
+                print(data.Kanji)
+                print(data.Kana)
+            }
+        }
         UserDefaults.standard.set(accuracy, forKey: "accuracy")
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
         self.performSegue(withIdentifier: "finish", sender: nil)
@@ -172,10 +223,12 @@ class MainViewController: UIViewController {
     
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
-        print("pause")
-        let alertView = SCLAlertView()
+        let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
+        let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.toTitle))
-        alertView.showInfo("Pause", subTitle: "一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0x000088,colorTextButton: 0xFFFF00)
+        alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
+        
+        
     }
     
     //答えるボタン押下時実行

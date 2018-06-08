@@ -12,11 +12,27 @@ class TitleViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
+    @IBOutlet var modeSelectButtons: [UIButton]!
+    
+    var tagForIdentifier: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.setLayout()
+        
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+            buttons.layer.cornerRadius = 10
+        }
+        startButton.isEnabled = false
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
     }
     
     func setLayout() {
@@ -29,8 +45,19 @@ class TitleViewController: UIViewController {
         self.subTitleLabel.clipsToBounds = true
     }
     
+    //開始ボタン押下時実行
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "start", sender: nil)
+        //選ばれたモードによってtagで画面遷移を変更
+        self.performSegue(withIdentifier: String(tagForIdentifier), sender: nil)
     }
     
+    //ボタンの選択非選択変更
+    @IBAction func changeAlpha(_ sender: UIButton) {
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+        }
+        modeSelectButtons[sender.tag].alpha = 1.0
+        tagForIdentifier = sender.tag
+        startButton.isEnabled = true
+    }
 }

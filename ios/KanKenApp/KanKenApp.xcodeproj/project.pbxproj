@@ -11,6 +11,9 @@
 		5069CA352042AAE900457ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5069CA342042AAE900457ECA /* Main.storyboard */; };
 		5069CA372042AF6E00457ECA /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5069CA362042AF6E00457ECA /* Result.storyboard */; };
 		506F03CA207C6B15002B063F /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506F03C9207C6B15002B063F /* ResultViewController.swift */; };
+		506FEE9C20C6BE8E009AC5FA /* QuestionPair.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */; };
+		506FEE9E20C7D0B5009AC5FA /* WrongQuestionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */; };
+		506FEEA020C7DA9F009AC5FA /* WrongQuestionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */; };
 		5094ED7D203F2BB0001AADBD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED7C203F2BB0001AADBD /* AppDelegate.swift */; };
 		5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED7E203F2BB0001AADBD /* MainViewController.swift */; };
 		5094ED82203F2BB0001AADBD /* Title.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5094ED80203F2BB0001AADBD /* Title.storyboard */; };
@@ -19,6 +22,7 @@
 		5094ED92203F2BB0001AADBD /* KanKenAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED91203F2BB0001AADBD /* KanKenAppTests.swift */; };
 		5094ED9D203F2BB0001AADBD /* KanKenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED9C203F2BB0001AADBD /* KanKenAppUITests.swift */; };
 		50AA299B20BFDB8200D853D7 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50220DB720BFDB4200984DFC /* SCLAlertView.framework */; };
+		50CEE3F820CA351200D781E3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */; };
 		50F7C16720C2218200826D58 /* questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50F7C16620C2218200826D58 /* questions.csv */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +49,9 @@
 		5069CA342042AAE900457ECA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		5069CA362042AF6E00457ECA /* Result.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Result.storyboard; sourceTree = "<group>"; };
 		506F03C9207C6B15002B063F /* ResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionPair.swift; sourceTree = "<group>"; };
+		506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WrongQuestionList.storyboard; sourceTree = "<group>"; };
+		506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WrongQuestionListController.swift; sourceTree = "<group>"; };
 		5094ED79203F2BAF001AADBD /* KanKenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KanKenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5094ED7C203F2BB0001AADBD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5094ED7E203F2BB0001AADBD /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +65,7 @@
 		5094ED98203F2BB0001AADBD /* KanKenAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KanKenAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5094ED9C203F2BB0001AADBD /* KanKenAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanKenAppUITests.swift; sourceTree = "<group>"; };
 		5094ED9E203F2BB0001AADBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		50DD882E20BD3D9900C2DB53 /* SCLAlertView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SCLAlertView.framework.dSYM; path = ../../Carthage/Build/iOS/SCLAlertView.framework.dSYM; sourceTree = "<group>"; };
 		50DD883020BD3DA100C2DB53 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = ../../Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		50F7C16620C2218200826D58 /* questions.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.csv; sourceTree = "<group>"; };
@@ -106,6 +114,9 @@
 				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
 				506F03C9207C6B15002B063F /* ResultViewController.swift */,
 				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
+				506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */,
+				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
+				50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -117,6 +128,7 @@
 				5094ED80203F2BB0001AADBD /* Title.storyboard */,
 				5069CA342042AAE900457ECA /* Main.storyboard */,
 				5069CA362042AF6E00457ECA /* Result.storyboard */,
+				506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -285,6 +297,7 @@
 				5094ED87203F2BB0001AADBD /* LaunchScreen.storyboard in Resources */,
 				5094ED84203F2BB0001AADBD /* Assets.xcassets in Resources */,
 				50F7C16720C2218200826D58 /* questions.csv in Resources */,
+				506FEE9E20C7D0B5009AC5FA /* WrongQuestionList.storyboard in Resources */,
 				5094ED82203F2BB0001AADBD /* Title.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,9 +342,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */,
+				506FEE9C20C6BE8E009AC5FA /* QuestionPair.swift in Sources */,
 				5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */,
+				50CEE3F820CA351200D781E3 /* CustomTableViewCell.swift in Sources */,
 				5094ED7D203F2BB0001AADBD /* AppDelegate.swift in Sources */,
 				506F03CA207C6B15002B063F /* ResultViewController.swift in Sources */,
+				506FEEA020C7DA9F009AC5FA /* WrongQuestionListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
