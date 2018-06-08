@@ -24,9 +24,10 @@ class WrongQuestionListController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController?.title = "復習単語リスト"
+        self.navigationItem.title = "復習単語リスト"
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print(UserDefaults.standard.integer(forKey: "numOfWrongAnswer"))
         return UserDefaults.standard.integer(forKey: "numOfWrongAnswer")
     }
     

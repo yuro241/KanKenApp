@@ -65,9 +65,9 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       self.navigationItem.hidesBackButton = true
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationItem.hidesBackButton = true
+//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController!.navigationBar.shadowImage = UIImage()
         
         arrayKana = UserDefaults.standard.array(forKey: "kana") as! [String]
         arrayKanji = UserDefaults.standard.array(forKey: "kanji") as! [String]
@@ -83,12 +83,12 @@ class MainViewController: UIViewController {
         
         if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
             numOfTry = 10
-            self.navigationController?.title = "10問組手モード"
+            self.navigationItem.title = "10問組手モード"
             print(numOfTry)
         }
         if UserDefaults.standard.integer(forKey: "gameMode") == 3 {
             numOfTry = arrayKanji.count
-            self.navigationController?.title = "全問必答モード"
+            self.navigationItem.title = "全問必答モード"
             print(numOfTry)
         }
     }
@@ -233,7 +233,7 @@ class MainViewController: UIViewController {
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("終了", target:self, selector:#selector(MainViewController.toTitle))
+        alertView.addButton("中断", target:self, selector:#selector(MainViewController.toTitle))
         alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
     }
     

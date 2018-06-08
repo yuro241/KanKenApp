@@ -26,8 +26,9 @@ class TitleViewController: UIViewController {
             buttons.layer.cornerRadius = 10
         }
         startButton.isEnabled = false
-        
-
+//        //fordebug: 間違えた問題データ削除
+//        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+//        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,7 +50,6 @@ class TitleViewController: UIViewController {
     }
     
     func setModeSelectButtonEnable() {
-        print(UserDefaults.standard.data(forKey: "wrongAnswer") ?? "NoData")
         if UserDefaults.standard.data(forKey: "wrongAnswer") == nil {
             modeSelectButtons[0].isEnabled = false
             modeSelectButtons[1].isEnabled = false
