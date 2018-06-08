@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
     var correctAnswers: Int = 0
     var wrongAnswers: Int = 0
     var questionNum: Int = 0
+    var numOfTry: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +80,17 @@ class MainViewController: UIViewController {
         if let wrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") {
             self.arrayWrongTimeCount = wrongTimeCount as! [Int]
         }
+        
+        if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
+            numOfTry = 10
+            self.navigationController?.title = "10問組手モード"
+            print(numOfTry)
+        }
+        if UserDefaults.standard.integer(forKey: "gameMode") == 3 {
+            numOfTry = arrayKanji.count
+            self.navigationController?.title = "全問必答モード"
+            print(numOfTry)
+        }
     }
     
     //画面レイアウトを設定
@@ -115,12 +127,13 @@ class MainViewController: UIViewController {
     
     //問題出題
     func changeQuestion() {
-        if count > 10 {
+        if count > numOfTry {
             self.finishQuiz()
+        } else {
+            questionNumberLabel.text = String(count) + "問目"
+            questionNum = Int(arc4random() % UInt32(arrayKanji.count))
+            questionLabel.text = arrayKanji[questionNum]
         }
-        questionNumberLabel.text = String(count) + "問目"
-        questionNum = Int(arc4random() % UInt32(arrayKanji.count))
-        questionLabel.text = arrayKanji[questionNum]
     }
     
     //答え合わせ処理
@@ -220,7 +233,7 @@ class MainViewController: UIViewController {
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("中断", target:self, selector:#selector(MainViewController.toTitle))
+        alertView.addButton("終了", target:self, selector:#selector(MainViewController.toTitle))
         alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
     }
     

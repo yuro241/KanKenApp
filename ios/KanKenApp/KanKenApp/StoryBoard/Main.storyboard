@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--10問組手-->
+        <!--Main View Controller-->
         <scene sceneID="a13-cu-qYb">
             <objects>
                 <viewController id="qzv-5z-K0J" customClass="MainViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,7 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="yNs-ib-BzM"/>
                     </view>
-                    <navigationItem key="navigationItem" title="10問組手" id="BkJ-5N-qsR">
+                    <navigationItem key="navigationItem" id="BkJ-5N-qsR">
                         <barButtonItem key="backBarButtonItem" title="タイトルへ" id="ffr-HR-LbG"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="pause" id="i7y-hL-c9O">
                             <connections>

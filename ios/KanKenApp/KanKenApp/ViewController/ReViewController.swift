@@ -44,6 +44,7 @@ class ReViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.hidesBackButton = true
+        self.navigationController?.title = "誤答復習モード"
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         

@@ -62,6 +62,12 @@ class TitleViewController: UIViewController {
     //開始ボタン押下時実行
     @IBAction func startButtonTapped(_ sender: UIButton) {
         //選ばれたモードによってtagで画面遷移を変更
+        if tagForIdentifier == 2 {
+            UserDefaults.standard.set(2, forKey: "gameMode")
+        }
+        if tagForIdentifier == 3 {
+            UserDefaults.standard.set(3, forKey: "gameMode")
+        }
         self.performSegue(withIdentifier: String(tagForIdentifier), sender: nil)
     }
     
