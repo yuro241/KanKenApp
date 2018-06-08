@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0a-GT-H3Q">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Review Result View Controller-->
+        <scene sceneID="8Wj-WL-KM4">
+            <objects>
+                <viewController id="l0a-GT-H3Q" customClass="ReviewResultViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qY8-B0-VLh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたの結果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02G-oK-ZJh">
+                                <rect key="frame" x="99" y="50" width="177" height="54"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="UQB-FG-JKg"/>
+                                    <constraint firstAttribute="width" constant="177" id="whT-Hb-JCA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50問正解" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM3-sc-9Xw">
+                                <rect key="frame" x="110" y="129" width="155" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="155" id="0t7-WA-xDL"/>
+                                    <constraint firstAttribute="height" constant="55" id="FNF-oM-8DN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="35"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0個の問題を克服しました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-95-bxX">
+                                <rect key="frame" x="47.5" y="314" width="281.5" height="55"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="JLb-Yv-4US"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.83137254900000002" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="02G-oK-ZJh" firstAttribute="top" secondItem="FPk-kw-0dZ" secondAttribute="top" constant="30" id="0Lo-k7-pvs"/>
+                            <constraint firstItem="aM3-sc-9Xw" firstAttribute="top" secondItem="02G-oK-ZJh" secondAttribute="bottom" constant="25" id="6IC-Iq-IOr"/>
+                            <constraint firstItem="RQc-95-bxX" firstAttribute="centerX" secondItem="qY8-B0-VLh" secondAttribute="centerX" id="b8E-sh-7kU"/>
+                            <constraint firstItem="aM3-sc-9Xw" firstAttribute="centerX" secondItem="qY8-B0-VLh" secondAttribute="centerX" id="dTb-qv-juM"/>
+                            <constraint firstItem="FPk-kw-0dZ" firstAttribute="bottom" secondItem="RQc-95-bxX" secondAttribute="bottom" constant="298" id="jyJ-Z5-1m1"/>
+                            <constraint firstItem="02G-oK-ZJh" firstAttribute="centerX" secondItem="qY8-B0-VLh" secondAttribute="centerX" id="t2x-nk-rzG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="FPk-kw-0dZ"/>
+                    </view>
+                    <connections>
+                        <outlet property="overcomeCountLabel" destination="RQc-95-bxX" id="K4z-rf-lWb"/>
+                        <outlet property="resultLabel" destination="aM3-sc-9Xw" id="aQc-NB-dvy"/>
+                        <segue destination="MM2-Yy-SIt" kind="show" identifier="totitle" id="9g2-xJ-YMA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y3W-Z0-XjH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20" y="116.49175412293854"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="30e-5S-N23">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Title" id="MM2-Yy-SIt" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Cc0-e5-zlf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="116"/>
+        </scene>
+    </scenes>
+</document>

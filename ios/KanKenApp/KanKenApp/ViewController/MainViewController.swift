@@ -49,8 +49,10 @@ class MainViewController: UIViewController {
         self.changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
-//        //fordebug: 毎回起動時に間違えた問題データ削除
+//        //fordebug: 間違えた問題データ削除
 //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+//        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
+
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -60,6 +62,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+       self.navigationItem.hidesBackButton = true
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         
@@ -158,7 +161,7 @@ class MainViewController: UIViewController {
     func setWrongAnswersToUserDefaults() {
         let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
         UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
-        //各問題の間違えた数をUserDefaultsに保存
+        //間違えた問題の数をUserDefaultsに保存
         UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
     }
     
@@ -172,16 +175,6 @@ class MainViewController: UIViewController {
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/10)*100
-        
-        //fordebug UserDefaultsから間違えた問題を取得してデコード
-        if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
-            let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
-            print(fetchedWrongAnswers.count)
-            for data in fetchedWrongAnswers {
-                print(data.Kanji)
-                print(data.Kana)
-            }
-        }
         UserDefaults.standard.set(accuracy, forKey: "accuracy")
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
         self.performSegue(withIdentifier: "finish", sender: nil)
@@ -225,10 +218,8 @@ class MainViewController: UIViewController {
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.addButton("タイトルへ", target:self, selector:#selector(MainViewController.toTitle))
+        alertView.addButton("中断", target:self, selector:#selector(MainViewController.toTitle))
         alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
-        
-        
     }
     
     //答えるボタン押下時実行
