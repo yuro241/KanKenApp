@@ -16,7 +16,7 @@ class ResultViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
         resultLabel.text = String(UserDefaults.standard.integer(forKey: "correctCount")) + "問正解"
         persentageLabel.text = String(UserDefaults.standard.double(forKey: "accuracy")) + "%です"
         
@@ -26,6 +26,7 @@ class ResultViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.navigationItem.title = "クイズ結果"
         //navigationBarを非表示に
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false

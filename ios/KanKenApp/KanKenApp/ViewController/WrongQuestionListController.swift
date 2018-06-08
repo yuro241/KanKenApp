@@ -21,7 +21,13 @@ class WrongQuestionListController: UITableViewController {
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.navigationItem.title = "復習単語リスト"
+    }
     override func numberOfSections(in tableView: UITableView) -> Int {
+        print(UserDefaults.standard.integer(forKey: "numOfWrongAnswer"))
         return UserDefaults.standard.integer(forKey: "numOfWrongAnswer")
     }
     

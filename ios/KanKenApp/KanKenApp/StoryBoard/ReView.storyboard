@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--誤答復習-->
+        <!--Re View Controller-->
         <scene sceneID="gGX-Ma-FpP">
             <objects>
                 <viewController id="0kP-KZ-n2h" customClass="ReViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
@@ -106,8 +106,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cE5-hG-35v"/>
                     </view>
-                    <navigationItem key="navigationItem" title="誤答復習" id="1cK-cb-qga">
-                        <barButtonItem key="backBarButtonItem" title="タイトルへ" id="GW0-k7-KzB"/>
+                    <navigationItem key="navigationItem" id="1cK-cb-qga">
                         <barButtonItem key="rightBarButtonItem" systemItem="pause" id="KbO-dX-T7X">
                             <connections>
                                 <action selector="PauseTap:" destination="0kP-KZ-n2h" id="dUM-AQ-Na1"/>

@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
     var correctAnswers: Int = 0
     var wrongAnswers: Int = 0
     var questionNum: Int = 0
+    var numOfTry: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,9 +65,9 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       self.navigationItem.hidesBackButton = true
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
+        self.navigationItem.hidesBackButton = true
+//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+//        self.navigationController!.navigationBar.shadowImage = UIImage()
         
         arrayKana = UserDefaults.standard.array(forKey: "kana") as! [String]
         arrayKanji = UserDefaults.standard.array(forKey: "kanji") as! [String]
@@ -78,6 +79,17 @@ class MainViewController: UIViewController {
         
         if let wrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") {
             self.arrayWrongTimeCount = wrongTimeCount as! [Int]
+        }
+        
+        if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
+            numOfTry = 10
+            self.navigationItem.title = "10問組手モード"
+            print(numOfTry)
+        }
+        if UserDefaults.standard.integer(forKey: "gameMode") == 3 {
+            numOfTry = arrayKanji.count
+            self.navigationItem.title = "全問必答モード"
+            print(numOfTry)
         }
     }
     
@@ -115,12 +127,13 @@ class MainViewController: UIViewController {
     
     //問題出題
     func changeQuestion() {
-        if count > 10 {
+        if count > numOfTry {
             self.finishQuiz()
+        } else {
+            questionNumberLabel.text = String(count) + "問目"
+            questionNum = Int(arc4random() % UInt32(arrayKanji.count))
+            questionLabel.text = arrayKanji[questionNum]
         }
-        questionNumberLabel.text = String(count) + "問目"
-        questionNum = Int(arc4random() % UInt32(arrayKanji.count))
-        questionLabel.text = arrayKanji[questionNum]
     }
     
     //答え合わせ処理
