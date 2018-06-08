@@ -23,6 +23,7 @@ class TitleViewController: UIViewController {
         
         for buttons in modeSelectButtons {
             buttons.alpha = 0.3
+            buttons.layer.cornerRadius = 10
         }
         startButton.isEnabled = false
     }
