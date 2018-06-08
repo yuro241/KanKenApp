@@ -153,6 +153,7 @@
                         <outletCollection property="modeSelectButtons" destination="WMv-9B-sCJ" collectionClass="NSMutableArray" id="Ieb-Ms-OmV"/>
                         <segue destination="2NH-ca-xfq" kind="show" identifier="2" id="MWQ-fs-uZz"/>
                         <segue destination="0Lb-UQ-bmN" kind="show" identifier="0" id="WNe-Hh-EVi"/>
+                        <segue destination="h9q-MW-F2f" kind="show" identifier="1" id="JIM-eU-25P"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -165,7 +166,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="2NH-ca-xfq" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T9q-ei-3Vr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2867.1999999999998" y="4.497751124437781"/>
+            <point key="canvasLocation" x="2910" y="166"/>
         </scene>
         <!--WrongQuestionList-->
         <scene sceneID="ina-84-QVa">
@@ -173,7 +174,15 @@
                 <viewControllerPlaceholder storyboardName="WrongQuestionList" id="0Lb-UQ-bmN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ths-bp-73e" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2937" y="221"/>
+            <point key="canvasLocation" x="2980" y="-53"/>
+        </scene>
+        <!--ReView-->
+        <scene sceneID="r4N-U9-dmD">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ReView" id="h9q-MW-F2f" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="80a-9k-oXq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2923" y="77"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PXv-G2-gBD">

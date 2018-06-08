@@ -26,6 +26,8 @@ class TitleViewController: UIViewController {
             buttons.layer.cornerRadius = 10
         }
         startButton.isEnabled = false
+        
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +35,7 @@ class TitleViewController: UIViewController {
         
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
+        setModeSelectButtonEnable()
     }
     
     func setLayout() {
@@ -43,6 +46,17 @@ class TitleViewController: UIViewController {
         self.subTitleLabel.layer.cornerRadius  = 20
         self.subTitleLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         self.subTitleLabel.clipsToBounds = true
+    }
+    
+    func setModeSelectButtonEnable() {
+        print(UserDefaults.standard.data(forKey: "wrongAnswer") ?? "NoData")
+        if UserDefaults.standard.data(forKey: "wrongAnswer") == nil {
+            modeSelectButtons[0].isEnabled = false
+            modeSelectButtons[1].isEnabled = false
+        } else {
+            modeSelectButtons[0].isEnabled = true
+            modeSelectButtons[1].isEnabled = true
+        }
     }
     
     //開始ボタン押下時実行
