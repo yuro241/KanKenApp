@@ -34,6 +34,7 @@ class ReViewController: UIViewController {
         correctLabel.isHidden = true
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
+        answerInputField.clearButtonMode = .always
         
         setLayout()
         getWrongAnswers()

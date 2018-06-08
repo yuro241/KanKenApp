@@ -44,6 +44,8 @@ class MainViewController: UIViewController {
         correctLabel.isHidden = true
         incorrectLabel.isHidden = true
         ansLabel.isHidden = true
+        answerInputField.clearButtonMode = .always
+        
         self.setLayout()
         self.readCSV()
         self.changeQuestion()
