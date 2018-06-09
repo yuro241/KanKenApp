@@ -52,10 +52,10 @@ class MainViewController: UIViewController {
         self.changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
-//        //fordebug: 間違えた問題データ削除
-//        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
-//        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
-
+        //        //fordebug: 間違えた問題データ削除
+        //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+        //        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
+        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -66,8 +66,8 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.hidesBackButton = true
-//        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-//        self.navigationController!.navigationBar.shadowImage = UIImage()
+        //        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        //        self.navigationController!.navigationBar.shadowImage = UIImage()
         
         arrayKana = UserDefaults.standard.array(forKey: "kana") as! [String]
         arrayKanji = UserDefaults.standard.array(forKey: "kanji") as! [String]
@@ -168,7 +168,7 @@ class MainViewController: UIViewController {
             arrayWrongTimeCount[arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
         } else {
             arrayWrongAnswer.append(currentWrongAnswer)
-             arrayWrongTimeCount.append(1)
+            arrayWrongTimeCount.append(1)
         }
     }
     
@@ -231,10 +231,15 @@ class MainViewController: UIViewController {
     
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 24)!,
+            kTextFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 16)!,
+            kButtonFont: UIFont(name: "ヒラギノ角ゴシック W6", size: 16)!,
+            contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
+            hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("中断", target:self, selector:#selector(MainViewController.toTitle))
-        alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
+        alertView.showWait("一時停止中...", subTitle: "", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
     }
     
     //答えるボタン押下時実行
