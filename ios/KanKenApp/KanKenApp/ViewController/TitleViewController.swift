@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class TitleViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
@@ -15,6 +16,10 @@ class TitleViewController: UIViewController {
     @IBOutlet var modeSelectButtons: [UIButton]!
     
     var tagForIdentifier: Int = 0
+    var tagNumOfButton: Int = 0
+    
+    //各モード0〜3の説明文を記載
+    var ExplanationArray: [String] = ["\n今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！","\n今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！","\n問題がランダムで10問出題されます\n\n全問正解を目指しましょう！","\nすべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +64,20 @@ class TitleViewController: UIViewController {
         }
     }
     
+    @objc internal func showPopUp(sender: UIButton) {
+        
+        let appearance = SCLAlertView.SCLAppearance(
+            kTitleFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 24)!,
+            kTextFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 16)!,
+            kButtonFont: UIFont(name: "ヒラギノ角ゴシック W6", size: 16)!,
+            showCircularIcon: false, contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
+            hideWhenBackgroundViewIsTapped: true
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+//        alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: ExplanationArray[sender.tag], closeButtonTitle: "閉じる",)
+        alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: ExplanationArray[sender.tag], closeButtonTitle: "閉じる", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C, animationStyle: .noAnimation)
+    }
+    
     //開始ボタン押下時実行
     @IBAction func startButtonTapped(_ sender: UIButton) {
         //選ばれたモードによってtagで画面遷移を変更
@@ -80,4 +99,29 @@ class TitleViewController: UIViewController {
         tagForIdentifier = sender.tag
         startButton.isEnabled = true
     }
+    //0
+    @IBAction func pressButtonToList(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[0])
+        }
+    }
+    //1
+    @IBAction func pressButtonToMain(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[1])
+        }
+    }
+    //2
+    @IBAction func pressButtonToReview(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[2])
+        }
+    }
+    //3
+    @IBAction func pressButtonToAll(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[3])
+        }
+    }
+    
 }

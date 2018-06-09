@@ -171,10 +171,14 @@ class ReViewController: UIViewController {
     }
     
     @IBAction func PauseTap(_ sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(hideWhenBackgroundViewIsTapped: true)
+        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 24)!,
+                                                    kTextFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 16)!,
+                                                    kButtonFont: UIFont(name: "ヒラギノ角ゴシック W6", size: 16)!,
+                                                    contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
+                                                    hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("終了", target:self, selector:#selector(MainViewController.toTitle))
-        alertView.showWait("一時停止中...", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
+        alertView.showWait("一時停止中...", subTitle: "", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
     }
     
     @IBAction func answerButtonTap(_ sender: UIButton) {

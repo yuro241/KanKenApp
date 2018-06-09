@@ -61,6 +61,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKX-O9-erX">
                                 <rect key="frame" x="59.5" y="354" width="125" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="W4U-Dz-KLc"/>
                                     <constraint firstAttribute="width" constant="125" id="psk-tM-5ga"/>
@@ -71,11 +72,13 @@
                                 </state>
                                 <connections>
                                     <action selector="changeAlpha:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jrN-Ew-38d"/>
+                                    <outletCollection property="gestureRecognizers" destination="Psz-nc-oNt" appends="YES" id="rUu-FA-Ovv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m33-5Y-xce">
                                 <rect key="frame" x="190.5" y="354" width="125" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GW7-U7-uZG"/>
                                     <constraint firstAttribute="width" constant="125" id="Xsy-vX-qAw"/>
@@ -86,11 +89,13 @@
                                 </state>
                                 <connections>
                                     <action selector="changeAlpha:" destination="BYZ-38-t0r" eventType="touchUpInside" id="urN-45-bab"/>
+                                    <outletCollection property="gestureRecognizers" destination="qSC-aZ-Qnz" appends="YES" id="RZM-P4-ux1"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0G-b3-xTJ">
                                 <rect key="frame" x="59.5" y="410" width="125" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="cva-FS-hP2"/>
                                     <constraint firstAttribute="height" constant="50" id="qCv-Gr-Wuo"/>
@@ -101,11 +106,13 @@
                                 </state>
                                 <connections>
                                     <action selector="changeAlpha:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oDO-46-stO"/>
+                                    <outletCollection property="gestureRecognizers" destination="VNm-zM-LPa" appends="YES" id="Bc0-z3-orc"/>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-9B-sCJ">
                                 <rect key="frame" x="190.5" y="410" width="125" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GM4-Pq-Nx2"/>
                                     <constraint firstAttribute="width" constant="125" id="dG8-Mf-J2M"/>
@@ -116,6 +123,7 @@
                                 </state>
                                 <connections>
                                     <action selector="changeAlpha:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oLQ-E1-Wax"/>
+                                    <outletCollection property="gestureRecognizers" destination="rFl-ja-aPQ" appends="YES" id="B3Q-5c-Ip5"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -158,6 +166,26 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="1" id="Psz-nc-oNt">
+                    <connections>
+                        <action selector="pressButtonToList:" destination="BYZ-38-t0r" id="R1h-sQ-YYH"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="VNm-zM-LPa">
+                    <connections>
+                        <action selector="pressButtonToReview:" destination="BYZ-38-t0r" id="NOJ-Ut-lJG"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="qSC-aZ-Qnz">
+                    <connections>
+                        <action selector="pressButtonToMain:" destination="BYZ-38-t0r" id="oZh-NH-FAH"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="rFl-ja-aPQ">
+                    <connections>
+                        <action selector="pressButtonToAll:" destination="BYZ-38-t0r" id="Wqi-gu-Tfo"/>
+                    </connections>
+                </pongPressGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2319.1999999999998" y="116.49175412293854"/>
         </scene>
