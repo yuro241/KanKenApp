@@ -18,8 +18,8 @@ class TitleViewController: UIViewController {
     var tagForIdentifier: Int = 0
     var tagNumOfButton: Int = 0
     
-    //TODO: 各モード0〜3の説明文を記載
-    var ExplanationArray: [String] = [""]
+    //各モード0〜3の説明文を記載
+    var ExplanationArray: [String] = ["今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！","今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！","問題がランダムで10問出題されます\n\n全問正解を目指しましょう！","すべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,8 +72,7 @@ class TitleViewController: UIViewController {
             hideWhenBackgroundViewIsTapped: true
         )
         let alertView = SCLAlertView(appearance: appearance)
-        //TODO: subtitleを変更
-        alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: "This is a clean alert without Icon!", closeButtonTitle: "閉じる")
+        alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: ExplanationArray[sender.tag], closeButtonTitle: "閉じる")
     }
     
     //開始ボタン押下時実行
