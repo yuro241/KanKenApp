@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		500839CA20CB86CD00EF4F94 /* detailPopUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */; };
 		5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5019793E20C3BC27005B7456 /* TitleViewController.swift */; };
 		5069CA352042AAE900457ECA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5069CA342042AAE900457ECA /* Main.storyboard */; };
 		5069CA372042AF6E00457ECA /* Result.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5069CA362042AF6E00457ECA /* Result.storyboard */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = detailPopUp.storyboard; sourceTree = "<group>"; };
 		5019793E20C3BC27005B7456 /* TitleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewController.swift; sourceTree = "<group>"; };
 		50220DB720BFDB4200984DFC /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		5069CA342042AAE900457ECA /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */,
 				50CEE3F920CA76D900D781E3 /* ReView.storyboard */,
 				50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */,
+				500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -304,6 +307,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				500839CA20CB86CD00EF4F94 /* detailPopUp.storyboard in Resources */,
 				5069CA372042AF6E00457ECA /* Result.storyboard in Resources */,
 				5069CA352042AAE900457ECA /* Main.storyboard in Resources */,
 				50CEE3FE20CA8C5200D781E3 /* ReviewResult.storyboard in Resources */,

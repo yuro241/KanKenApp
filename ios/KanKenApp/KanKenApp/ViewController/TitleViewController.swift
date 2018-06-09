@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SCLAlertView
 
 class TitleViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
@@ -24,6 +25,7 @@ class TitleViewController: UIViewController {
         for buttons in modeSelectButtons {
             buttons.alpha = 0.3
             buttons.layer.cornerRadius = 10
+            buttons.addTarget(self, action: #selector (self.showPopUp(sender:)), for: .touchUpInside)
         }
         startButton.isEnabled = false
 //        //fordebug: 間違えた問題データ削除
@@ -57,6 +59,15 @@ class TitleViewController: UIViewController {
             modeSelectButtons[0].isEnabled = true
             modeSelectButtons[1].isEnabled = true
         }
+    }
+    
+    @objc internal func showPopUp(sender: UIButton) {
+        let appearance = SCLAlertView.SCLAppearance(
+            showCircularIcon: false,
+            hideWhenBackgroundViewIsTapped: true
+        )
+        let alertView = SCLAlertView(appearance: appearance)
+        alertView.showSuccess("No icon", subTitle: "This is a clean alert without Icon!", closeButtonTitle: "閉じる")
     }
     
     //開始ボタン押下時実行
