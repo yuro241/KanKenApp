@@ -16,6 +16,10 @@ class TitleViewController: UIViewController {
     @IBOutlet var modeSelectButtons: [UIButton]!
     
     var tagForIdentifier: Int = 0
+    var tagNumOfButton: Int = 0
+    
+    //TODO: 各モード0〜3の説明文を記載
+    var ExplanationArray: [String] = [""]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,12 +66,14 @@ class TitleViewController: UIViewController {
     }
     
     @objc internal func showPopUp(sender: UIButton) {
+        
         let appearance = SCLAlertView.SCLAppearance(
             showCircularIcon: false,
             hideWhenBackgroundViewIsTapped: true
         )
         let alertView = SCLAlertView(appearance: appearance)
-        alertView.showSuccess("No icon", subTitle: "This is a clean alert without Icon!", closeButtonTitle: "閉じる")
+        //TODO: subtitleを変更
+        alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: "This is a clean alert without Icon!", closeButtonTitle: "閉じる")
     }
     
     //開始ボタン押下時実行
