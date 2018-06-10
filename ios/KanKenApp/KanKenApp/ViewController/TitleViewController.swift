@@ -14,6 +14,7 @@ class TitleViewController: UIViewController {
     @IBOutlet weak var mainTitleLabel: UILabel!
     @IBOutlet weak var subTitleLabel: UILabel!
     @IBOutlet var modeSelectButtons: [UIButton]!
+    @IBOutlet var backGroundView: UIView!
     
     var tagForIdentifier: Int = 0
     var tagNumOfButton: Int = 0
@@ -52,6 +53,7 @@ class TitleViewController: UIViewController {
         self.subTitleLabel.layer.cornerRadius  = 20
         self.subTitleLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         self.subTitleLabel.clipsToBounds = true
+        backGroundView.layer.cornerRadius = 20
     }
     
     func setModeSelectButtonEnable() {

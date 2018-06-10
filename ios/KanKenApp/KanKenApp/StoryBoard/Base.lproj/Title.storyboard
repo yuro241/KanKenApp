@@ -44,7 +44,7 @@
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-dS-t4G">
-                                <rect key="frame" x="117.5" y="512" width="140" height="55"/>
+                                <rect key="frame" x="118" y="512" width="140" height="55"/>
                                 <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="UmV-t4-2Hq"/>
@@ -58,9 +58,13 @@
                                     <action selector="startButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iWi-eE-0Uy"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG3-c7-qU0">
+                                <rect key="frame" x="20" y="332" width="335" height="126"/>
+                                <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKX-O9-erX">
-                                <rect key="frame" x="59.5" y="354" width="125" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="60" y="342" width="125" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="W4U-Dz-KLc"/>
@@ -76,8 +80,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m33-5Y-xce">
-                                <rect key="frame" x="190.5" y="354" width="125" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="191" y="342" width="125" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GW7-U7-uZG"/>
@@ -93,8 +97,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0G-b3-xTJ">
-                                <rect key="frame" x="59.5" y="410" width="125" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="60" y="398" width="125" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="cva-FS-hP2"/>
@@ -110,8 +114,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-9B-sCJ">
-                                <rect key="frame" x="190.5" y="410" width="125" height="50"/>
-                                <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="191" y="398" width="125" height="50"/>
+                                <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="GM4-Pq-Nx2"/>
@@ -130,19 +134,23 @@
                         <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="T5O-eB-fCs" firstAttribute="top" secondItem="cvB-e2-c2w" secondAttribute="bottom" id="7FC-Wm-2tX"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="trailing" secondItem="T5O-eB-fCs" secondAttribute="trailing" id="A6L-LB-kQP"/>
                             <constraint firstItem="CkE-dS-t4G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fp4-Q9-V5L"/>
                             <constraint firstItem="T5O-eB-fCs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LWv-GK-BY9"/>
                             <constraint firstItem="cvB-e2-c2w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PCk-5Y-feU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CkE-dS-t4G" secondAttribute="bottom" constant="100" id="Phh-fs-T7I"/>
                             <constraint firstItem="d0G-b3-xTJ" firstAttribute="top" secondItem="uKX-O9-erX" secondAttribute="bottom" constant="6" id="RDr-W9-7wN"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="top" secondItem="T5O-eB-fCs" secondAttribute="bottom" constant="48" id="b0c-F1-umB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T5O-eB-fCs" secondAttribute="trailing" constant="20" id="bC6-jO-0Kg"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="leading" secondItem="T5O-eB-fCs" secondAttribute="leading" id="kBd-2s-Jce"/>
                             <constraint firstItem="WMv-9B-sCJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="3" id="kNF-aC-QvA"/>
-                            <constraint firstItem="m33-5Y-xce" firstAttribute="top" secondItem="T5O-eB-fCs" secondAttribute="bottom" constant="70" id="kZD-Cb-W0i"/>
-                            <constraint firstItem="uKX-O9-erX" firstAttribute="top" secondItem="T5O-eB-fCs" secondAttribute="bottom" constant="70" id="mw2-T8-4Q4"/>
                             <constraint firstAttribute="centerX" secondItem="uKX-O9-erX" secondAttribute="trailing" constant="3" id="p32-pK-d1h"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="d0G-b3-xTJ" secondAttribute="trailing" constant="3" id="piR-fS-2ah"/>
                             <constraint firstItem="WMv-9B-sCJ" firstAttribute="top" secondItem="m33-5Y-xce" secondAttribute="bottom" constant="6" id="q1b-HW-kHV"/>
                             <constraint firstItem="m33-5Y-xce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="3" id="rui-iv-1bR"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="bottom" secondItem="WMv-9B-sCJ" secondAttribute="bottom" constant="10" id="tPL-cG-M0d"/>
+                            <constraint firstItem="uKX-O9-erX" firstAttribute="top" secondItem="QG3-c7-qU0" secondAttribute="top" constant="10" id="u0D-21-uda"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="bottom" secondItem="d0G-b3-xTJ" secondAttribute="bottom" constant="10" id="usz-re-mps"/>
                             <constraint firstItem="cvB-e2-c2w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="vAz-2J-Iwa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cvB-e2-c2w" secondAttribute="trailing" constant="20" id="xvd-Zo-f7n"/>
                         </constraints>
@@ -152,6 +160,7 @@
                         <barButtonItem key="backBarButtonItem" title="タイトルへ" id="PZ9-JK-GA9"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="backGroundView" destination="QG3-c7-qU0" id="EA0-Yz-C0S"/>
                         <outlet property="mainTitleLabel" destination="cvB-e2-c2w" id="nIE-dh-eGj"/>
                         <outlet property="startButton" destination="CkE-dS-t4G" id="R18-EL-RPx"/>
                         <outlet property="subTitleLabel" destination="T5O-eB-fCs" id="1VX-XT-qbM"/>
