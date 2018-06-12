@@ -13,6 +13,7 @@ class WrongQuestionListController: UITableViewController {
     @IBOutlet var baseTableView: UITableView!
     
     var cellCount: Int = 0
+    var wrongTimeCountArray: [[Int]] = [[],[]]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,12 @@ class WrongQuestionListController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "復習単語リスト"
+        wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
+        
+        //wrongTimeCountArrayを降順ソート
+        var tmpArray = wrongTimeCountArray[0]
+        tmpArray.sort(by: {$0 > $1})
+        wrongTimeCountArray[0] = tmpArray
         
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -54,10 +61,8 @@ class WrongQuestionListController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! CustomTableViewCell
         
         var wrongQuestionPairArray = deCodeWrongQuestion()
-        var wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
-        //wrongTimeCountArrayを降順ソート
-//        wrongTimeCountArray.sort(by: {$0.count > $1.count})
-        
+
+//        wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
         cell.wrongTimeCountLabel.text = String(describing: wrongTimeCountArray[0][indexPath.section])
         cell.KanjiLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kanji
         cell.KanaLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kana
