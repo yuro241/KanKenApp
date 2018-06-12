@@ -34,7 +34,7 @@ class TitleViewController: UIViewController {
         startButton.isEnabled = false
 //        //fordebug: 間違えた問題データ削除
 //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
-//        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
+        //        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +76,6 @@ class TitleViewController: UIViewController {
             hideWhenBackgroundViewIsTapped: true
         )
         let alertView = SCLAlertView(appearance: appearance)
-//        alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: ExplanationArray[sender.tag], closeButtonTitle: "閉じる",)
         alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: ExplanationArray[sender.tag], closeButtonTitle: "閉じる", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C, animationStyle: .noAnimation)
     }
     

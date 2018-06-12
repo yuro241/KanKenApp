@@ -25,6 +25,7 @@ class WrongQuestionListController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "復習単語リスト"
+        
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         print(UserDefaults.standard.integer(forKey: "numOfWrongAnswer"))
@@ -53,11 +54,14 @@ class WrongQuestionListController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DataCell", for: indexPath) as! CustomTableViewCell
         
         var wrongQuestionPairArray = deCodeWrongQuestion()
-        let wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount")
+        var wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
+        //wrongTimeCountArrayを降順ソート
+//        wrongTimeCountArray.sort(by: {$0.count > $1.count})
         
-        cell.KanjiLabel.text = wrongQuestionPairArray[indexPath.section].Kanji
-        cell.KanaLabel.text = wrongQuestionPairArray[indexPath.section].Kana
-        cell.wrongTimeCountLabel.text = String(describing: wrongTimeCountArray![indexPath.section])
+        cell.wrongTimeCountLabel.text = String(describing: wrongTimeCountArray[0][indexPath.section])
+        cell.KanjiLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kanji
+        cell.KanaLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kana
+        
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.9333333333, blue: 0.8352941176, alpha: 1)
         cell.alpha = 0.7
         cell.layer.shadowOpacity = 0.4
@@ -69,11 +73,9 @@ class WrongQuestionListController: UITableViewController {
     }
     
     func deCodeWrongQuestion() -> [Question] {
-        var wrongQuestionPair: [Question] = []
-        if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
-            let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
-            wrongQuestionPair = fetchedWrongAnswers
-        }
-        return wrongQuestionPair
+        let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer")
+        let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData!)
+        
+        return fetchedWrongAnswers
     }
 }

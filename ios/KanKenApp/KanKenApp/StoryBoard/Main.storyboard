@@ -123,8 +123,8 @@
                         <outlet property="questionLabel" destination="N9A-FT-yGt" id="iVx-Wl-Hg3"/>
                         <outlet property="questionNumberLabel" destination="4ob-gs-MBR" id="UWZ-tC-BLG"/>
                         <outlet property="stopButton" destination="i7y-hL-c9O" id="iX8-jM-F8G"/>
-                        <segue destination="z2s-IR-xd5" kind="show" identifier="finish" id="mG4-24-lWf"/>
                         <segue destination="Pzd-sh-IhX" kind="presentation" identifier="totitle" id="7Yz-nM-g1Z"/>
+                        <segue destination="z2s-IR-xd5" kind="show" identifier="finish" id="PDf-Tk-RBN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xki-kd-N1F" userLabel="First Responder" sceneMemberID="firstResponder"/>

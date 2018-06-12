@@ -29,9 +29,9 @@ class MainViewController: UIViewController {
     //読み仮名データ
     var arrayKana: [String] = []
     //間違えた問題データ
-    var arrayWrongAnswer: [Question] = []
+    var arrayWrongAnswer: [(Question)] = []
     //間違えた数データ
-    var arrayWrongTimeCount: [Int] = []
+    var arrayWrongTimeCount: [[Int]] = [[],[]]
     
     var count: Int = 1
     var correctAnswers: Int = 0
@@ -52,9 +52,10 @@ class MainViewController: UIViewController {
         self.changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
-        //        //fordebug: 間違えた問題データ削除
-        //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
-        //        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
+
+//                //fordebug: 間違えた問題データ削除
+//                UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+//                UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
         
     }
     
@@ -78,7 +79,7 @@ class MainViewController: UIViewController {
         }
         
         if let wrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") {
-            self.arrayWrongTimeCount = wrongTimeCount as! [Int]
+            arrayWrongTimeCount = wrongTimeCount as! [[Int]]
         }
         
         if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
@@ -165,10 +166,11 @@ class MainViewController: UIViewController {
     func addWrongAnswer() {
         let currentWrongAnswer = Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])
         if arrayWrongAnswer.contains(currentWrongAnswer) {
-            arrayWrongTimeCount[arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
+            arrayWrongTimeCount[0][arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
         } else {
             arrayWrongAnswer.append(currentWrongAnswer)
-            arrayWrongTimeCount.append(1)
+            arrayWrongTimeCount[0].append(1)
+            arrayWrongTimeCount[1].append(arrayWrongAnswer.count - 1)
         }
     }
     
@@ -187,6 +189,7 @@ class MainViewController: UIViewController {
     
     //クイズ終了時の処理
     func finishQuiz() {
+        //Q 全問終えてから間違えた問題を追加？それとも中断しても追加する
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/10)*100
