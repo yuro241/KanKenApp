@@ -83,16 +83,26 @@ class ReViewController: UIViewController {
             correctAnsCount += 1
             changeCorrectLabel()
             //間違えた数を-1し、0なら問題を削除
-            for i in 0..<arrayWrongTimeCount[0].count {
-                if arrayWrongTimeCount[1][i] == questionNum {
-                    arrayWrongTimeCount[0][i] -= 1
-                    if arrayWrongTimeCount[0][i] == 0 {
+            for i in 0..<arrayWrongTimeCount.count {
+                if arrayWrongTimeCount[i][1] == questionNum {
+                    arrayWrongTimeCount[i][0] -= 1
+                    if arrayWrongTimeCount[i][0] == 0 {
                         overcomeCount += 1
-                        arrayWrongAnswer.remove(at: arrayWrongTimeCount[1][i])
+                        arrayWrongAnswer.remove(at: questionNum)
                         arrayWrongTimeCount.remove(at: i)
                     }
                 }
             }
+//            for i in 0..<arrayWrongTimeCount[0].count {
+//                if arrayWrongTimeCount[1][i] == questionNum {
+//                    arrayWrongTimeCount[0][i] -= 1
+//                    if arrayWrongTimeCount[0][i] == 0 {
+//                        overcomeCount += 1
+//                        arrayWrongAnswer.remove(at: arrayWrongTimeCount[1][i])
+//                        arrayWrongTimeCount.remove(at: i)
+//                    }
+//                }
+//            }
 //            arrayWrongTimeCount[questionNum].count -= 1
 //            if arrayWrongTimeCount[questionNum].count == 0 {
 //                overcomeCount += 1
@@ -102,9 +112,9 @@ class ReViewController: UIViewController {
         } else {
             changeIncorrectLabel()
             ansLabel.text = "答えは：" + arrayWrongAnswer[questionNum].Kana
-            for i in 0..<arrayWrongTimeCount[0].count {
-                if arrayWrongTimeCount[1][i] == questionNum {
-                    arrayWrongTimeCount[0][i] += 1
+            for i in 0..<arrayWrongTimeCount.count {
+                if arrayWrongTimeCount[i][1] == questionNum {
+                    arrayWrongTimeCount[i][0] += 1
                     break
                 }
             }

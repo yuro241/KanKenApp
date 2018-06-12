@@ -31,7 +31,7 @@ class MainViewController: UIViewController {
     //間違えた問題データ
     var arrayWrongAnswer: [(Question)] = []
     //間違えた数データ
-    var arrayWrongTimeCount: [[Int]] = [[],[]]
+    var arrayWrongTimeCount = [[Int]]()
     
     var count: Int = 1
     var correctAnswers: Int = 0
@@ -53,9 +53,9 @@ class MainViewController: UIViewController {
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
 
-//                //fordebug: 間違えた問題データ削除
-//                UserDefaults.standard.removeObject(forKey: "wrongAnswer")
-//                UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
+                //fordebug: 間違えた問題データ削除
+                UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+                UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
         
     }
     
@@ -165,12 +165,17 @@ class MainViewController: UIViewController {
     //間違えた問題を配列へ追加. 重複時は間違えた回数をインクリメント
     func addWrongAnswer() {
         let currentWrongAnswer = Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])
-        if arrayWrongAnswer.contains(currentWrongAnswer) {
-            arrayWrongTimeCount[0][arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
+        if let index = arrayWrongAnswer.index(of: currentWrongAnswer) {
+            for i in 0..<arrayWrongTimeCount.count {
+                if arrayWrongTimeCount[i][1] == index {
+                    arrayWrongTimeCount[i][0] += 1
+                }
+            }
+//            arrayWrongTimeCount[0][arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
         } else {
             arrayWrongAnswer.append(currentWrongAnswer)
-            arrayWrongTimeCount[0].append(1)
-            arrayWrongTimeCount[1].append(arrayWrongAnswer.count - 1)
+            arrayWrongTimeCount.append([1,arrayWrongAnswer.count-1])
+//            arrayWrongTimeCount[1].append(arrayWrongAnswer.count - 1)
         }
     }
     
