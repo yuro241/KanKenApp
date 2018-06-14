@@ -29,9 +29,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50問正解" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM3-sc-9Xw">
-                                <rect key="frame" x="110" y="129" width="155" height="55"/>
+                                <rect key="frame" x="87.5" y="129" width="200" height="55"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="155" id="0t7-WA-xDL"/>
+                                    <constraint firstAttribute="width" constant="200" id="0t7-WA-xDL"/>
                                     <constraint firstAttribute="height" constant="55" id="FNF-oM-8DN"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="35"/>
