@@ -192,7 +192,7 @@ class MainViewController: UIViewController {
         //Q 全問終えてから間違えた問題を追加？それとも中断しても追加する
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
-        let accuracy: Double = (Double(self.correctAnswers)/10)*100
+        let accuracy: Double = (Double(self.correctAnswers)/Double(numOfTry))*100
         UserDefaults.standard.set(accuracy, forKey: "accuracy")
         UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
         self.performSegue(withIdentifier: "finish", sender: nil)
