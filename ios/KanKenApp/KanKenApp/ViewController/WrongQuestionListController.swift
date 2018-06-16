@@ -29,9 +29,10 @@ class WrongQuestionListController: UITableViewController {
         wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
         
         //wrongTimeCountArrayを降順ソート
-        var tmpArray = wrongTimeCountArray[0]
-        tmpArray.sort(by: {$0 > $1})
-        wrongTimeCountArray[0] = tmpArray
+//        var tmpArray = wrongTimeCountArray[0]
+//        tmpArray.sort(by: {$0 > $1})
+//        wrongTimeCountArray[0] = tmpArray
+        wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
         
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
