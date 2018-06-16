@@ -71,10 +71,12 @@ class ReViewController: UIViewController {
     func changeQuestion() {
         if arrayWrongAnswer.count == 0 {
             finishQuiz()
+        } else {
+            questionNumberLabel.text = String(count) + "問目"
+            questionNum = Int(arc4random() % UInt32(arrayWrongAnswer.count))
+            questionLabel.text = arrayWrongAnswer[questionNum].Kanji
         }
-        questionNumberLabel.text = String(count) + "問目"
-        questionNum = Int(arc4random() % UInt32(arrayWrongAnswer.count))
-        questionLabel.text = arrayWrongAnswer[questionNum].Kanji
+        
     }
     
     //答え合わせ処理
@@ -89,16 +91,18 @@ class ReViewController: UIViewController {
                     if arrayWrongTimeCount[0][i] == 0 {
                         overcomeCount += 1
                         arrayWrongAnswer.remove(at: arrayWrongTimeCount[1][i])
-                        arrayWrongTimeCount.remove(at: i)
+                        arrayWrongTimeCount[0].remove(at: i)
+                        arrayWrongTimeCount[1].removeLast()
+                        break
                     }
                 }
             }
-//            arrayWrongTimeCount[questionNum].count -= 1
-//            if arrayWrongTimeCount[questionNum].count == 0 {
-//                overcomeCount += 1
-//                arrayWrongAnswer.remove(at: questionNum)
-//                arrayWrongTimeCount.remove(at: questionNum)
-//            }
+            //            arrayWrongTimeCount[questionNum].count -= 1
+            //            if arrayWrongTimeCount[questionNum].count == 0 {
+            //                overcomeCount += 1
+            //                arrayWrongAnswer.remove(at: questionNum)
+            //                arrayWrongTimeCount.remove(at: questionNum)
+            //            }
         } else {
             changeIncorrectLabel()
             ansLabel.text = "答えは：" + arrayWrongAnswer[questionNum].Kana
@@ -108,7 +112,7 @@ class ReViewController: UIViewController {
                     break
                 }
             }
-//            arrayWrongTimeCount[questionNum].count += 1
+            //            arrayWrongTimeCount[questionNum].count += 1
         }
         answerInputField.text! = ""
         count += 1
@@ -131,15 +135,25 @@ class ReViewController: UIViewController {
     
     //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
     func setWrongAnswersToUserDefaults() {
-        let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
-        UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
-        //間違えた問題の数をUserDefaultsに保存
-        UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
+        if !arrayWrongAnswer.isEmpty {
+            let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
+            UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
+            //間違えた問題の数をUserDefaultsに保存
+            UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
+        } else {
+            UserDefaults.standard.set(nil, forKey: "wrongAnswer")
+            UserDefaults.standard.set(0, forKey: "numOfWrongAnswer")
+        }
+        
     }
     
     //間違えた回数データをUserDefaultsへ保存
     func setWrongTimeCountToUserDefaults() {
-        UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
+        if !arrayWrongTimeCount.isEmpty {
+            UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
+        } else {
+            UserDefaults.standard.set(nil, forKey: "wrongTimeCount")
+        }
     }
     
     //正解した時のラベル表示
