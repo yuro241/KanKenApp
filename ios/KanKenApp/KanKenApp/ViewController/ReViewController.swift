@@ -97,12 +97,6 @@ class ReViewController: UIViewController {
                     }
                 }
             }
-            //            arrayWrongTimeCount[questionNum].count -= 1
-            //            if arrayWrongTimeCount[questionNum].count == 0 {
-            //                overcomeCount += 1
-            //                arrayWrongAnswer.remove(at: questionNum)
-            //                arrayWrongTimeCount.remove(at: questionNum)
-            //            }
         } else {
             changeIncorrectLabel()
             ansLabel.text = "答えは：" + arrayWrongAnswer[questionNum].Kana
@@ -112,7 +106,6 @@ class ReViewController: UIViewController {
                     break
                 }
             }
-            //            arrayWrongTimeCount[questionNum].count += 1
         }
         answerInputField.text! = ""
         count += 1
