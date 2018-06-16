@@ -29,11 +29,7 @@ class WrongQuestionListController: UITableViewController {
         wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
         
         //wrongTimeCountArrayを降順ソート
-//        var tmpArray = wrongTimeCountArray[0]
-//        tmpArray.sort(by: {$0 > $1})
-//        wrongTimeCountArray[0] = tmpArray
         wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
-        
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         print(UserDefaults.standard.integer(forKey: "numOfWrongAnswer"))
@@ -63,7 +59,6 @@ class WrongQuestionListController: UITableViewController {
         
         var wrongQuestionPairArray = deCodeWrongQuestion()
 
-//        wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
         cell.wrongTimeCountLabel.text = String(describing: wrongTimeCountArray[0][indexPath.section])
         cell.KanjiLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kanji
         cell.KanaLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kana

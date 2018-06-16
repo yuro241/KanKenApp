@@ -52,11 +52,6 @@ class MainViewController: UIViewController {
         self.changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
-
-//                //fordebug: 間違えた問題データ削除
-//                UserDefaults.standard.removeObject(forKey: "wrongAnswer")
-//                UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -67,8 +62,6 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.hidesBackButton = true
-        //        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        //        self.navigationController!.navigationBar.shadowImage = UIImage()
         
         arrayKana = UserDefaults.standard.array(forKey: "kana") as! [String]
         arrayKanji = UserDefaults.standard.array(forKey: "kanji") as! [String]
@@ -159,7 +152,6 @@ class MainViewController: UIViewController {
             self.changeInvisible(flag: true)
             self.changeQuestion()
         })
-        
     }
     
     //間違えた問題を配列へ追加. 重複時は間違えた回数をインクリメント
@@ -189,7 +181,7 @@ class MainViewController: UIViewController {
     
     //クイズ終了時の処理
     func finishQuiz() {
-        //Q 全問終えてから間違えた問題を追加？それとも中断しても追加する
+        //Q 全問終えてから間違えた問題を追加？それとも中断しても追加する?
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/Double(numOfTry))*100
