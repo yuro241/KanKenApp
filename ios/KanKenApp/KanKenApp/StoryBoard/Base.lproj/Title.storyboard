@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0EL-qJ-rcc">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,15 +17,12 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="TitleViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="漢 検 対 策" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvB-e2-c2w">
-                                <rect key="frame" x="20" y="144" width="335" height="100"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="難 読 漢 字" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvB-e2-c2w">
+                                <rect key="frame" x="20" y="84" width="280" height="93.5"/>
                                 <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="7dJ-a0-fYo"/>
-                                </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -32,7 +30,7 @@
                                 <size key="shadowOffset" width="5" height="5"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="熟語の読み当てクイズ　" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T5O-eB-fCs">
-                                <rect key="frame" x="20" y="244" width="335" height="40"/>
+                                <rect key="frame" x="20" y="177.5" width="280" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="rBf-Y2-CFM"/>
@@ -44,11 +42,10 @@
                                 <size key="shadowOffset" width="2" height="2"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-dS-t4G">
-                                <rect key="frame" x="118" y="512" width="140" height="55"/>
+                                <rect key="frame" x="90" y="473" width="140" height="55"/>
                                 <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="UmV-t4-2Hq"/>
-                                    <constraint firstAttribute="width" constant="140" id="zSI-Du-u7n"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="21"/>
                                 <state key="normal" title="開始">
@@ -59,18 +56,14 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QG3-c7-qU0">
-                                <rect key="frame" x="20" y="332" width="335" height="126"/>
+                                <rect key="frame" x="20" y="247.5" width="280" height="157.5"/>
                                 <color key="backgroundColor" red="1" green="0.93333333333333335" blue="0.83529411764705885" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uKX-O9-erX">
-                                <rect key="frame" x="60" y="342" width="125" height="50"/>
+                                <rect key="frame" x="30" y="257.5" width="125.5" height="63.5"/>
                                 <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="W4U-Dz-KLc"/>
-                                    <constraint firstAttribute="width" constant="125" id="psk-tM-5ga"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="18"/>
                                 <state key="normal" title="復習単語リスト">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -80,14 +73,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m33-5Y-xce">
-                                <rect key="frame" x="191" y="342" width="125" height="50"/>
+                                <rect key="frame" x="165.5" y="257.5" width="124.5" height="63.5"/>
                                 <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="GW7-U7-uZG"/>
-                                    <constraint firstAttribute="width" constant="125" id="Xsy-vX-qAw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="21"/>
                                 <state key="normal" title="誤答復習">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -97,14 +86,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d0G-b3-xTJ">
-                                <rect key="frame" x="60" y="398" width="125" height="50"/>
+                                <rect key="frame" x="30" y="331" width="125.5" height="64"/>
                                 <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="cva-FS-hP2"/>
-                                    <constraint firstAttribute="height" constant="50" id="qCv-Gr-Wuo"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="21"/>
                                 <state key="normal" title="10問組手">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -114,14 +99,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WMv-9B-sCJ">
-                                <rect key="frame" x="191" y="398" width="125" height="50"/>
+                                <rect key="frame" x="165.5" y="331" width="124.5" height="64"/>
                                 <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="GM4-Pq-Nx2"/>
-                                    <constraint firstAttribute="width" constant="125" id="dG8-Mf-J2M"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="21"/>
                                 <state key="normal" title="全問必答">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -133,26 +114,37 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.81960784313725488" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="uKX-O9-erX" firstAttribute="leading" secondItem="QG3-c7-qU0" secondAttribute="leading" constant="10" id="0oN-5f-Nbz"/>
                             <constraint firstItem="T5O-eB-fCs" firstAttribute="top" secondItem="cvB-e2-c2w" secondAttribute="bottom" id="7FC-Wm-2tX"/>
                             <constraint firstItem="QG3-c7-qU0" firstAttribute="trailing" secondItem="T5O-eB-fCs" secondAttribute="trailing" id="A6L-LB-kQP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CkE-dS-t4G" secondAttribute="bottom" constant="40" id="E09-Gy-ogh"/>
                             <constraint firstItem="CkE-dS-t4G" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Fp4-Q9-V5L"/>
+                            <constraint firstItem="d0G-b3-xTJ" firstAttribute="trailing" secondItem="QG3-c7-qU0" secondAttribute="centerX" constant="-5" id="Glb-q5-FKY"/>
+                            <constraint firstItem="m33-5Y-xce" firstAttribute="top" secondItem="QG3-c7-qU0" secondAttribute="top" constant="10" id="KXq-Ah-u3z"/>
                             <constraint firstItem="T5O-eB-fCs" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="LWv-GK-BY9"/>
-                            <constraint firstItem="cvB-e2-c2w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="PCk-5Y-feU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CkE-dS-t4G" secondAttribute="bottom" constant="100" id="Phh-fs-T7I"/>
-                            <constraint firstItem="d0G-b3-xTJ" firstAttribute="top" secondItem="uKX-O9-erX" secondAttribute="bottom" constant="6" id="RDr-W9-7wN"/>
-                            <constraint firstItem="QG3-c7-qU0" firstAttribute="top" secondItem="T5O-eB-fCs" secondAttribute="bottom" constant="48" id="b0c-F1-umB"/>
+                            <constraint firstItem="cvB-e2-c2w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="M8K-vZ-QzS"/>
+                            <constraint firstItem="uKX-O9-erX" firstAttribute="trailing" secondItem="QG3-c7-qU0" secondAttribute="centerX" constant="-5" id="MSS-Ec-Skh"/>
+                            <constraint firstItem="m33-5Y-xce" firstAttribute="trailing" secondItem="QG3-c7-qU0" secondAttribute="trailing" constant="-10" id="MnS-Eb-f9M"/>
+                            <constraint firstItem="uKX-O9-erX" firstAttribute="bottom" secondItem="QG3-c7-qU0" secondAttribute="centerY" constant="-5" id="OpV-xD-ObD"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="35:71" id="Pqf-1d-l2J"/>
+                            <constraint firstItem="cvB-e2-c2w" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="RtZ-MX-z75"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CkE-dS-t4G" secondAttribute="trailing" constant="90" id="WL7-ee-z29"/>
+                            <constraint firstItem="WMv-9B-sCJ" firstAttribute="top" secondItem="QG3-c7-qU0" secondAttribute="centerY" constant="5" id="aMB-fn-jcv"/>
+                            <constraint firstItem="cvB-e2-c2w" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="35:120" id="agY-We-ebH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="T5O-eB-fCs" secondAttribute="trailing" constant="20" id="bC6-jO-0Kg"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="trailing" secondItem="WMv-9B-sCJ" secondAttribute="trailing" constant="10" id="bnf-UV-raZ"/>
+                            <constraint firstItem="CkE-dS-t4G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="90" id="e7C-lk-m4U"/>
+                            <constraint firstItem="QG3-c7-qU0" firstAttribute="top" secondItem="T5O-eB-fCs" secondAttribute="bottom" constant="30" id="fro-yR-prv"/>
                             <constraint firstItem="QG3-c7-qU0" firstAttribute="leading" secondItem="T5O-eB-fCs" secondAttribute="leading" id="kBd-2s-Jce"/>
-                            <constraint firstItem="WMv-9B-sCJ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="3" id="kNF-aC-QvA"/>
-                            <constraint firstAttribute="centerX" secondItem="uKX-O9-erX" secondAttribute="trailing" constant="3" id="p32-pK-d1h"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="d0G-b3-xTJ" secondAttribute="trailing" constant="3" id="piR-fS-2ah"/>
-                            <constraint firstItem="WMv-9B-sCJ" firstAttribute="top" secondItem="m33-5Y-xce" secondAttribute="bottom" constant="6" id="q1b-HW-kHV"/>
-                            <constraint firstItem="m33-5Y-xce" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="3" id="rui-iv-1bR"/>
+                            <constraint firstItem="d0G-b3-xTJ" firstAttribute="leading" secondItem="QG3-c7-qU0" secondAttribute="leading" constant="10" id="kKR-5d-Nfx"/>
+                            <constraint firstItem="WMv-9B-sCJ" firstAttribute="leading" secondItem="QG3-c7-qU0" secondAttribute="centerX" constant="5" id="kNF-aC-QvA"/>
+                            <constraint firstItem="m33-5Y-xce" firstAttribute="bottom" secondItem="QG3-c7-qU0" secondAttribute="centerY" constant="-5" id="q1b-HW-kHV"/>
+                            <constraint firstItem="m33-5Y-xce" firstAttribute="leading" secondItem="QG3-c7-qU0" secondAttribute="centerX" constant="5" id="rui-iv-1bR"/>
                             <constraint firstItem="QG3-c7-qU0" firstAttribute="bottom" secondItem="WMv-9B-sCJ" secondAttribute="bottom" constant="10" id="tPL-cG-M0d"/>
                             <constraint firstItem="uKX-O9-erX" firstAttribute="top" secondItem="QG3-c7-qU0" secondAttribute="top" constant="10" id="u0D-21-uda"/>
                             <constraint firstItem="QG3-c7-qU0" firstAttribute="bottom" secondItem="d0G-b3-xTJ" secondAttribute="bottom" constant="10" id="usz-re-mps"/>
-                            <constraint firstItem="cvB-e2-c2w" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="vAz-2J-Iwa"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cvB-e2-c2w" secondAttribute="trailing" constant="20" id="xvd-Zo-f7n"/>
+                            <constraint firstItem="d0G-b3-xTJ" firstAttribute="top" secondItem="QG3-c7-qU0" secondAttribute="centerY" constant="5" id="wke-CZ-FPv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="cvB-e2-c2w" secondAttribute="trailing" constant="20" id="z0V-Hi-Sgl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -196,7 +188,7 @@
                     </connections>
                 </pongPressGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2319.1999999999998" y="116.49175412293854"/>
+            <point key="canvasLocation" x="2319.140625" y="116.39824304538799"/>
         </scene>
         <!--Main-->
         <scene sceneID="IQA-7T-3ux">
@@ -236,7 +228,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0EL-qJ-rcc" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="jk5-wV-0XB">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
