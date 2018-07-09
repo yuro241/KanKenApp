@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="l0a-GT-H3Q">
-    <device id="retina4_7" orientation="portrait">
+    <device id="ipad12_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,34 +16,23 @@
             <objects>
                 <viewController id="l0a-GT-H3Q" customClass="ReviewResultViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qY8-B0-VLh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="あなたの結果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="02G-oK-ZJh">
-                                <rect key="frame" x="99" y="50" width="177" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="54" id="UQB-FG-JKg"/>
-                                    <constraint firstAttribute="width" constant="177" id="whT-Hb-JCA"/>
-                                </constraints>
+                                <rect key="frame" x="284.5" y="50" width="455" height="126"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50問正解" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aM3-sc-9Xw">
-                                <rect key="frame" x="87.5" y="129" width="200" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="0t7-WA-xDL"/>
-                                    <constraint firstAttribute="height" constant="55" id="FNF-oM-8DN"/>
-                                </constraints>
+                                <rect key="frame" x="235.5" y="201" width="553" height="239"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="35"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0個の問題を克服しました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RQc-95-bxX">
-                                <rect key="frame" x="47.5" y="314" width="281.5" height="55"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="55" id="JLb-Yv-4US"/>
-                                </constraints>
+                                <rect key="frame" x="151.5" y="490" width="721" height="270.5"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -52,10 +42,16 @@
                         <constraints>
                             <constraint firstItem="02G-oK-ZJh" firstAttribute="top" secondItem="FPk-kw-0dZ" secondAttribute="top" constant="30" id="0Lo-k7-pvs"/>
                             <constraint firstItem="aM3-sc-9Xw" firstAttribute="top" secondItem="02G-oK-ZJh" secondAttribute="bottom" constant="25" id="6IC-Iq-IOr"/>
+                            <constraint firstItem="02G-oK-ZJh" firstAttribute="height" secondItem="qY8-B0-VLh" secondAttribute="width" multiplier="70:568" id="AXv-Ya-gSL"/>
+                            <constraint firstItem="RQc-95-bxX" firstAttribute="width" secondItem="qY8-B0-VLh" secondAttribute="height" multiplier="300:568" id="Gz9-XL-0KJ"/>
+                            <constraint firstItem="aM3-sc-9Xw" firstAttribute="width" secondItem="qY8-B0-VLh" secondAttribute="height" multiplier="230:568" id="LUV-I6-bvL"/>
+                            <constraint firstItem="02G-oK-ZJh" firstAttribute="width" secondItem="qY8-B0-VLh" secondAttribute="height" multiplier="50:150" id="Mtw-Ow-mae"/>
                             <constraint firstItem="RQc-95-bxX" firstAttribute="centerX" secondItem="qY8-B0-VLh" secondAttribute="centerX" id="b8E-sh-7kU"/>
                             <constraint firstItem="aM3-sc-9Xw" firstAttribute="centerX" secondItem="qY8-B0-VLh" secondAttribute="centerX" id="dTb-qv-juM"/>
-                            <constraint firstItem="FPk-kw-0dZ" firstAttribute="bottom" secondItem="RQc-95-bxX" secondAttribute="bottom" constant="298" id="jyJ-Z5-1m1"/>
+                            <constraint firstItem="RQc-95-bxX" firstAttribute="height" secondItem="qY8-B0-VLh" secondAttribute="width" multiplier="150:568" id="g58-UC-bQ6"/>
+                            <constraint firstItem="RQc-95-bxX" firstAttribute="top" secondItem="aM3-sc-9Xw" secondAttribute="bottom" constant="50" id="phs-QJ-Kp8"/>
                             <constraint firstItem="02G-oK-ZJh" firstAttribute="centerX" secondItem="qY8-B0-VLh" secondAttribute="centerX" id="t2x-nk-rzG"/>
+                            <constraint firstItem="aM3-sc-9Xw" firstAttribute="height" secondItem="qY8-B0-VLh" secondAttribute="width" multiplier="70:300" id="vlh-68-aSE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="FPk-kw-0dZ"/>
                     </view>
