@@ -1,0 +1,3 @@
+next -> Realmの導入(carthage update)から
+	base.txtをすべて読み込み、漢字と読みのセットごとに管理
+
