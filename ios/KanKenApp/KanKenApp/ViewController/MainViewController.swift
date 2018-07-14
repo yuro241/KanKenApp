@@ -47,9 +47,9 @@ class MainViewController: UIViewController {
         ansLabel.isHidden = true
         answerInputField.clearButtonMode = .always
         
-        self.setLayout()
-        self.readCSV()
-        self.changeQuestion()
+        setLayout()
+        readCSV()
+        changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
     }
@@ -78,12 +78,10 @@ class MainViewController: UIViewController {
         if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
             numOfTry = 10
             self.navigationItem.title = "10問組手モード"
-            print(numOfTry)
         }
         if UserDefaults.standard.integer(forKey: "gameMode") == 3 {
             numOfTry = arrayKanji.count
             self.navigationItem.title = "全問必答モード"
-            print(numOfTry)
         }
     }
     
