@@ -78,12 +78,10 @@ class MainViewController: UIViewController {
         if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
             numOfTry = 10
             self.navigationItem.title = "10問組手モード"
-            print(numOfTry)
         }
         if UserDefaults.standard.integer(forKey: "gameMode") == 3 {
             numOfTry = arrayKanji.count
             self.navigationItem.title = "全問必答モード"
-            print(numOfTry)
         }
     }
     
