@@ -20,7 +20,7 @@ class ResultViewController: UIViewController {
         resultLabel.text = String(UserDefaults.standard.integer(forKey: "correctCount")) + "問正解"
         persentageLabel.text = String(UserDefaults.standard.double(forKey: "accuracy")) + "%です"
         
-        self.setLayout()
+        setLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -32,14 +32,8 @@ class ResultViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
-    func setLayout() {
-        self.restartButton.layer.cornerRadius = 10
-        self.toTitleButton.layer.cornerRadius = 10
+    private func setLayout() {
+        restartButton.layer.cornerRadius = 10
+        toTitleButton.layer.cornerRadius = 10
     }
-    
-    @IBAction func retry(_ sender: UIButton) {
-    }
-    @IBAction func titleBack(_ sender: UIButton) {
-    }
-    
 }

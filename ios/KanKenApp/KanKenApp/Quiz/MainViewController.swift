@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class MainViewController: UIViewController, UITextFieldDelegate {
+internal class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionNumberLabel: UILabel!
@@ -24,32 +24,29 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var answerButton: UIButton!
     
     //データ配列
-    var dataList: [String] = []
+    private var dataList: [String] = []
     //漢字データ
-    var arrayKanji: [String] = []
+    private var arrayKanji: [String] = []
     //読み仮名データ
-    var arrayKana: [String] = []
+    private var arrayKana: [String] = []
     //間違えた問題データ
-    var arrayWrongAnswer: [(Question)] = []
+    private var arrayWrongAnswer: [(Question)] = []
     //間違えた数データ
-    var arrayWrongTimeCount: [[Int]] = [[],[]]
+    private var arrayWrongTimeCount: [[Int]] = [[],[]]
     
-    var count: Int = 1
-    var correctAnswers: Int = 0
-    var wrongAnswers: Int = 0
-    var questionNum: Int = 0
-    var numOfTry: Int = 1
+    private var count: Int = 1
+    private var correctAnswers: Int = 0
+    private var wrongAnswers: Int = 0
+    private var questionNum: Int = 0
+    private var numOfTry: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         answerInputField.delegate = self
-        
-        correctLabel.isHidden = true
-        incorrectLabel.isHidden = true
-        ansLabel.isHidden = true
         answerInputField.clearButtonMode = .always
         
+        viewReset()
         setLayout()
         readCSV()
         changeQuestion()
@@ -88,24 +85,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
         return true
     }
     
     //画面レイアウトを設定
-    func setLayout() {
-        self.questionNumberLabel.layer.cornerRadius = 10
-        self.questionNumberLabel.clipsToBounds = true
-        self.questionLabel.layer.cornerRadius = 20
-        self.questionLabel.clipsToBounds = true
-        self.answerInputField.layer.cornerRadius = 10
-        self.answerButton.layer.cornerRadius = 5
+    private func setLayout() {
+        questionNumberLabel.layer.cornerRadius = 10
+        questionNumberLabel.clipsToBounds = true
+        questionLabel.layer.cornerRadius = 20
+        questionLabel.clipsToBounds = true
+        answerInputField.layer.cornerRadius = 10
+        answerButton.layer.cornerRadius = 5
     }
     
     //CSVファイル読み込み処理
-    func readCSV() {
+    private func readCSV() {
         do {
             //CSVファイルのPath取得
             let csvPath = Bundle.main.path(forResource: "questions", ofType: "csv")
@@ -119,17 +116,15 @@ class MainViewController: UIViewController, UITextFieldDelegate {
                 arrayKanji.append(array[0])
                 arrayKana.append(array[1])
             }
-        } catch {
-            print("error")
         }
         UserDefaults.standard.set(arrayKanji, forKey: "kanji")
         UserDefaults.standard.set(arrayKana, forKey: "kana")
     }
     
     //問題出題
-    func changeQuestion() {
+    private func changeQuestion() {
         if count > numOfTry {
-            self.finishQuiz()
+            finishQuiz()
         } else {
             questionNumberLabel.text = String(count) + "問目"
             questionNum = Int(arc4random() % UInt32(arrayKanji.count))
@@ -138,23 +133,24 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //答え合わせ処理
-    func checkAns() {
+    private func checkAns() {
         print(arrayKana[questionNum])
         print(answerInputField.text!)
         if answerInputField.text! == arrayKana[questionNum] {
-            self.correctAnswers += 1
-            self.changeCorrectLabel()
+            correctAnswers += 1
+            changeCorrectLabel()
         } else {
-            self.wrongAnswers += 1
-            self.changeIncorrectLabel()
-            self.addWrongAnswer()
-            self.ansLabel.text = "答えは：" + arrayKana[questionNum]
+            wrongAnswers += 1
+            changeIncorrectLabel()
+            addWrongAnswer()
+            ansLabel.text = "答えは：" + arrayKana[questionNum]
         }
-        self.answerInputField.text! = ""
-        self.arrayKanji.remove(at: questionNum)
-        self.arrayKana.remove(at: questionNum)
+        answerInputField.text! = ""
+        arrayKanji.remove(at: questionNum)
+        arrayKana.remove(at: questionNum)
         count += 1
-//        self.setTextFieldAndAnswerButtonDisable()
+
+        //1秒後に次の問題へ移動
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
             self.viewReset()
             self.changeQuestion()
@@ -162,7 +158,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //間違えた問題を配列へ追加. 重複時は間違えた回数をインクリメント
-    func addWrongAnswer() {
+    private func addWrongAnswer() {
         let currentWrongAnswer = Question(Kanji: arrayKanji[questionNum], Kana: arrayKana[questionNum])
         if arrayWrongAnswer.contains(currentWrongAnswer) {
             arrayWrongTimeCount[0][arrayWrongAnswer.index(of: currentWrongAnswer)!] += 1
@@ -174,7 +170,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
-    func setWrongAnswersToUserDefaults() {
+    private func setWrongAnswersToUserDefaults() {
         let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
         UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
         //間違えた問題の数をUserDefaultsに保存
@@ -182,12 +178,12 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //間違えた回数データをUserDefaultsへ保存
-    func setWrongTimeCountToUserDefaults() {
+    private func setWrongTimeCountToUserDefaults() {
         UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
     }
     
     //クイズ終了時の処理
-    func finishQuiz() {
+    private func finishQuiz() {
         //Q 全問終えてから間違えた問題を追加？それとも中断しても追加する?
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
@@ -198,7 +194,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //画面を問題提示の状態に戻す
-    func viewReset() {
+    private func viewReset() {
         ansLabel.isHidden = true
         incorrectLabel.isHidden = true
         correctLabel.isHidden = true
@@ -207,7 +203,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //正解した時のラベル表示
-    func changeCorrectLabel() {
+    private func changeCorrectLabel() {
         correctLabel.isHidden = false
         ansLabel.isHidden = true
         incorrectLabel.isHidden = true
@@ -217,24 +213,17 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     }
     
     //不正解の時のラベル表示
-    func changeIncorrectLabel() {
-        self.correctLabel.isHidden = true
-        self.ansLabel.isHidden = false
-        self.incorrectLabel.isHidden = false
+    private func changeIncorrectLabel() {
+        correctLabel.isHidden = true
+        ansLabel.isHidden = false
+        incorrectLabel.isHidden = false
         
         
         answerInputField.isHidden = true
         answerButton.isHidden = true
     }
-    
-    //テキスト入力とボタン押下の禁止処理
-//    func setTextFieldAndAnswerButtonDisable() {
-//        self.answerInputField.isEnabled = false
-//        self.answerButton.isEnabled = false
-//    }
-//
     //タイトルへ戻る処理
-    @objc func toTitle() {
+    @objc internal func toTitle() {
         self.performSegue(withIdentifier: "totitle", sender: nil)
     }
     
@@ -253,7 +242,7 @@ class MainViewController: UIViewController, UITextFieldDelegate {
     
     //答えるボタン押下時実行
     @IBAction func answerTap(_ sender: UIButton) {
-        self.checkAns()
+        checkAns()
     }
 }
 

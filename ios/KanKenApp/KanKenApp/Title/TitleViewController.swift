@@ -16,16 +16,16 @@ class TitleViewController: UIViewController {
     @IBOutlet var modeSelectButtons: [UIButton]!
     @IBOutlet var backGroundView: UIView!
     
-    var tagForIdentifier: Int = 0
-    var tagNumOfButton: Int = 0
+    private var tagForIdentifier: Int = 0
+    private var tagNumOfButton: Int = 0
     
     //各モード0〜3の説明文を記載
-    var ExplanationArray: [String] = ["\n今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！","\n今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！","\n問題がランダムで10問出題されます\n\n全問正解を目指しましょう！","\nすべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
+    private var ExplanationArray: [String] = ["\n今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！","\n今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！","\n問題がランダムで10問出題されます\n\n全問正解を目指しましょう！","\nすべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setLayout()
+        setLayout()
         //        //fordebug: 間違えた問題データ削除
         //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
         //        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
@@ -34,19 +34,24 @@ class TitleViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
         setModeSelectButtonEnable()
+        setNavigationBarLayout()
     }
     
+    //NavigationBarの見た目設定
+    func setNavigationBarLayout() {
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController!.navigationBar.shadowImage = UIImage()
+    }
+    
+    //各部品の見た目設定
     func setLayout() {
-        //        self.startButton.layer.cornerRadius = 10
-        self.mainTitleLabel.layer.cornerRadius = 20
-        self.mainTitleLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.mainTitleLabel.clipsToBounds = true
-        self.subTitleLabel.layer.cornerRadius  = 20
-        self.subTitleLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
-        self.subTitleLabel.clipsToBounds = true
+        mainTitleLabel.layer.cornerRadius = 20
+        mainTitleLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        mainTitleLabel.clipsToBounds = true
+        subTitleLabel.layer.cornerRadius  = 20
+        subTitleLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
+        subTitleLabel.clipsToBounds = true
         backGroundView.layer.cornerRadius = 20
         
         //各ボタンのalphaと角丸設定
@@ -59,6 +64,7 @@ class TitleViewController: UIViewController {
         startButton.layer.cornerRadius = 10
     }
     
+    //間違えた問題がない場合、復習のモードを選択不可に設定
     func setModeSelectButtonEnable() {
         if UserDefaults.standard.data(forKey: "wrongAnswer") == nil {
             modeSelectButtons[0].isEnabled = false

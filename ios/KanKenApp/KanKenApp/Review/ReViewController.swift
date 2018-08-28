@@ -19,21 +19,19 @@ class ReViewController: UIViewController {
     @IBOutlet var answerButton: UIButton!
     
     //間違えた問題データ
-    var arrayWrongAnswer: [Question] = []
+    private var arrayWrongAnswer: [Question] = []
     //間違えた数データ
-    var arrayWrongTimeCount: [[Int]] = [[],[]]
+    private var arrayWrongTimeCount: [[Int]] = [[],[]]
     
-    var count: Int = 1
-    var questionNum: Int = 0
-    var correctAnsCount: Int = 0
-    var overcomeCount: Int = 0
+    private var count: Int = 1
+    private var questionNum: Int = 0
+    private var correctAnsCount: Int = 0
+    private var overcomeCount: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
-        correctLabel.isHidden = true
-        incorrectLabel.isHidden = true
-        ansLabel.isHidden = true
         answerInputField.clearButtonMode = .always
         
         setLayout()
@@ -58,19 +56,16 @@ class ReViewController: UIViewController {
         self.view.endEditing(true)
     }
     
-    func getWrongAnswers() {
+    private func getWrongAnswers() {
         let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer")
         let fetchedAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData!)
         arrayWrongAnswer = fetchedAnswers
-        for answers in fetchedAnswers {
-            print(answers.Kanji)
-            print(answers.Kana)
-        }
+        
         changeQuestion()
     }
     
     //問題出題
-    func changeQuestion() {
+    private func changeQuestion() {
         if arrayWrongAnswer.count == 0 {
             finishQuiz()
         } else {
@@ -82,7 +77,7 @@ class ReViewController: UIViewController {
     }
     
     //答え合わせ処理
-    func checkAns() {
+    private func checkAns() {
         if answerInputField.text! == arrayWrongAnswer[questionNum].Kana {
             correctAnsCount += 1
             changeCorrectLabel()
@@ -111,14 +106,13 @@ class ReViewController: UIViewController {
         }
         answerInputField.text! = ""
         count += 1
-        setTextFieldAndAnswerButtonDisable()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-            self.changeInvisible(flag: true)
+            self.viewReset()
             self.changeQuestion()
         })
     }
     
-    func finishQuiz() {
+    private func finishQuiz() {
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnsCount) / Double(count))*100
@@ -129,7 +123,7 @@ class ReViewController: UIViewController {
     }
     
     //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
-    func setWrongAnswersToUserDefaults() {
+    private func setWrongAnswersToUserDefaults() {
         if !arrayWrongAnswer.isEmpty {
             let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
             UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
@@ -143,7 +137,7 @@ class ReViewController: UIViewController {
     }
     
     //間違えた回数データをUserDefaultsへ保存
-    func setWrongTimeCountToUserDefaults() {
+    private func setWrongTimeCountToUserDefaults() {
         if !arrayWrongTimeCount.isEmpty {
             UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
         } else {
@@ -152,32 +146,32 @@ class ReViewController: UIViewController {
     }
     
     //正解した時のラベル表示
-    func changeCorrectLabel() {
-        self.correctLabel.isHidden = false
-        self.ansLabel.isHidden = true
-        self.incorrectLabel.isHidden = true
+    private func changeCorrectLabel() {
+        correctLabel.isHidden = false
+        ansLabel.isHidden = true
+        incorrectLabel.isHidden = true
+        
+        answerInputField.isHidden = true
+        answerButton.isHidden = true
     }
     
     //不正解の時のラベル表示
-    func changeIncorrectLabel() {
-        self.correctLabel.isHidden = true
-        self.ansLabel.isHidden = false
-        self.incorrectLabel.isHidden = false
+    private func changeIncorrectLabel() {
+        correctLabel.isHidden = true
+        ansLabel.isHidden = false
+        incorrectLabel.isHidden = false
+        
+        answerInputField.isHidden = true
+        answerButton.isHidden = true
     }
     
-    //部品を隠す処理
-    func changeInvisible(flag: Bool) {
-        self.ansLabel.isHidden = flag
-        self.incorrectLabel.isHidden = flag
-        self.correctLabel.isHidden = flag
-        self.answerInputField.isEnabled = flag
-        self.answerButton.isEnabled = flag
-    }
-    
-    //テキスト入力とボタン押下の禁止処理
-    func setTextFieldAndAnswerButtonDisable() {
-        self.answerInputField.isEnabled = false
-        self.answerButton.isEnabled = false
+    //画面を問題提示の状態に戻す
+    func viewReset() {
+        ansLabel.isHidden = true
+        incorrectLabel.isHidden = true
+        correctLabel.isHidden = true
+        answerInputField.isHidden = false
+        answerButton.isHidden = false
     }
     
     //クイズ終了処理
@@ -186,13 +180,13 @@ class ReViewController: UIViewController {
     }
     
     //画面レイアウトを設定
-    func setLayout() {
-        self.questionNumberLabel.layer.cornerRadius = 10
-        self.questionNumberLabel.clipsToBounds = true
-        self.questionLabel.layer.cornerRadius = 20
-        self.questionLabel.clipsToBounds = true
-        self.answerInputField.layer.cornerRadius = 10
-        self.answerButton.layer.cornerRadius = 5
+    private func setLayout() {
+        questionNumberLabel.layer.cornerRadius = 10
+        questionNumberLabel.clipsToBounds = true
+        questionLabel.layer.cornerRadius = 20
+        questionLabel.clipsToBounds = true
+        answerInputField.layer.cornerRadius = 10
+        answerButton.layer.cornerRadius = 5
     }
     
     @IBAction func PauseTap(_ sender: UIBarButtonItem) {

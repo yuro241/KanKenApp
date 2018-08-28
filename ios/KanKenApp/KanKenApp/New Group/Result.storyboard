@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -40,7 +39,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="retry:" destination="qrh-JD-JP1" eventType="touchUpInside" id="2RS-xv-YK5"/>
                                     <segue destination="Zww-xY-jfU" kind="show" animates="NO" id="uJC-Cz-AhU"/>
                                 </connections>
                             </button>
@@ -64,7 +62,6 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="titleBack:" destination="qrh-JD-JP1" eventType="touchUpInside" id="bPN-Tc-x1p"/>
                                     <segue destination="oTJ-VK-jqW" kind="presentation" id="kWz-2O-dGJ"/>
                                 </connections>
                             </button>
