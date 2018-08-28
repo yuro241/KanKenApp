@@ -9,7 +9,7 @@
 import UIKit
 import SCLAlertView
 
-class ReViewController: UIViewController {
+class ReViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var questionNumberLabel: UILabel!
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var incorrectLabel: UILabel!
@@ -31,13 +31,13 @@ class ReViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         answerInputField.clearButtonMode = .always
+        answerInputField.delegate = self
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
         
+        viewReset()
         setLayout()
         getWrongAnswers()
-        
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,6 +54,22 @@ class ReViewController: UIViewController {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
+    }
+    
+    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
+    
+    //画面レイアウトを設定
+    private func setLayout() {
+        questionNumberLabel.layer.cornerRadius = 10
+        questionNumberLabel.clipsToBounds = true
+        questionLabel.layer.cornerRadius = 20
+        questionLabel.clipsToBounds = true
+        answerInputField.layer.cornerRadius = 10
+        answerButton.layer.cornerRadius = 5
     }
     
     private func getWrongAnswers() {
@@ -166,7 +182,7 @@ class ReViewController: UIViewController {
     }
     
     //画面を問題提示の状態に戻す
-    func viewReset() {
+    private func viewReset() {
         ansLabel.isHidden = true
         incorrectLabel.isHidden = true
         correctLabel.isHidden = true
@@ -177,16 +193,6 @@ class ReViewController: UIViewController {
     //クイズ終了処理
     @objc func toTitle() {
         finishQuiz()
-    }
-    
-    //画面レイアウトを設定
-    private func setLayout() {
-        questionNumberLabel.layer.cornerRadius = 10
-        questionNumberLabel.clipsToBounds = true
-        questionLabel.layer.cornerRadius = 20
-        questionLabel.clipsToBounds = true
-        answerInputField.layer.cornerRadius = 10
-        answerButton.layer.cornerRadius = 5
     }
     
     @IBAction func PauseTap(_ sender: UIBarButtonItem) {

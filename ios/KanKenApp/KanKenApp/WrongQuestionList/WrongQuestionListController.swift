@@ -18,7 +18,6 @@ class WrongQuestionListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        baseTableView.backgroundColor = #colorLiteral(red: 1, green: 0.831372549, blue: 0, alpha: 1)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9254901961, green: 0.4470588235, blue: 0.05882352941, alpha: 1)
     }
     
