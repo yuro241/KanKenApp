@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第1問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNI-df-K9d">
-                                <rect key="frame" x="59" y="35" width="100" height="40"/>
+                                <rect key="frame" x="39" y="35" width="100" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Dfe-8v-suI"/>
@@ -52,7 +52,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="読み方は？" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FFD-Jw-M4J">
-                                <rect key="frame" x="89" y="246" width="197" height="30"/>
+                                <rect key="frame" x="69" y="246" width="217" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
@@ -102,7 +102,7 @@
                             <constraint firstItem="7W7-11-Co5" firstAttribute="width" secondItem="nXb-Pv-Fkb" secondAttribute="height" multiplier="60:142" id="mJB-hx-wx6"/>
                             <constraint firstItem="nNI-df-K9d" firstAttribute="leading" secondItem="FFD-Jw-M4J" secondAttribute="leading" constant="-30" id="rXA-e1-ecu"/>
                             <constraint firstItem="csp-ZZ-gyE" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" id="vJP-HN-2of"/>
-                            <constraint firstItem="FFD-Jw-M4J" firstAttribute="centerX" secondItem="cE5-hG-35v" secondAttribute="centerX" id="veS-je-2kJ"/>
+                            <constraint firstItem="FFD-Jw-M4J" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" constant="-10" id="veS-je-2kJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cE5-hG-35v"/>
                     </view>
