@@ -119,37 +119,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5069CA322042AAA800457ECA /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
-				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
-				506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */,
-				50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */,
-				50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */,
-				5094ED7E203F2BB0001AADBD /* MainViewController.swift */,
-				506F03C9207C6B15002B063F /* ResultViewController.swift */,
-				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
-				50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		5069CA332042AAB800457ECA /* StoryBoard */ = {
-			isa = PBXGroup;
-			children = (
-				5094ED85203F2BB0001AADBD /* LaunchScreen.storyboard */,
-				5094ED80203F2BB0001AADBD /* Title.storyboard */,
-				5069CA342042AAE900457ECA /* Main.storyboard */,
-				5069CA362042AF6E00457ECA /* Result.storyboard */,
-				506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */,
-				50CEE3F920CA76D900D781E3 /* ReView.storyboard */,
-				50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */,
-				500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */,
-			);
-			path = StoryBoard;
-			sourceTree = "<group>";
-		};
 		5094ED70203F2BAF001AADBD = {
 			isa = PBXGroup;
 			children = (
@@ -174,9 +143,16 @@
 		5094ED7B203F2BAF001AADBD /* KanKenApp */ = {
 			isa = PBXGroup;
 			children = (
+				50D7BB0C2134F63D00D19205 /* AppDelegate */,
+				50D7BB072134F4F400D19205 /* LaunchScreen */,
+				50D7BB042134F48B00D19205 /* Title */,
+				50D7BB0B2134F60D00D19205 /* PopUp */,
+				50D7BB0A2134F59F00D19205 /* Quiz */,
+				50D7BB082134F50100D19205 /* WrongQuestionList */,
+				50D7BB052134F49C00D19205 /* Review */,
+				50D7BB092134F51300D19205 /* Result */,
+				50D7BB062134F4DD00D19205 /* ReviewResult */,
 				50B29F4920EDF8420001FBB0 /* icons */,
-				5069CA332042AAB800457ECA /* StoryBoard */,
-				5069CA322042AAA800457ECA /* ViewController */,
 				5094ED83203F2BB0001AADBD /* Assets.xcassets */,
 				5094ED88203F2BB0001AADBD /* Info.plist */,
 				50F7C16620C2218200826D58 /* questions.csv */,
@@ -200,6 +176,87 @@
 				5094ED9E203F2BB0001AADBD /* Info.plist */,
 			);
 			path = KanKenAppUITests;
+			sourceTree = "<group>";
+		};
+		50D7BB042134F48B00D19205 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				5094ED80203F2BB0001AADBD /* Title.storyboard */,
+				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		50D7BB052134F49C00D19205 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				50CEE3F920CA76D900D781E3 /* ReView.storyboard */,
+				50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		50D7BB062134F4DD00D19205 /* ReviewResult */ = {
+			isa = PBXGroup;
+			children = (
+				50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */,
+				50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */,
+			);
+			path = ReviewResult;
+			sourceTree = "<group>";
+		};
+		50D7BB072134F4F400D19205 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5094ED85203F2BB0001AADBD /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		50D7BB082134F50100D19205 /* WrongQuestionList */ = {
+			isa = PBXGroup;
+			children = (
+				506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */,
+				506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */,
+				50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */,
+			);
+			path = WrongQuestionList;
+			sourceTree = "<group>";
+		};
+		50D7BB092134F51300D19205 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				5069CA362042AF6E00457ECA /* Result.storyboard */,
+				506F03C9207C6B15002B063F /* ResultViewController.swift */,
+			);
+			name = Result;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		50D7BB0A2134F59F00D19205 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				5069CA342042AAE900457ECA /* Main.storyboard */,
+				5094ED7E203F2BB0001AADBD /* MainViewController.swift */,
+				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		50D7BB0B2134F60D00D19205 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		50D7BB0C2134F63D00D19205 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

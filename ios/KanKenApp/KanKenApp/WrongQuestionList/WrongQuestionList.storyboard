@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14113"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -71,6 +70,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="KanaLabel" destination="YwQ-SY-onh" id="zvs-WS-NYc"/>
+                                    <outlet property="KanjiLabel" destination="obi-Xc-Yem" id="eyO-Iw-0kw"/>
                                     <outlet property="kanjiLabel" destination="obi-Xc-Yem" id="P61-hX-R77"/>
                                     <outlet property="wrongTimeCountLabel" destination="bN8-fp-jiN" id="thM-nb-8EK"/>
                                 </connections>
