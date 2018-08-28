@@ -9,10 +9,11 @@
 import UIKit
 import SCLAlertView
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var questionNumberLabel: UILabel!
+    //回答入力フィールド
     @IBOutlet weak var answerInputField: UITextField!
     //正解！ラベル
     @IBOutlet weak var correctLabel: UILabel!
@@ -41,6 +42,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        answerInputField.delegate = self
         
         correctLabel.isHidden = true
         incorrectLabel.isHidden = true
@@ -83,6 +86,12 @@ class MainViewController: UIViewController {
             numOfTry = arrayKanji.count
             self.navigationItem.title = "全問必答モード"
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
     }
     
     //画面レイアウトを設定
@@ -145,9 +154,9 @@ class MainViewController: UIViewController {
         self.arrayKanji.remove(at: questionNum)
         self.arrayKana.remove(at: questionNum)
         count += 1
-        self.setTextFieldAndAnswerButtonDisable()
+//        self.setTextFieldAndAnswerButtonDisable()
         Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
-            self.changeInvisible(flag: true)
+            self.viewReset()
             self.changeQuestion()
         })
     }
@@ -188,20 +197,23 @@ class MainViewController: UIViewController {
         self.performSegue(withIdentifier: "finish", sender: nil)
     }
     
-    //部品を隠す処理
-    func changeInvisible(flag: Bool) {
-        self.ansLabel.isHidden = flag
-        self.incorrectLabel.isHidden = flag
-        self.correctLabel.isHidden = flag
-        self.answerInputField.isEnabled = flag
-        self.answerButton.isEnabled = flag
+    //画面を問題提示の状態に戻す
+    func viewReset() {
+        ansLabel.isHidden = true
+        incorrectLabel.isHidden = true
+        correctLabel.isHidden = true
+        answerInputField.isHidden = false
+        answerButton.isHidden = false
     }
     
     //正解した時のラベル表示
     func changeCorrectLabel() {
-        self.correctLabel.isHidden = false
-        self.ansLabel.isHidden = true
-        self.incorrectLabel.isHidden = true
+        correctLabel.isHidden = false
+        ansLabel.isHidden = true
+        incorrectLabel.isHidden = true
+        
+        answerInputField.isHidden = true
+        answerButton.isHidden = true
     }
     
     //不正解の時のラベル表示
@@ -209,14 +221,18 @@ class MainViewController: UIViewController {
         self.correctLabel.isHidden = true
         self.ansLabel.isHidden = false
         self.incorrectLabel.isHidden = false
+        
+        
+        answerInputField.isHidden = true
+        answerButton.isHidden = true
     }
     
     //テキスト入力とボタン押下の禁止処理
-    func setTextFieldAndAnswerButtonDisable() {
-        self.answerInputField.isEnabled = false
-        self.answerButton.isEnabled = false
-    }
-    
+//    func setTextFieldAndAnswerButtonDisable() {
+//        self.answerInputField.isEnabled = false
+//        self.answerButton.isEnabled = false
+//    }
+//
     //タイトルへ戻る処理
     @objc func toTitle() {
         self.performSegue(withIdentifier: "totitle", sender: nil)
