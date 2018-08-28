@@ -17,8 +17,9 @@ class ResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resultLabel.text = String(UserDefaults.standard.integer(forKey: "correctCount")) + "問正解"
-        persentageLabel.text = String(UserDefaults.standard.double(forKey: "accuracy")) + "%です"
+        resultLabel.text = String(UserDefaults.standard.integer(forKey: Keys.correctCount.rawValue)) + "問正解"
+        persentageLabel.text = String(UserDefaults.standard.double(forKey: Keys.accuracy.rawValue)) + "%です"
+//        persentageLabel.text = "\(UserDefaults.standard.double(forKey: "accuracy"))%です"
         
         setLayout()
     }

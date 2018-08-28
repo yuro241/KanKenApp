@@ -25,11 +25,11 @@ class ReviewResultViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        resultLabel.text = String(UserDefaults.standard.integer(forKey: "correctCount")) + "問正解"
-        overcomeCountLabel.text = String(UserDefaults.standard.integer(forKey: "overcomeCount")) + "個の問題を克服しました"
+        resultLabel.text = String(UserDefaults.standard.integer(forKey: Keys.correctCount.rawValue)) + "問正解"
+        overcomeCountLabel.text = String(UserDefaults.standard.integer(forKey: Keys.overcomeCount.rawValue)) + "個の問題を克服しました"
         
         //2秒後にタイトルへ自動遷移
-        Timer.scheduledTimer(withTimeInterval: 2, repeats: false, block: {_ in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2), execute: {
             self.performSegue(withIdentifier: "totitle", sender: nil)
         })
     }

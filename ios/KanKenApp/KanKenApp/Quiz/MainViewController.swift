@@ -9,6 +9,9 @@
 import UIKit
 import SCLAlertView
 
+private let hiraginoFontString = "ヒラギノ角ゴシック W3"
+private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
+
 internal class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -23,8 +26,6 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var stopButton: UIBarButtonItem!
     @IBOutlet weak var answerButton: UIButton!
     
-    //データ配列
-    private var dataList: [String] = []
     //漢字データ
     private var arrayKanji: [String] = []
     //読み仮名データ
@@ -48,7 +49,7 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         
         viewReset()
         setLayout()
-        readCSV()
+        CsvFileManager().readCsv()
         changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
@@ -59,23 +60,24 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationItem.hidesBackButton = true
         
-        arrayKana = UserDefaults.standard.array(forKey: "kana") as! [String]
-        arrayKanji = UserDefaults.standard.array(forKey: "kanji") as! [String]
+        //UserDefaultsの使用をクラスで分ける
+        arrayKana = UserDefaults.standard.array(forKey: Keys.kana.rawValue) as! [String]
+        arrayKanji = UserDefaults.standard.array(forKey: Keys.kanji.rawValue) as! [String]
         
-        if let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer") {
+        if let fetchedData = UserDefaults.standard.data(forKey: Keys.wrongAnswer.rawValue) {
             let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
             self.arrayWrongAnswer = fetchedWrongAnswers
         }
         
-        if let wrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") {
+        if let wrongTimeCount = UserDefaults.standard.array(forKey: Keys.wrongTimeCount.rawValue) {
             arrayWrongTimeCount = wrongTimeCount as! [[Int]]
         }
         
-        if UserDefaults.standard.integer(forKey: "gameMode") == 2 {
+        if UserDefaults.standard.integer(forKey: Keys.gameMode.rawValue) == 2 {
             numOfTry = 10
             self.navigationItem.title = "10問組手モード"
         }
-        if UserDefaults.standard.integer(forKey: "gameMode") == 3 {
+        if UserDefaults.standard.integer(forKey: Keys.gameMode.rawValue) == 3 {
             numOfTry = arrayKanji.count
             self.navigationItem.title = "全問必答モード"
         }
@@ -101,25 +103,7 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         answerButton.layer.cornerRadius = 5
     }
     
-    //CSVファイル読み込み処理
-    private func readCSV() {
-        do {
-            //CSVファイルのPath取得
-            let csvPath = Bundle.main.path(forResource: "questions", ofType: "csv")
-            //CSVファイルのデータを取得
-            let csvData = try! String(contentsOfFile:csvPath!, encoding:String.Encoding.utf8)
-            //改行ごとにデータ格納
-            dataList = csvData.components(separatedBy: "\n")
-            //漢字とひらがなに分割
-            for i in 0..<dataList.count-1 {
-                let array: Array = dataList[i].components(separatedBy: ",")
-                arrayKanji.append(array[0])
-                arrayKana.append(array[1])
-            }
-        }
-        UserDefaults.standard.set(arrayKanji, forKey: "kanji")
-        UserDefaults.standard.set(arrayKana, forKey: "kana")
-    }
+    //CSVファイル読み込み処理 -> クラス分ける
     
     //問題出題
     private func changeQuestion() {
@@ -151,7 +135,7 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         count += 1
 
         //1秒後に次の問題へ移動
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
             self.viewReset()
             self.changeQuestion()
         })
@@ -172,14 +156,14 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
     private func setWrongAnswersToUserDefaults() {
         let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
-        UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
+        UserDefaults.standard.set(wrongAnswersData, forKey: Keys.wrongAnswer.rawValue)
         //間違えた問題の数をUserDefaultsに保存
-        UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
+        UserDefaults.standard.set(arrayWrongAnswer.count, forKey: Keys.numOfWrongAnswer.rawValue)
     }
     
     //間違えた回数データをUserDefaultsへ保存
     private func setWrongTimeCountToUserDefaults() {
-        UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
+        UserDefaults.standard.set(arrayWrongTimeCount, forKey: Keys.wrongTimeCount.rawValue)
     }
     
     //クイズ終了時の処理
@@ -188,8 +172,8 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/Double(numOfTry))*100
-        UserDefaults.standard.set(accuracy, forKey: "accuracy")
-        UserDefaults.standard.set(correctAnswers, forKey: "correctCount")
+        UserDefaults.standard.set(accuracy, forKey: Keys.accuracy.rawValue)
+        UserDefaults.standard.set(correctAnswers, forKey: Keys.correctCount.rawValue)
         self.performSegue(withIdentifier: "finish", sender: nil)
     }
     
@@ -230,9 +214,9 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 24)!,
-            kTextFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 16)!,
-            kButtonFont: UIFont(name: "ヒラギノ角ゴシック W6", size: 16)!,
+            kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
+            kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
+            kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
             contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
             hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)

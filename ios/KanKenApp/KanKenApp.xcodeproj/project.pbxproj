@@ -29,6 +29,8 @@
 		50CEE3FC20CA76EB00D781E3 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */; };
 		50CEE3FE20CA8C5200D781E3 /* ReviewResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */; };
 		50CEE40020CA8D4300D781E3 /* ReviewResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */; };
+		50D7BB12213532DB00D19205 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB11213532DB00D19205 /* Key.swift */; };
+		50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB1321353A7B00D19205 /* CsvFileManager.swift */; };
 		50F7C16720C2218200826D58 /* questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50F7C16620C2218200826D58 /* questions.csv */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResultViewController.swift; sourceTree = "<group>"; };
 		50D7BB0F2135281200D19205 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		50D7BB102135281300D19205 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Title.strings; sourceTree = "<group>"; };
+		50D7BB11213532DB00D19205 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		50D7BB1321353A7B00D19205 /* CsvFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvFileManager.swift; sourceTree = "<group>"; };
 		50DD882E20BD3D9900C2DB53 /* SCLAlertView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SCLAlertView.framework.dSYM; path = ../../Carthage/Build/iOS/SCLAlertView.framework.dSYM; sourceTree = "<group>"; };
 		50DD883020BD3DA100C2DB53 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = ../../Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		50F7C16620C2218200826D58 /* questions.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.csv; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 				5094ED83203F2BB0001AADBD /* Assets.xcassets */,
 				5094ED88203F2BB0001AADBD /* Info.plist */,
 				50F7C16620C2218200826D58 /* questions.csv */,
+				50D7BB11213532DB00D19205 /* Key.swift */,
+				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
 			);
 			path = KanKenApp;
 			sourceTree = "<group>";
@@ -423,8 +429,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				50CEE40020CA8D4300D781E3 /* ReviewResultViewController.swift in Sources */,
+				50D7BB12213532DB00D19205 /* Key.swift in Sources */,
 				5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */,
 				506FEE9C20C6BE8E009AC5FA /* QuestionPair.swift in Sources */,
+				50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */,
 				5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */,
 				50CEE3F820CA351200D781E3 /* CustomTableViewCell.swift in Sources */,
 				5094ED7D203F2BB0001AADBD /* AppDelegate.swift in Sources */,

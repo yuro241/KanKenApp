@@ -9,6 +9,9 @@
 import UIKit
 import SCLAlertView
 
+private let hiraginoFontString = "ヒラギノ角ゴシック W3"
+private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
+
 class TitleViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var mainTitleLabel: UILabel!
@@ -79,10 +82,10 @@ class TitleViewController: UIViewController {
     @IBAction func startButtonTapped(_ sender: UIButton) {
         //選ばれたモードによってtagで画面遷移を変更
         if tagForIdentifier == 2 {
-            UserDefaults.standard.set(2, forKey: "gameMode")
+            UserDefaults.standard.set(2, forKey: Keys.gameMode.rawValue)
         }
         if tagForIdentifier == 3 {
-            UserDefaults.standard.set(3, forKey: "gameMode")
+            UserDefaults.standard.set(3, forKey: Keys.gameMode.rawValue)
         }
         startButton.alpha = 0.3
         startButton.isEnabled = false
@@ -129,9 +132,9 @@ class TitleViewController: UIViewController {
     @objc internal func showPopUp(sender: UIButton) {
         
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 24)!,
-            kTextFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 16)!,
-            kButtonFont: UIFont(name: "ヒラギノ角ゴシック W6", size: 16)!,
+            kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
+            kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
+            kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
             showCircularIcon: false, contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
             hideWhenBackgroundViewIsTapped: true
         )

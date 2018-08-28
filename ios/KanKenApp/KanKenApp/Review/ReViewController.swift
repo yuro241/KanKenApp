@@ -9,6 +9,9 @@
 import UIKit
 import SCLAlertView
 
+private let hiraginoFontString = "ヒラギノ角ゴシック W3"
+private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
+
 class ReViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var questionNumberLabel: UILabel!
     @IBOutlet var questionLabel: UILabel!
@@ -49,7 +52,7 @@ class ReViewController: UIViewController, UITextFieldDelegate {
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         
-        arrayWrongTimeCount = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
+        arrayWrongTimeCount = UserDefaults.standard.array(forKey: Keys.wrongTimeCount.rawValue) as! [[Int]]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,7 +76,7 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func getWrongAnswers() {
-        let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer")
+        let fetchedData = UserDefaults.standard.data(forKey: Keys.wrongAnswer.rawValue)
         let fetchedAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData!)
         arrayWrongAnswer = fetchedAnswers
         
@@ -122,19 +125,20 @@ class ReViewController: UIViewController, UITextFieldDelegate {
         }
         answerInputField.text! = ""
         count += 1
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false, block: { _ in
+        //1秒後に移動
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(1), execute: {
             self.viewReset()
             self.changeQuestion()
-        })
+            })
     }
     
     private func finishQuiz() {
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnsCount) / Double(count))*100
-        UserDefaults.standard.set(accuracy, forKey: "accuracy")
-        UserDefaults.standard.set(correctAnsCount, forKey: "correctCount")
-        UserDefaults.standard.set(overcomeCount, forKey:"overcomeCount")
+        UserDefaults.standard.set(accuracy, forKey: Keys.accuracy.rawValue)
+        UserDefaults.standard.set(correctAnsCount, forKey: Keys.correctCount.rawValue)
+        UserDefaults.standard.set(overcomeCount, forKey: Keys.overcomeCount.rawValue)
         self.performSegue(withIdentifier: "toResult", sender: nil)
     }
     
@@ -142,12 +146,12 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     private func setWrongAnswersToUserDefaults() {
         if !arrayWrongAnswer.isEmpty {
             let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
-            UserDefaults.standard.set(wrongAnswersData, forKey: "wrongAnswer")
+            UserDefaults.standard.set(wrongAnswersData, forKey: Keys.wrongAnswer.rawValue)
             //間違えた問題の数をUserDefaultsに保存
-            UserDefaults.standard.set(arrayWrongAnswer.count, forKey: "numOfWrongAnswer")
+            UserDefaults.standard.set(arrayWrongAnswer.count, forKey: Keys.numOfWrongAnswer.rawValue)
         } else {
-            UserDefaults.standard.set(nil, forKey: "wrongAnswer")
-            UserDefaults.standard.set(0, forKey: "numOfWrongAnswer")
+            UserDefaults.standard.set(nil, forKey: Keys.wrongAnswer.rawValue)
+            UserDefaults.standard.set(0, forKey: Keys.numOfWrongAnswer.rawValue)
         }
         
     }
@@ -155,9 +159,9 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     //間違えた回数データをUserDefaultsへ保存
     private func setWrongTimeCountToUserDefaults() {
         if !arrayWrongTimeCount.isEmpty {
-            UserDefaults.standard.set(arrayWrongTimeCount, forKey: "wrongTimeCount")
+            UserDefaults.standard.set(arrayWrongTimeCount, forKey: Keys.wrongTimeCount.rawValue)
         } else {
-            UserDefaults.standard.set(nil, forKey: "wrongTimeCount")
+            UserDefaults.standard.set(nil, forKey: Keys.wrongTimeCount.rawValue)
         }
     }
     
@@ -196,9 +200,9 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func PauseTap(_ sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 24)!,
-                                                    kTextFont: UIFont(name: "ヒラギノ角ゴシック W3", size: 16)!,
-                                                    kButtonFont: UIFont(name: "ヒラギノ角ゴシック W6", size: 16)!,
+        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
+                                                    kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
+                                                    kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
                                                     contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
                                                     hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
