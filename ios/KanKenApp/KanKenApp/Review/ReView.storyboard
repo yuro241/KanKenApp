@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0kP-KZ-n2h">
-    <device id="retina5_5" orientation="portrait">
+    <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,11 +15,11 @@
             <objects>
                 <viewController id="0kP-KZ-n2h" customClass="ReViewController" customModule="KanKenApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nXb-Pv-Fkb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="第1問" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNI-df-K9d">
-                                <rect key="frame" x="16.666666666666671" y="35" width="100" height="40"/>
+                                <rect key="frame" x="39" y="35" width="100" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="Dfe-8v-suI"/>
@@ -31,14 +30,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="燐寸" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7VI-YQ-scB">
-                                <rect key="frame" x="103.33333333333333" y="120" width="207.33333333333337" height="116.66666666666669"/>
+                                <rect key="frame" x="94" y="120" width="188" height="106"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gq5-JY-tDx">
-                                <rect key="frame" x="355.66666666666669" y="556" width="45" height="30"/>
+                                <rect key="frame" x="296" y="246" width="45" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.93333333330000001" blue="0.83529411760000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="45" id="XuO-Em-3fD"/>
@@ -52,26 +51,26 @@
                                     <action selector="answerButtonTap:" destination="0kP-KZ-n2h" eventType="touchUpInside" id="FOx-6h-Nhi"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ここに解答を入力しよう" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FFD-Jw-M4J">
-                                <rect key="frame" x="66.666666666666686" y="556" width="281" height="30"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="読み方は？" textAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="FFD-Jw-M4J">
+                                <rect key="frame" x="69" y="246" width="217" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 正解！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="csp-ZZ-gyE">
-                                <rect key="frame" x="91.666666666666671" y="316.66666666666669" width="230.66666666666663" height="87.333333333333314"/>
+                                <rect key="frame" x="83" y="306" width="209" height="80"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="51"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" 不正解…" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fng-O9-eoA">
-                                <rect key="frame" x="91.666666666666671" y="266.66666666666669" width="230.66666666666663" height="73"/>
+                                <rect key="frame" x="83" y="256" width="209" height="66"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="41"/>
                                 <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="答えは：" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7W7-11-Co5">
-                                <rect key="frame" x="51.666666666666657" y="492.33333333333331" width="310.66666666666674" height="43.666666666666686"/>
+                                <rect key="frame" x="47" y="352" width="282" height="39.5"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W3" family="Hiragino Sans" pointSize="27"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -83,27 +82,27 @@
                             <constraint firstItem="gq5-JY-tDx" firstAttribute="top" secondItem="FFD-Jw-M4J" secondAttribute="top" id="9FX-lc-ry7"/>
                             <constraint firstItem="7W7-11-Co5" firstAttribute="centerX" secondItem="cE5-hG-35v" secondAttribute="centerX" id="9vV-S0-F5p"/>
                             <constraint firstItem="7VI-YQ-scB" firstAttribute="top" secondItem="cE5-hG-35v" secondAttribute="top" constant="100" id="Blq-pc-HbO"/>
-                            <constraint firstAttribute="trailing" secondItem="gq5-JY-tDx" secondAttribute="trailing" constant="13.5" id="EcF-El-6gC"/>
+                            <constraint firstAttribute="trailing" secondItem="gq5-JY-tDx" secondAttribute="trailing" constant="34" id="EcF-El-6gC"/>
                             <constraint firstItem="Fng-O9-eoA" firstAttribute="width" secondItem="nXb-Pv-Fkb" secondAttribute="height" multiplier="89:284" id="FZi-Bn-uZk"/>
-                            <constraint firstItem="gq5-JY-tDx" firstAttribute="leading" secondItem="FFD-Jw-M4J" secondAttribute="trailing" constant="8" id="JIE-5u-ttT"/>
+                            <constraint firstItem="gq5-JY-tDx" firstAttribute="leading" secondItem="FFD-Jw-M4J" secondAttribute="trailing" constant="10" id="JIE-5u-ttT"/>
                             <constraint firstItem="csp-ZZ-gyE" firstAttribute="top" secondItem="7VI-YQ-scB" secondAttribute="bottom" constant="80" id="OFu-EL-Wj5"/>
                             <constraint firstItem="7VI-YQ-scB" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" id="R9C-S1-Vbe"/>
                             <constraint firstItem="csp-ZZ-gyE" firstAttribute="height" secondItem="nXb-Pv-Fkb" secondAttribute="width" multiplier="60:284" id="REb-fB-HEX"/>
                             <constraint firstItem="Fng-O9-eoA" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" id="SE6-RI-X9K"/>
-                            <constraint firstItem="FFD-Jw-M4J" firstAttribute="top" secondItem="7W7-11-Co5" secondAttribute="bottom" constant="20" id="WCE-Yz-Wei"/>
+                            <constraint firstItem="FFD-Jw-M4J" firstAttribute="top" secondItem="7VI-YQ-scB" secondAttribute="bottom" constant="20" id="WCE-Yz-Wei"/>
                             <constraint firstItem="Fng-O9-eoA" firstAttribute="top" secondItem="7VI-YQ-scB" secondAttribute="bottom" constant="30" id="YFg-fW-E3X"/>
                             <constraint firstItem="csp-ZZ-gyE" firstAttribute="width" secondItem="nXb-Pv-Fkb" secondAttribute="height" multiplier="89:284" id="bOj-6S-tmk"/>
                             <constraint firstItem="7W7-11-Co5" firstAttribute="height" secondItem="nXb-Pv-Fkb" secondAttribute="width" multiplier="15:142" id="bq6-dq-1yI"/>
+                            <constraint firstItem="7W7-11-Co5" firstAttribute="top" secondItem="Fng-O9-eoA" secondAttribute="bottom" constant="30" id="dU2-86-lGh"/>
                             <constraint firstItem="Fng-O9-eoA" firstAttribute="height" secondItem="nXb-Pv-Fkb" secondAttribute="width" multiplier="50:284" id="fHD-By-UZB"/>
                             <constraint firstItem="nNI-df-K9d" firstAttribute="top" secondItem="cE5-hG-35v" secondAttribute="top" constant="15" id="hU1-lO-5if"/>
                             <constraint firstItem="7W7-11-Co5" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" id="ipE-zg-TWi"/>
                             <constraint firstItem="7W7-11-Co5" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" id="jbj-pk-ZMe"/>
                             <constraint firstItem="7VI-YQ-scB" firstAttribute="width" secondItem="nXb-Pv-Fkb" secondAttribute="height" multiplier="20:71" id="kSg-xJ-jz4"/>
                             <constraint firstItem="7W7-11-Co5" firstAttribute="width" secondItem="nXb-Pv-Fkb" secondAttribute="height" multiplier="60:142" id="mJB-hx-wx6"/>
-                            <constraint firstItem="cE5-hG-35v" firstAttribute="bottom" secondItem="FFD-Jw-M4J" secondAttribute="bottom" constant="150" id="nMe-In-BHC"/>
-                            <constraint firstItem="nNI-df-K9d" firstAttribute="leading" secondItem="FFD-Jw-M4J" secondAttribute="leading" constant="-50" id="rXA-e1-ecu"/>
+                            <constraint firstItem="nNI-df-K9d" firstAttribute="leading" secondItem="FFD-Jw-M4J" secondAttribute="leading" constant="-30" id="rXA-e1-ecu"/>
                             <constraint firstItem="csp-ZZ-gyE" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" id="vJP-HN-2of"/>
-                            <constraint firstItem="FFD-Jw-M4J" firstAttribute="centerX" secondItem="cE5-hG-35v" secondAttribute="centerX" id="veS-je-2kJ"/>
+                            <constraint firstItem="FFD-Jw-M4J" firstAttribute="centerX" secondItem="nXb-Pv-Fkb" secondAttribute="centerX" constant="-10" id="veS-je-2kJ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="cE5-hG-35v"/>
                     </view>

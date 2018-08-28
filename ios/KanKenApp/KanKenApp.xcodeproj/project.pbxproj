@@ -29,6 +29,9 @@
 		50CEE3FC20CA76EB00D781E3 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */; };
 		50CEE3FE20CA8C5200D781E3 /* ReviewResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */; };
 		50CEE40020CA8D4300D781E3 /* ReviewResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */; };
+		50D7BB12213532DB00D19205 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB11213532DB00D19205 /* Key.swift */; };
+		50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB1321353A7B00D19205 /* CsvFileManager.swift */; };
+		50D7BB1621353F5900D19205 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */; };
 		50F7C16720C2218200826D58 /* questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50F7C16620C2218200826D58 /* questions.csv */; };
 /* End PBXBuildFile section */
 
@@ -78,6 +81,11 @@
 		50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewController.swift; sourceTree = "<group>"; };
 		50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReviewResult.storyboard; sourceTree = "<group>"; };
 		50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResultViewController.swift; sourceTree = "<group>"; };
+		50D7BB0F2135281200D19205 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		50D7BB102135281300D19205 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Title.strings; sourceTree = "<group>"; };
+		50D7BB11213532DB00D19205 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		50D7BB1321353A7B00D19205 /* CsvFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvFileManager.swift; sourceTree = "<group>"; };
+		50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		50DD882E20BD3D9900C2DB53 /* SCLAlertView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SCLAlertView.framework.dSYM; path = ../../Carthage/Build/iOS/SCLAlertView.framework.dSYM; sourceTree = "<group>"; };
 		50DD883020BD3DA100C2DB53 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = ../../Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		50F7C16620C2218200826D58 /* questions.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.csv; sourceTree = "<group>"; };
@@ -119,37 +127,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5069CA322042AAA800457ECA /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
-				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
-				506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */,
-				50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */,
-				50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */,
-				5094ED7E203F2BB0001AADBD /* MainViewController.swift */,
-				506F03C9207C6B15002B063F /* ResultViewController.swift */,
-				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
-				50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		5069CA332042AAB800457ECA /* StoryBoard */ = {
-			isa = PBXGroup;
-			children = (
-				5094ED85203F2BB0001AADBD /* LaunchScreen.storyboard */,
-				5094ED80203F2BB0001AADBD /* Title.storyboard */,
-				5069CA342042AAE900457ECA /* Main.storyboard */,
-				5069CA362042AF6E00457ECA /* Result.storyboard */,
-				506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */,
-				50CEE3F920CA76D900D781E3 /* ReView.storyboard */,
-				50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */,
-				500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */,
-			);
-			path = StoryBoard;
-			sourceTree = "<group>";
-		};
 		5094ED70203F2BAF001AADBD = {
 			isa = PBXGroup;
 			children = (
@@ -174,12 +151,22 @@
 		5094ED7B203F2BAF001AADBD /* KanKenApp */ = {
 			isa = PBXGroup;
 			children = (
+				50D7BB0C2134F63D00D19205 /* AppDelegate */,
+				50D7BB072134F4F400D19205 /* LaunchScreen */,
+				50D7BB042134F48B00D19205 /* Title */,
+				50D7BB0B2134F60D00D19205 /* PopUp */,
+				50D7BB0A2134F59F00D19205 /* Quiz */,
+				50D7BB082134F50100D19205 /* WrongQuestionList */,
+				50D7BB052134F49C00D19205 /* Review */,
+				50D7BB092134F51300D19205 /* Result */,
+				50D7BB062134F4DD00D19205 /* ReviewResult */,
 				50B29F4920EDF8420001FBB0 /* icons */,
-				5069CA332042AAB800457ECA /* StoryBoard */,
-				5069CA322042AAA800457ECA /* ViewController */,
 				5094ED83203F2BB0001AADBD /* Assets.xcassets */,
 				5094ED88203F2BB0001AADBD /* Info.plist */,
 				50F7C16620C2218200826D58 /* questions.csv */,
+				50D7BB11213532DB00D19205 /* Key.swift */,
+				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
+				50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */,
 			);
 			path = KanKenApp;
 			sourceTree = "<group>";
@@ -200,6 +187,87 @@
 				5094ED9E203F2BB0001AADBD /* Info.plist */,
 			);
 			path = KanKenAppUITests;
+			sourceTree = "<group>";
+		};
+		50D7BB042134F48B00D19205 /* Title */ = {
+			isa = PBXGroup;
+			children = (
+				5094ED80203F2BB0001AADBD /* Title.storyboard */,
+				5019793E20C3BC27005B7456 /* TitleViewController.swift */,
+			);
+			path = Title;
+			sourceTree = "<group>";
+		};
+		50D7BB052134F49C00D19205 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				50CEE3F920CA76D900D781E3 /* ReView.storyboard */,
+				50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		50D7BB062134F4DD00D19205 /* ReviewResult */ = {
+			isa = PBXGroup;
+			children = (
+				50CEE3FD20CA8C5200D781E3 /* ReviewResult.storyboard */,
+				50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */,
+			);
+			path = ReviewResult;
+			sourceTree = "<group>";
+		};
+		50D7BB072134F4F400D19205 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5094ED85203F2BB0001AADBD /* LaunchScreen.storyboard */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		50D7BB082134F50100D19205 /* WrongQuestionList */ = {
+			isa = PBXGroup;
+			children = (
+				506FEE9D20C7D0B5009AC5FA /* WrongQuestionList.storyboard */,
+				506FEE9F20C7DA9F009AC5FA /* WrongQuestionListController.swift */,
+				50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */,
+			);
+			path = WrongQuestionList;
+			sourceTree = "<group>";
+		};
+		50D7BB092134F51300D19205 /* Result */ = {
+			isa = PBXGroup;
+			children = (
+				5069CA362042AF6E00457ECA /* Result.storyboard */,
+				506F03C9207C6B15002B063F /* ResultViewController.swift */,
+			);
+			name = Result;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		50D7BB0A2134F59F00D19205 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				5069CA342042AAE900457ECA /* Main.storyboard */,
+				5094ED7E203F2BB0001AADBD /* MainViewController.swift */,
+				506FEE9B20C6BE8E009AC5FA /* QuestionPair.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		50D7BB0B2134F60D00D19205 /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				500839C920CB86CD00EF4F94 /* detailPopUp.storyboard */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		50D7BB0C2134F63D00D19205 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				5094ED7C203F2BB0001AADBD /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -364,8 +432,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				50CEE40020CA8D4300D781E3 /* ReviewResultViewController.swift in Sources */,
+				50D7BB12213532DB00D19205 /* Key.swift in Sources */,
+				50D7BB1621353F5900D19205 /* UserDefaultsManager.swift in Sources */,
 				5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */,
 				506FEE9C20C6BE8E009AC5FA /* QuestionPair.swift in Sources */,
+				50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */,
 				5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */,
 				50CEE3F820CA351200D781E3 /* CustomTableViewCell.swift in Sources */,
 				5094ED7D203F2BB0001AADBD /* AppDelegate.swift in Sources */,
@@ -411,6 +482,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5094ED81203F2BB0001AADBD /* Base */,
+				50D7BB102135281300D19205 /* ja */,
 			);
 			name = Title.storyboard;
 			sourceTree = "<group>";
@@ -419,6 +491,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5094ED86203F2BB0001AADBD /* Base */,
+				50D7BB0F2135281200D19205 /* ja */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -430,6 +503,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -474,7 +548,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -487,6 +561,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -525,7 +600,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

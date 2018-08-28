@@ -12,13 +12,14 @@ class WrongQuestionListController: UITableViewController {
     
     @IBOutlet var baseTableView: UITableView!
     
-    var cellCount: Int = 0
-    var wrongTimeCountArray: [[Int]] = [[],[]]
+    private var cellCount: Int = 0
+    private var wrongTimeCountArray: [[Int]] = [[],[]]
+    
+    private let userDefaultsManager = UserDefaultsManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.baseTableView.backgroundColor = #colorLiteral(red: 1, green: 0.831372549, blue: 0, alpha: 1)
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9254901961, green: 0.4470588235, blue: 0.05882352941, alpha: 1)
     }
     
@@ -26,14 +27,14 @@ class WrongQuestionListController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "復習単語リスト"
-        wrongTimeCountArray = UserDefaults.standard.array(forKey: "wrongTimeCount") as! [[Int]]
+        wrongTimeCountArray = userDefaultsManager.getWrongTimeCount() ?? [[]]
         
         //wrongTimeCountArrayを降順ソート
         wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print(UserDefaults.standard.integer(forKey: "numOfWrongAnswer"))
-        return UserDefaults.standard.integer(forKey: "numOfWrongAnswer")
+//        print(UserDefaults.standard.integer(forKey: Keys.numOfWrongAnswer.rawValue))
+        return userDefaultsManager.getNumOfWrongAnswer()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,8 +74,8 @@ class WrongQuestionListController: UITableViewController {
         return cell
     }
     
-    func deCodeWrongQuestion() -> [Question] {
-        let fetchedData = UserDefaults.standard.data(forKey: "wrongAnswer")
+    private func deCodeWrongQuestion() -> [Question] {
+        let fetchedData = userDefaultsManager.getWrongAnswer()
         let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData!)
         
         return fetchedWrongAnswers

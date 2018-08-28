@@ -1,0 +1,24 @@
+
+/* Class = "UIButton"; normalTitle = "開始"; ObjectID = "CkE-dS-t4G"; */
+"CkE-dS-t4G.normalTitle" = "開始";
+
+/* Class = "UIBarButtonItem"; title = "タイトルへ"; ObjectID = "PZ9-JK-GA9"; */
+"PZ9-JK-GA9.title" = "タイトルへ";
+
+/* Class = "UILabel"; text = "熟語の読み当てクイズ　"; ObjectID = "T5O-eB-fCs"; */
+"T5O-eB-fCs.text" = "熟語の読み当てクイズ　";
+
+/* Class = "UIButton"; normalTitle = "全問必答"; ObjectID = "WMv-9B-sCJ"; */
+"WMv-9B-sCJ.normalTitle" = "全問必答";
+
+/* Class = "UILabel"; text = "難 読 漢 字"; ObjectID = "cvB-e2-c2w"; */
+"cvB-e2-c2w.text" = "難 読 漢 字";
+
+/* Class = "UIButton"; normalTitle = "10問組手"; ObjectID = "d0G-b3-xTJ"; */
+"d0G-b3-xTJ.normalTitle" = "10問組手";
+
+/* Class = "UIButton"; normalTitle = "誤答復習"; ObjectID = "m33-5Y-xce"; */
+"m33-5Y-xce.normalTitle" = "誤答復習";
+
+/* Class = "UIButton"; normalTitle = "復習単語リスト"; ObjectID = "uKX-O9-erX"; */
+"uKX-O9-erX.normalTitle" = "復習単語リスト";
