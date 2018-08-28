@@ -12,6 +12,7 @@ class ReviewResultViewController: UIViewController {
     @IBOutlet var resultLabel: UILabel!
     @IBOutlet var overcomeCountLabel: UILabel!
     
+    private let userDefaultsManager = UserDefaultsManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,8 +26,8 @@ class ReviewResultViewController: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: false)
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
         
-        resultLabel.text = String(UserDefaults.standard.integer(forKey: Keys.correctCount.rawValue)) + "問正解"
-        overcomeCountLabel.text = String(UserDefaults.standard.integer(forKey: Keys.overcomeCount.rawValue)) + "個の問題を克服しました"
+        resultLabel.text = String(userDefaultsManager.getCorrectCount()) + "問正解"
+        overcomeCountLabel.text = String(userDefaultsManager.getOvercomeCount()) + "個の問題を克服しました"
         
         //2秒後にタイトルへ自動遷移
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2), execute: {

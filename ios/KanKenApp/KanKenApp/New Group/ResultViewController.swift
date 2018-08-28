@@ -14,11 +14,12 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var restartButton: UIButton!
     @IBOutlet weak var toTitleButton: UIButton!
     
+    private let userDefaultsManager = UserDefaultsManager()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resultLabel.text = String(UserDefaults.standard.integer(forKey: Keys.correctCount.rawValue)) + "問正解"
-        persentageLabel.text = String(UserDefaults.standard.double(forKey: Keys.accuracy.rawValue)) + "%です"
+        resultLabel.text = String(userDefaultsManager.getCorrectCount()) + "問正解"
+        persentageLabel.text = String(userDefaultsManager.getAccuracy()) + "%です"
 //        persentageLabel.text = "\(UserDefaults.standard.double(forKey: "accuracy"))%です"
         
         setLayout()

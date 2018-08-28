@@ -41,6 +41,8 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     private var questionNum: Int = 0
     private var numOfTry: Int = 1
     
+    private let userDefaultManager = UserDefaultsManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,8 +51,6 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         
         viewReset()
         setLayout()
-        CsvFileManager().readCsv()
-        changeQuestion()
         
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
     }
@@ -60,27 +60,30 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         
         self.navigationItem.hidesBackButton = true
         
-        //UserDefaultsの使用をクラスで分ける
-        arrayKana = UserDefaults.standard.array(forKey: Keys.kana.rawValue) as! [String]
-        arrayKanji = UserDefaults.standard.array(forKey: Keys.kanji.rawValue) as! [String]
+        arrayKana = userDefaultManager.getKana()
+        arrayKanji = userDefaultManager.getKanji()
         
-        if let fetchedData = UserDefaults.standard.data(forKey: Keys.wrongAnswer.rawValue) {
+        if let fetchedData = userDefaultManager.getWrongAnswer() {
             let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData)
             self.arrayWrongAnswer = fetchedWrongAnswers
         }
         
-        if let wrongTimeCount = UserDefaults.standard.array(forKey: Keys.wrongTimeCount.rawValue) {
-            arrayWrongTimeCount = wrongTimeCount as! [[Int]]
+        if let wrongTimeCount = userDefaultManager.getWrongTimeCount() {
+            arrayWrongTimeCount = wrongTimeCount
         }
         
-        if UserDefaults.standard.integer(forKey: Keys.gameMode.rawValue) == 2 {
+        switch userDefaultManager.getGameMode() {
+        case 2:
             numOfTry = 10
             self.navigationItem.title = "10問組手モード"
-        }
-        if UserDefaults.standard.integer(forKey: Keys.gameMode.rawValue) == 3 {
+        case 3:
             numOfTry = arrayKanji.count
             self.navigationItem.title = "全問必答モード"
+        default:
+            print("Error")
         }
+        
+        changeQuestion()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -103,8 +106,6 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         answerButton.layer.cornerRadius = 5
     }
     
-    //CSVファイル読み込み処理 -> クラス分ける
-    
     //問題出題
     private func changeQuestion() {
         if count > numOfTry {
@@ -118,8 +119,6 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     
     //答え合わせ処理
     private func checkAns() {
-        print(arrayKana[questionNum])
-        print(answerInputField.text!)
         if answerInputField.text! == arrayKana[questionNum] {
             correctAnswers += 1
             changeCorrectLabel()
@@ -156,14 +155,15 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     //間違えた問題の配列データを,エンコードしてをUserDefaultsへ保存
     private func setWrongAnswersToUserDefaults() {
         let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
-        UserDefaults.standard.set(wrongAnswersData, forKey: Keys.wrongAnswer.rawValue)
+        userDefaultManager.setWrongAnswer(data: wrongAnswersData)
+
         //間違えた問題の数をUserDefaultsに保存
-        UserDefaults.standard.set(arrayWrongAnswer.count, forKey: Keys.numOfWrongAnswer.rawValue)
+        userDefaultManager.setNumOfWrongAnswer(num: arrayWrongAnswer.count)
     }
     
     //間違えた回数データをUserDefaultsへ保存
     private func setWrongTimeCountToUserDefaults() {
-        UserDefaults.standard.set(arrayWrongTimeCount, forKey: Keys.wrongTimeCount.rawValue)
+        userDefaultManager.setWrongTimeCount(nums: arrayWrongTimeCount)
     }
     
     //クイズ終了時の処理
@@ -172,8 +172,9 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnswers)/Double(numOfTry))*100
-        UserDefaults.standard.set(accuracy, forKey: Keys.accuracy.rawValue)
-        UserDefaults.standard.set(correctAnswers, forKey: Keys.correctCount.rawValue)
+        userDefaultManager.setAccuracy(num: accuracy)
+        userDefaultManager.setCorrectCount(num: correctAnswers)
+
         self.performSegue(withIdentifier: "finish", sender: nil)
     }
     

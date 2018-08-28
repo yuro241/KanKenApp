@@ -15,6 +15,8 @@ class WrongQuestionListController: UITableViewController {
     private var cellCount: Int = 0
     private var wrongTimeCountArray: [[Int]] = [[],[]]
     
+    private let userDefaultsManager = UserDefaultsManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,14 +27,14 @@ class WrongQuestionListController: UITableViewController {
         super.viewWillAppear(animated)
         
         self.navigationItem.title = "復習単語リスト"
-        wrongTimeCountArray = UserDefaults.standard.array(forKey: Keys.wrongTimeCount.rawValue) as! [[Int]]
+        wrongTimeCountArray = userDefaultsManager.getWrongTimeCount() ?? [[]]
         
         //wrongTimeCountArrayを降順ソート
         wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-        print(UserDefaults.standard.integer(forKey: Keys.numOfWrongAnswer.rawValue))
-        return UserDefaults.standard.integer(forKey: Keys.numOfWrongAnswer.rawValue)
+//        print(UserDefaults.standard.integer(forKey: Keys.numOfWrongAnswer.rawValue))
+        return userDefaultsManager.getNumOfWrongAnswer()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -73,7 +75,7 @@ class WrongQuestionListController: UITableViewController {
     }
     
     private func deCodeWrongQuestion() -> [Question] {
-        let fetchedData = UserDefaults.standard.data(forKey: Keys.wrongAnswer.rawValue)
+        let fetchedData = userDefaultsManager.getWrongAnswer()
         let fetchedWrongAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData!)
         
         return fetchedWrongAnswers

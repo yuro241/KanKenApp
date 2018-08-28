@@ -31,6 +31,8 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     private var correctAnsCount: Int = 0
     private var overcomeCount: Int = 0
     
+    private let userDefaultsManager = UserDefaultsManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,7 +54,7 @@ class ReViewController: UIViewController, UITextFieldDelegate {
         self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController!.navigationBar.shadowImage = UIImage()
         
-        arrayWrongTimeCount = UserDefaults.standard.array(forKey: Keys.wrongTimeCount.rawValue) as! [[Int]]
+        arrayWrongTimeCount = userDefaultsManager.getWrongTimeCount() ?? [[]]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -76,7 +78,7 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     }
     
     private func getWrongAnswers() {
-        let fetchedData = UserDefaults.standard.data(forKey: Keys.wrongAnswer.rawValue)
+        let fetchedData = userDefaultsManager.getWrongAnswer()
         let fetchedAnswers = try! PropertyListDecoder().decode([Question].self, from: fetchedData!)
         arrayWrongAnswer = fetchedAnswers
         
@@ -136,9 +138,9 @@ class ReViewController: UIViewController, UITextFieldDelegate {
         setWrongAnswersToUserDefaults()
         setWrongTimeCountToUserDefaults()
         let accuracy: Double = (Double(self.correctAnsCount) / Double(count))*100
-        UserDefaults.standard.set(accuracy, forKey: Keys.accuracy.rawValue)
-        UserDefaults.standard.set(correctAnsCount, forKey: Keys.correctCount.rawValue)
-        UserDefaults.standard.set(overcomeCount, forKey: Keys.overcomeCount.rawValue)
+        userDefaultsManager.setAccuracy(num: accuracy)
+        userDefaultsManager.setCorrectCount(num: correctAnsCount)
+        userDefaultsManager.setOvercomeCount(num: overcomeCount)
         self.performSegue(withIdentifier: "toResult", sender: nil)
     }
     
@@ -146,12 +148,13 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     private func setWrongAnswersToUserDefaults() {
         if !arrayWrongAnswer.isEmpty {
             let wrongAnswersData = try! PropertyListEncoder().encode(arrayWrongAnswer)
-            UserDefaults.standard.set(wrongAnswersData, forKey: Keys.wrongAnswer.rawValue)
+            userDefaultsManager.setWrongAnswer(data: wrongAnswersData)
             //間違えた問題の数をUserDefaultsに保存
-            UserDefaults.standard.set(arrayWrongAnswer.count, forKey: Keys.numOfWrongAnswer.rawValue)
+            userDefaultsManager.setNumOfWrongAnswer(num: arrayWrongAnswer.count)
         } else {
-            UserDefaults.standard.set(nil, forKey: Keys.wrongAnswer.rawValue)
-            UserDefaults.standard.set(0, forKey: Keys.numOfWrongAnswer.rawValue)
+            //TODO: ここから
+            userDefaultsManager.setWrongAnswer(data: nil)
+            userDefaultsManager.setNumOfWrongAnswer(num: 0)
         }
         
     }
@@ -159,9 +162,9 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     //間違えた回数データをUserDefaultsへ保存
     private func setWrongTimeCountToUserDefaults() {
         if !arrayWrongTimeCount.isEmpty {
-            UserDefaults.standard.set(arrayWrongTimeCount, forKey: Keys.wrongTimeCount.rawValue)
+            userDefaultsManager.setWrongTimeCount(nums: arrayWrongTimeCount)
         } else {
-            UserDefaults.standard.set(nil, forKey: Keys.wrongTimeCount.rawValue)
+            userDefaultsManager.setWrongTimeCount(nums: nil)
         }
     }
     

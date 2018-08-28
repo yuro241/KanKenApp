@@ -14,6 +14,7 @@ class CsvFileManager {
     private var kanjiArray: [String] = []
     private var kanaArray: [String] = []
     
+    private let userDefaultsManager = UserDefaultsManager()
     func readCsv() {
         //CSVファイルのPath取得
         let csvPath = Bundle.main.path(forResource: "questions", ofType: "csv")
@@ -27,7 +28,7 @@ class CsvFileManager {
             kanjiArray.append(array[0])
             kanaArray.append(array[1])
         }
-        UserDefaults.standard.set(kanjiArray, forKey: Keys.kanji.rawValue)
-        UserDefaults.standard.set(kanaArray, forKey: Keys.kana.rawValue)
+        userDefaultsManager.setKana(textArr: kanaArray)
+        userDefaultsManager.setKanji(textArr: kanjiArray)
     }
 }

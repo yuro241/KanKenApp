@@ -31,6 +31,7 @@
 		50CEE40020CA8D4300D781E3 /* ReviewResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3FF20CA8D4300D781E3 /* ReviewResultViewController.swift */; };
 		50D7BB12213532DB00D19205 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB11213532DB00D19205 /* Key.swift */; };
 		50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB1321353A7B00D19205 /* CsvFileManager.swift */; };
+		50D7BB1621353F5900D19205 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */; };
 		50F7C16720C2218200826D58 /* questions.csv in Resources */ = {isa = PBXBuildFile; fileRef = 50F7C16620C2218200826D58 /* questions.csv */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		50D7BB102135281300D19205 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Title.strings; sourceTree = "<group>"; };
 		50D7BB11213532DB00D19205 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		50D7BB1321353A7B00D19205 /* CsvFileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CsvFileManager.swift; sourceTree = "<group>"; };
+		50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		50DD882E20BD3D9900C2DB53 /* SCLAlertView.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = SCLAlertView.framework.dSYM; path = ../../Carthage/Build/iOS/SCLAlertView.framework.dSYM; sourceTree = "<group>"; };
 		50DD883020BD3DA100C2DB53 /* SCLAlertView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SCLAlertView.framework; path = ../../Carthage/Build/iOS/SCLAlertView.framework; sourceTree = "<group>"; };
 		50F7C16620C2218200826D58 /* questions.csv */ = {isa = PBXFileReference; lastKnownFileType = text; path = questions.csv; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				50F7C16620C2218200826D58 /* questions.csv */,
 				50D7BB11213532DB00D19205 /* Key.swift */,
 				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
+				50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */,
 			);
 			path = KanKenApp;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			files = (
 				50CEE40020CA8D4300D781E3 /* ReviewResultViewController.swift in Sources */,
 				50D7BB12213532DB00D19205 /* Key.swift in Sources */,
+				50D7BB1621353F5900D19205 /* UserDefaultsManager.swift in Sources */,
 				5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */,
 				506FEE9C20C6BE8E009AC5FA /* QuestionPair.swift in Sources */,
 				50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */,

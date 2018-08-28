@@ -22,6 +22,9 @@ class TitleViewController: UIViewController {
     private var tagForIdentifier: Int = 0
     private var tagNumOfButton: Int = 0
     
+    private let userDefaultsManager = UserDefaultsManager()
+    private let csvFileManager = CsvFileManager()
+    
     //各モード0〜3の説明文を記載
     private var ExplanationArray: [String] = ["\n今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！","\n今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！","\n問題がランダムで10問出題されます\n\n全問正解を目指しましょう！","\nすべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
     
@@ -29,6 +32,7 @@ class TitleViewController: UIViewController {
         super.viewDidLoad()
         
         setLayout()
+        csvFileManager.readCsv()
         //        //fordebug: 間違えた問題データ削除
         //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
         //        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
@@ -82,10 +86,10 @@ class TitleViewController: UIViewController {
     @IBAction func startButtonTapped(_ sender: UIButton) {
         //選ばれたモードによってtagで画面遷移を変更
         if tagForIdentifier == 2 {
-            UserDefaults.standard.set(2, forKey: Keys.gameMode.rawValue)
+            userDefaultsManager.setGameMode(num: 2)
         }
         if tagForIdentifier == 3 {
-            UserDefaults.standard.set(3, forKey: Keys.gameMode.rawValue)
+            userDefaultsManager.setGameMode(num: 3)
         }
         startButton.alpha = 0.3
         startButton.isEnabled = false
