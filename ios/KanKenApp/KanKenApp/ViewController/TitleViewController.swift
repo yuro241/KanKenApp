@@ -26,14 +26,8 @@ class TitleViewController: UIViewController {
         super.viewDidLoad()
         
         self.setLayout()
-        
-        for buttons in modeSelectButtons {
-            buttons.alpha = 0.3
-            buttons.layer.cornerRadius = 10
-        }
-        startButton.isEnabled = false
-//        //fordebug: 間違えた問題データ削除
-//        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
+        //        //fordebug: 間違えた問題データ削除
+        //        UserDefaults.standard.removeObject(forKey: "wrongAnswer")
         //        UserDefaults.standard.removeObject(forKey: "wrongTimeCount")
     }
     
@@ -46,7 +40,7 @@ class TitleViewController: UIViewController {
     }
     
     func setLayout() {
-        self.startButton.layer.cornerRadius = 10
+        //        self.startButton.layer.cornerRadius = 10
         self.mainTitleLabel.layer.cornerRadius = 20
         self.mainTitleLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.mainTitleLabel.clipsToBounds = true
@@ -54,6 +48,15 @@ class TitleViewController: UIViewController {
         self.subTitleLabel.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         self.subTitleLabel.clipsToBounds = true
         backGroundView.layer.cornerRadius = 20
+        
+        //各ボタンのalphaと角丸設定
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+            buttons.layer.cornerRadius = 10
+        }
+        startButton.alpha = 0.3
+        startButton.isEnabled = false
+        startButton.layer.cornerRadius = 10
     }
     
     func setModeSelectButtonEnable() {
@@ -63,6 +66,57 @@ class TitleViewController: UIViewController {
         } else {
             modeSelectButtons[0].isEnabled = true
             modeSelectButtons[1].isEnabled = true
+        }
+    }
+    
+    //開始ボタン押下時実行
+    @IBAction func startButtonTapped(_ sender: UIButton) {
+        //選ばれたモードによってtagで画面遷移を変更
+        if tagForIdentifier == 2 {
+            UserDefaults.standard.set(2, forKey: "gameMode")
+        }
+        if tagForIdentifier == 3 {
+            UserDefaults.standard.set(3, forKey: "gameMode")
+        }
+        startButton.alpha = 0.3
+        startButton.isEnabled = false
+        self.performSegue(withIdentifier: String(tagForIdentifier), sender: nil)
+    }
+    
+    //ボタンの選択非選択変更
+    @IBAction func changeAlpha(_ sender: UIButton) {
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+        }
+        modeSelectButtons[sender.tag].alpha = 1.0
+        tagForIdentifier = sender.tag
+        startButton.alpha = 1.0
+        startButton.isEnabled = true
+    }
+    
+    //モード選択ボタン長押し時にPopUp表示
+    //復習単語リスト
+    @IBAction func pressButtonToList(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[0])
+        }
+    }
+    //10問組手
+    @IBAction func pressButtonToMain(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[1])
+        }
+    }
+    //誤答復習
+    @IBAction func pressButtonToReview(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[2])
+        }
+    }
+    //全問必答
+    @IBAction func pressButtonToAll(_ sender: UILongPressGestureRecognizer) {
+        if sender.state == UIGestureRecognizerState.began {
+            showPopUp(sender: modeSelectButtons[3])
         }
     }
     
@@ -78,51 +132,4 @@ class TitleViewController: UIViewController {
         let alertView = SCLAlertView(appearance: appearance)
         alertView.showSuccess((sender.titleLabel?.text!)!, subTitle: ExplanationArray[sender.tag], closeButtonTitle: "閉じる", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C, animationStyle: .noAnimation)
     }
-    
-    //開始ボタン押下時実行
-    @IBAction func startButtonTapped(_ sender: UIButton) {
-        //選ばれたモードによってtagで画面遷移を変更
-        if tagForIdentifier == 2 {
-            UserDefaults.standard.set(2, forKey: "gameMode")
-        }
-        if tagForIdentifier == 3 {
-            UserDefaults.standard.set(3, forKey: "gameMode")
-        }
-        self.performSegue(withIdentifier: String(tagForIdentifier), sender: nil)
-    }
-    
-    //ボタンの選択非選択変更
-    @IBAction func changeAlpha(_ sender: UIButton) {
-        for buttons in modeSelectButtons {
-            buttons.alpha = 0.3
-        }
-        modeSelectButtons[sender.tag].alpha = 1.0
-        tagForIdentifier = sender.tag
-        startButton.isEnabled = true
-    }
-    //0
-    @IBAction func pressButtonToList(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.began {
-            showPopUp(sender: modeSelectButtons[0])
-        }
-    }
-    //1
-    @IBAction func pressButtonToMain(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.began {
-            showPopUp(sender: modeSelectButtons[1])
-        }
-    }
-    //2
-    @IBAction func pressButtonToReview(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.began {
-            showPopUp(sender: modeSelectButtons[2])
-        }
-    }
-    //3
-    @IBAction func pressButtonToAll(_ sender: UILongPressGestureRecognizer) {
-        if sender.state == UIGestureRecognizerState.began {
-            showPopUp(sender: modeSelectButtons[3])
-        }
-    }
-    
 }
