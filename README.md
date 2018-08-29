@@ -2,10 +2,10 @@
 
 ## iOS用アプリ
 ### 開発環境
-Xcode : Version 9.4.1
-Swift 4
-Carthage
-使用ライブラリ : SCLAlertView-Swift
+Xcode : Version 9.4.1  
+Swift 4  
+Carthage  
+使用ライブラリ : SCLAlertView-Swift  
 
 ライブラリ管理にCarthageを使用しているため、pull後`carthage update --platform iOS`を実行
 
