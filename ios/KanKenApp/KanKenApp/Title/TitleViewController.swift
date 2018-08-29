@@ -9,8 +9,8 @@
 import UIKit
 import SCLAlertView
 
-private let hiraginoFontString = "ヒラギノ角ゴシック W3"
-private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
+internal let HIRAGINO_FONT_STRING = "ヒラギノ角ゴシック W3"
+internal let HIRAGINO_BOLD_FONT_STRING = "ヒラギノ角ゴシック W6"
 
 class TitleViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
@@ -26,7 +26,10 @@ class TitleViewController: UIViewController {
     private let csvFileManager = CsvFileManager()
     
     //各モード0〜3の説明文を記載
-    private var ExplanationArray: [String] = ["\n今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！","\n今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！","\n問題がランダムで10問出題されます\n\n全問正解を目指しましょう！","\nすべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
+    private var ExplanationArray = ["\n今までのクイズで間違えた問題と答え、間違えた回数が一覧で確認できます\n\nリストを空っぽにしましょう！",
+                                    "\n今までのクイズで間違えた問題のみが出題されます\n\n苦手を克服しましょう！",
+                                    "\n問題がランダムで10問出題されます\n\n全問正解を目指しましょう！",
+                                    "\nすべての問題がランダムな順で出題されます\n\n全問正解したあなたは漢字マスター！？"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -136,9 +139,9 @@ class TitleViewController: UIViewController {
     @objc internal func showPopUp(sender: UIButton) {
         
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
-            kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
-            kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
+            kTitleFont: UIFont(name: HIRAGINO_FONT_STRING, size: 24)!,
+            kTextFont: UIFont(name: HIRAGINO_FONT_STRING, size: 16)!,
+            kButtonFont: UIFont(name: HIRAGINO_BOLD_FONT_STRING, size: 16)!,
             showCircularIcon: false, contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
             hideWhenBackgroundViewIsTapped: true
         )

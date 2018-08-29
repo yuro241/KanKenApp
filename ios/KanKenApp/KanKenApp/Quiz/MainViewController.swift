@@ -9,9 +9,6 @@
 import UIKit
 import SCLAlertView
 
-private let hiraginoFontString = "ヒラギノ角ゴシック W3"
-private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
-
 internal class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -215,9 +212,9 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
-            kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
-            kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
+            kTitleFont: UIFont(name: HIRAGINO_FONT_STRING, size: 24)!,
+            kTextFont: UIFont(name: HIRAGINO_FONT_STRING, size: 16)!,
+            kButtonFont: UIFont(name: HIRAGINO_BOLD_FONT_STRING, size: 16)!,
             contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
             hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)

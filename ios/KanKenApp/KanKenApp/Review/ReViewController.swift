@@ -9,9 +9,6 @@
 import UIKit
 import SCLAlertView
 
-private let hiraginoFontString = "ヒラギノ角ゴシック W3"
-private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
-
 class ReViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var questionNumberLabel: UILabel!
     @IBOutlet var questionLabel: UILabel!
@@ -203,9 +200,9 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func PauseTap(_ sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
-                                                    kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
-                                                    kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
+        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: HIRAGINO_FONT_STRING, size: 24)!,
+                                                    kTextFont: UIFont(name: HIRAGINO_FONT_STRING, size: 16)!,
+                                                    kButtonFont: UIFont(name: HIRAGINO_BOLD_FONT_STRING, size: 16)!,
                                                     contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
                                                     hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)

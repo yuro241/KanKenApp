@@ -15,6 +15,7 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var toTitleButton: UIButton!
     
     private let userDefaultsManager = UserDefaultsManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
