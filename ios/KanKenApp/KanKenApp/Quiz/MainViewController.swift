@@ -9,9 +9,6 @@
 import UIKit
 import SCLAlertView
 
-private let hiraginoFontString = "ヒラギノ角ゴシック W3"
-private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
-
 internal class MainViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var questionLabel: UILabel!
@@ -52,7 +49,7 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         viewReset()
         setLayout()
         
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -73,10 +70,10 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
         }
         
         switch userDefaultManager.getGameMode() {
-        case 2:
-            numOfTry = 10
+        case QuestionNumber.tenQuestionsMode.rawValue:
+            numOfTry = DEFAULT_NUMBER_OF_QUESTIONS
             self.navigationItem.title = "10問組手モード"
-        case 3:
+        case QuestionNumber.allQuestionsMode.rawValue:
             numOfTry = arrayKanji.count
             self.navigationItem.title = "全問必答モード"
         default:
@@ -98,12 +95,12 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     
     //画面レイアウトを設定
     private func setLayout() {
-        questionNumberLabel.layer.cornerRadius = 10
+        questionNumberLabel.layer.cornerRadius = QUESTIONCOUNT_LABEL_CORNER_RADIUS
         questionNumberLabel.clipsToBounds = true
-        questionLabel.layer.cornerRadius = 20
+        questionLabel.layer.cornerRadius = QUESTION_LABEL_CORNER_RADIUS
         questionLabel.clipsToBounds = true
-        answerInputField.layer.cornerRadius = 10
-        answerButton.layer.cornerRadius = 5
+        answerInputField.layer.cornerRadius = ANSWER_INPUTFIELD_CORNER_RADIUS
+        answerButton.layer.cornerRadius = ANSWER_BUTTON_CORNER_RADIUS
     }
     
     //問題出題
@@ -215,10 +212,10 @@ internal class MainViewController: UIViewController, UITextFieldDelegate {
     //一時停止ボタン押下時実行
     @IBAction func tapStop(_ sender: UIBarButtonItem) {
         let appearance = SCLAlertView.SCLAppearance(
-            kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
-            kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
-            kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
-            contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
+            kTitleFont: UIFont(name: HIRAGINO_FONT_STRING, size: POPUP_TITLE_FONT_SIZE)!,
+            kTextFont: UIFont(name: HIRAGINO_FONT_STRING, size: POPUP_TEXT_FONT_SIZE)!,
+            kButtonFont: UIFont(name: HIRAGINO_BOLD_FONT_STRING, size: POPUP_TEXT_FONT_SIZE)!,
+            contentViewCornerRadius: POPUP_CONTENTS_CORNER_RADIUS, fieldCornerRadius: POPUP_CONTENTS_CORNER_RADIUS, buttonCornerRadius: POPUP_BUTTON_CORNER_RADIUS,
             hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("中断", target:self, selector:#selector(MainViewController.toTitle))

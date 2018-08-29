@@ -24,6 +24,7 @@
 		5094ED9D203F2BB0001AADBD /* KanKenAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5094ED9C203F2BB0001AADBD /* KanKenAppUITests.swift */; };
 		50AA299B20BFDB8200D853D7 /* SCLAlertView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50220DB720BFDB4200984DFC /* SCLAlertView.framework */; };
 		50B29F4A20EDF8420001FBB0 /* icons in Resources */ = {isa = PBXBuildFile; fileRef = 50B29F4920EDF8420001FBB0 /* icons */; };
+		50B5AD98213631E700CF01C7 /* CommonNumbers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50B5AD97213631E700CF01C7 /* CommonNumbers.swift */; };
 		50CEE3F820CA351200D781E3 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */; };
 		50CEE3FA20CA76D900D781E3 /* ReView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50CEE3F920CA76D900D781E3 /* ReView.storyboard */; };
 		50CEE3FC20CA76EB00D781E3 /* ReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */; };
@@ -76,6 +77,7 @@
 		5094ED9C203F2BB0001AADBD /* KanKenAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KanKenAppUITests.swift; sourceTree = "<group>"; };
 		5094ED9E203F2BB0001AADBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B29F4920EDF8420001FBB0 /* icons */ = {isa = PBXFileReference; lastKnownFileType = folder; name = icons; path = ../../icons; sourceTree = "<group>"; };
+		50B5AD97213631E700CF01C7 /* CommonNumbers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonNumbers.swift; sourceTree = "<group>"; };
 		50CEE3F720CA351200D781E3 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		50CEE3F920CA76D900D781E3 /* ReView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ReView.storyboard; sourceTree = "<group>"; };
 		50CEE3FB20CA76EB00D781E3 /* ReViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503D1478213629A700B28989 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
+				50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		504700AC20885FDB00D84F17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,13 +171,13 @@
 				50D7BB052134F49C00D19205 /* Review */,
 				50D7BB092134F51300D19205 /* Result */,
 				50D7BB062134F4DD00D19205 /* ReviewResult */,
+				503D1478213629A700B28989 /* Manager */,
 				50B29F4920EDF8420001FBB0 /* icons */,
 				5094ED83203F2BB0001AADBD /* Assets.xcassets */,
 				5094ED88203F2BB0001AADBD /* Info.plist */,
 				50F7C16620C2218200826D58 /* questions.csv */,
 				50D7BB11213532DB00D19205 /* Key.swift */,
-				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
-				50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */,
+				50B5AD97213631E700CF01C7 /* CommonNumbers.swift */,
 			);
 			path = KanKenApp;
 			sourceTree = "<group>";
@@ -435,6 +446,7 @@
 				50D7BB12213532DB00D19205 /* Key.swift in Sources */,
 				50D7BB1621353F5900D19205 /* UserDefaultsManager.swift in Sources */,
 				5094ED7F203F2BB0001AADBD /* MainViewController.swift in Sources */,
+				50B5AD98213631E700CF01C7 /* CommonNumbers.swift in Sources */,
 				506FEE9C20C6BE8E009AC5FA /* QuestionPair.swift in Sources */,
 				50D7BB1421353A7B00D19205 /* CsvFileManager.swift in Sources */,
 				5019793F20C3BC27005B7456 /* TitleViewController.swift in Sources */,

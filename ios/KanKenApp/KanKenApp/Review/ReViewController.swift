@@ -9,9 +9,6 @@
 import UIKit
 import SCLAlertView
 
-private let hiraginoFontString = "ヒラギノ角ゴシック W3"
-private let hiraginoBoldFontString = "ヒラギノ角ゴシック W6"
-
 class ReViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet var questionNumberLabel: UILabel!
     @IBOutlet var questionLabel: UILabel!
@@ -38,7 +35,7 @@ class ReViewController: UIViewController, UITextFieldDelegate {
 
         answerInputField.clearButtonMode = .always
         answerInputField.delegate = self
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         viewReset()
         setLayout()
@@ -69,12 +66,12 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     
     //画面レイアウトを設定
     private func setLayout() {
-        questionNumberLabel.layer.cornerRadius = 10
+        questionNumberLabel.layer.cornerRadius = QUESTIONCOUNT_LABEL_CORNER_RADIUS
         questionNumberLabel.clipsToBounds = true
-        questionLabel.layer.cornerRadius = 20
+        questionLabel.layer.cornerRadius = QUESTION_LABEL_CORNER_RADIUS
         questionLabel.clipsToBounds = true
-        answerInputField.layer.cornerRadius = 10
-        answerButton.layer.cornerRadius = 5
+        answerInputField.layer.cornerRadius = ANSWER_INPUTFIELD_CORNER_RADIUS
+        answerButton.layer.cornerRadius = ANSWER_BUTTON_CORNER_RADIUS
     }
     
     private func getWrongAnswers() {
@@ -203,14 +200,14 @@ class ReViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func PauseTap(_ sender: UIBarButtonItem) {
-        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: hiraginoFontString, size: 24)!,
-                                                    kTextFont: UIFont(name: hiraginoFontString, size: 16)!,
-                                                    kButtonFont: UIFont(name: hiraginoBoldFontString, size: 16)!,
-                                                    contentViewCornerRadius: 10, fieldCornerRadius: 10, buttonCornerRadius: 5,
+        let appearance = SCLAlertView.SCLAppearance(kTitleFont: UIFont(name: HIRAGINO_FONT_STRING, size: POPUP_TITLE_FONT_SIZE)!,
+                                                    kTextFont: UIFont(name: HIRAGINO_FONT_STRING, size: POPUP_TEXT_FONT_SIZE)!,
+                                                    kButtonFont: UIFont(name: HIRAGINO_BOLD_FONT_STRING, size: POPUP_TEXT_FONT_SIZE)!,
+                                                    contentViewCornerRadius: POPUP_CONTENTS_CORNER_RADIUS, fieldCornerRadius: POPUP_CONTENTS_CORNER_RADIUS, buttonCornerRadius: POPUP_BUTTON_CORNER_RADIUS,
                                                     hideWhenBackgroundViewIsTapped: true)
         let alertView = SCLAlertView(appearance: appearance)
         alertView.addButton("終了", target:self, selector:#selector(MainViewController.toTitle))
-        alertView.showWait("一時停止中...", subTitle: "", closeButtonTitle: "クイズ再開", colorStyle: 0xFFD151, colorTextButton: 0x1C1C1C)
+        alertView.showWait("一時停止中...", subTitle: "", closeButtonTitle: "クイズ再開", colorStyle: POPUP_COLOR_STYLE, colorTextButton: POPUP_TEXTBUTTON_COLOR_STYLE)
     }
     
     @IBAction func answerButtonTap(_ sender: UIButton) {

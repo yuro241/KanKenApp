@@ -15,12 +15,12 @@ class ResultViewController: UIViewController {
     @IBOutlet weak var toTitleButton: UIButton!
     
     private let userDefaultsManager = UserDefaultsManager()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         resultLabel.text = String(userDefaultsManager.getCorrectCount()) + "問正解"
         persentageLabel.text = String(userDefaultsManager.getAccuracy()) + "%です"
-//        persentageLabel.text = "\(UserDefaults.standard.double(forKey: "accuracy"))%です"
         
         setLayout()
     }
@@ -35,7 +35,7 @@ class ResultViewController: UIViewController {
     }
     
     private func setLayout() {
-        restartButton.layer.cornerRadius = 10
-        toTitleButton.layer.cornerRadius = 10
+        restartButton.layer.cornerRadius = RESTARTBUTTON_CORNER_RADIUS
+        toTitleButton.layer.cornerRadius = TOTITLEBUTTON_CORNER_RADIUS
     }
 }
