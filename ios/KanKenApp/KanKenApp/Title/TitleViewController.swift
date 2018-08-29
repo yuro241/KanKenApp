@@ -64,11 +64,7 @@ class TitleViewController: UIViewController {
         subTitleLabel.clipsToBounds = true
         backGroundView.layer.cornerRadius = 20
         
-        //各ボタンのalphaと角丸設定
-        for buttons in modeSelectButtons {
-            buttons.alpha = 0.3
-            buttons.layer.cornerRadius = 10
-        }
+        resetModeSelectButton()
         startButton.alpha = 0.3
         startButton.isEnabled = false
         startButton.layer.cornerRadius = 10
@@ -76,12 +72,20 @@ class TitleViewController: UIViewController {
     
     //間違えた問題がない場合、復習のモードを選択不可に設定
     func setModeSelectButtonEnable() {
-        if UserDefaults.standard.data(forKey: "wrongAnswer") == nil {
+        if userDefaultsManager.getWrongAnswer() == nil {
             modeSelectButtons[0].isEnabled = false
             modeSelectButtons[1].isEnabled = false
         } else {
             modeSelectButtons[0].isEnabled = true
             modeSelectButtons[1].isEnabled = true
+        }
+    }
+    
+    //各ボタンのalphaと角丸設定
+    func resetModeSelectButton() {
+        for buttons in modeSelectButtons {
+            buttons.alpha = 0.3
+            buttons.layer.cornerRadius = 10
         }
     }
     
@@ -94,6 +98,7 @@ class TitleViewController: UIViewController {
         if tagForIdentifier == 3 {
             userDefaultsManager.setGameMode(num: 3)
         }
+        resetModeSelectButton()
         startButton.alpha = 0.3
         startButton.isEnabled = false
         self.performSegue(withIdentifier: String(tagForIdentifier), sender: nil)
@@ -101,9 +106,7 @@ class TitleViewController: UIViewController {
     
     //ボタンの選択非選択変更
     @IBAction func changeAlpha(_ sender: UIButton) {
-        for buttons in modeSelectButtons {
-            buttons.alpha = 0.3
-        }
+        resetModeSelectButton()
         modeSelectButtons[sender.tag].alpha = 1.0
         tagForIdentifier = sender.tag
         startButton.alpha = 1.0
