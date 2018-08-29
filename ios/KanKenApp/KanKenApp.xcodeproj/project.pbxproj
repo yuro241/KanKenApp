@@ -117,6 +117,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		503D1478213629A700B28989 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
+				50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		504700AC20885FDB00D84F17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,13 +169,12 @@
 				50D7BB052134F49C00D19205 /* Review */,
 				50D7BB092134F51300D19205 /* Result */,
 				50D7BB062134F4DD00D19205 /* ReviewResult */,
+				503D1478213629A700B28989 /* Manager */,
 				50B29F4920EDF8420001FBB0 /* icons */,
 				5094ED83203F2BB0001AADBD /* Assets.xcassets */,
 				5094ED88203F2BB0001AADBD /* Info.plist */,
 				50F7C16620C2218200826D58 /* questions.csv */,
 				50D7BB11213532DB00D19205 /* Key.swift */,
-				50D7BB1321353A7B00D19205 /* CsvFileManager.swift */,
-				50D7BB1521353F5900D19205 /* UserDefaultsManager.swift */,
 			);
 			path = KanKenApp;
 			sourceTree = "<group>";
