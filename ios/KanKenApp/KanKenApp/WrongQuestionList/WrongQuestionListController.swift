@@ -33,7 +33,6 @@ class WrongQuestionListController: UITableViewController {
         wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
-//        print(UserDefaults.standard.integer(forKey: Keys.numOfWrongAnswer.rawValue))
         return userDefaultsManager.getNumOfWrongAnswer()
     }
     
@@ -65,10 +64,10 @@ class WrongQuestionListController: UITableViewController {
         cell.KanaLabel.text = wrongQuestionPairArray[wrongTimeCountArray[1][indexPath.section]].Kana
         
         cell.backgroundColor = #colorLiteral(red: 1, green: 0.9333333333, blue: 0.8352941176, alpha: 1)
-        cell.alpha = 0.7
-        cell.layer.shadowOpacity = 0.4
+        cell.alpha = alphaValue.cell.rawValue
+        cell.layer.shadowOpacity = SHADOW_OPACITY
         cell.layer.shadowOffset = CGSize(width: 1, height: 1)
-        cell.layer.cornerRadius = 10
+        cell.layer.cornerRadius = CELL_CORNER_RADIUS
         cell.clipsToBounds = true
         
         return cell
