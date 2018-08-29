@@ -20,7 +20,7 @@ class WrongQuestionListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9254901961, green: 0.4470588235, blue: 0.05882352941, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +30,7 @@ class WrongQuestionListController: UITableViewController {
         wrongTimeCountArray = userDefaultsManager.getWrongTimeCount() ?? [[]]
         
         //wrongTimeCountArrayを降順ソート
-        wrongTimeCountArray.sort(by: {$0[0] > $1[0]})
+        wrongTimeCountArray[0].sort(by: {$0 > $1})
     }
     override func numberOfSections(in tableView: UITableView) -> Int {
         return userDefaultsManager.getNumOfWrongAnswer()

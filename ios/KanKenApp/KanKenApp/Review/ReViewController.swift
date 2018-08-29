@@ -35,7 +35,7 @@ class ReViewController: UIViewController, UITextFieldDelegate {
 
         answerInputField.clearButtonMode = .always
         answerInputField.delegate = self
-        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.9270954605, green: 0.4472710504, blue: 0.05901660795, alpha: 1)
+        self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         
         viewReset()
         setLayout()
