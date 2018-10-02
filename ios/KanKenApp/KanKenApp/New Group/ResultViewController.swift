@@ -34,6 +34,13 @@ class ResultViewController: UIViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // navigationBarを表示する
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
     private func setLayout() {
         restartButton.layer.cornerRadius = RESTARTBUTTON_CORNER_RADIUS
         toTitleButton.layer.cornerRadius = TOTITLEBUTTON_CORNER_RADIUS

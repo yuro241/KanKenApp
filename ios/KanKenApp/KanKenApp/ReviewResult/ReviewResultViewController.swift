@@ -34,5 +34,12 @@ class ReviewResultViewController: UIViewController {
             self.performSegue(withIdentifier: "totitle", sender: nil)
         })
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        // navigationBarを表示する
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
 
 }
