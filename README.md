@@ -1,4 +1,4 @@
-# KanKenApp(漢検対策用クイズアプリ)
+# KanKenApp(漢検1級対策用クイズアプリ)
 
 ## iOS用アプリ
 ### 開発環境
@@ -35,4 +35,5 @@ pyhton GUI.py ver04.txt ver05.txt で実行
 
 終了ボタンを押すと何問中何問正解したかパーセント表示
 
-Made by Yuichiro Tsuji, Yoshiki Honda
+iOS App: Made by Yuichiro Tsuji
+PC App: Made by Yoshiki Honda
